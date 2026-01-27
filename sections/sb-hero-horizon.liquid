@@ -55,7 +55,7 @@
             {{ section.settings.hero_image | image_url: width: 1400 | image_tag: class: 'sb-hero-horizon__image', loading: 'lazy', alt: section.settings.hero_image.alt | escape }}
           </picture>
         {% else %}
-          {{ 'lifestyle-1' | placeholder_svg_tag: 'sb-hero-horizon__image placeholder' }}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'sb-hero-horizon__image placeholder' }}
         {% endif %}
       </div>
     </div>
@@ -70,7 +70,7 @@
       "type": "richtext",
       "id": "heading",
       "label": "Heading",
-      "default": "<p>Clinical luxury, curated for skin, body, and adornment.</p>"
+      "default": "<p>Clinical luxury, curated for <em>skin</em>, body, and adornment.</p>"
     },
     {
       "type": "text",
@@ -82,7 +82,7 @@
       "type": "text",
       "id": "badge_text",
       "label": "Badge text",
-      "default": "Silla Beauty Studio"
+      "default": "Clinical Aesthetics, Alberton PEI"
     },
     {
       "type": "text",

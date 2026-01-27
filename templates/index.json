@@ -15,24 +15,31 @@
         "sb_hero_bullet_1": {
           "type": "bullet",
           "settings": {
-            "text": "Licensed estheticians · Calm, private suites"
+            "text": "Licensed estheticians"
           }
         },
         "sb_hero_bullet_2": {
           "type": "bullet",
           "settings": {
-            "text": "Clinical-grade care with a luxury touch"
+            "text": "Tailored protocols"
+          }
+        },
+        "sb_hero_bullet_3": {
+          "type": "bullet",
+          "settings": {
+            "text": "Calm, private suites"
           }
         }
       },
       "block_order": [
         "sb_hero_bullet_1",
-        "sb_hero_bullet_2"
+        "sb_hero_bullet_2",
+        "sb_hero_bullet_3"
       ],
       "settings": {
-        "heading": "<p>Clinical luxury, curated for skin, body, and adornment.</p>",
+        "heading": "<p>Clinical luxury, curated for <em>skin</em>, body, and adornment.</p>",
         "subheading": "Personalized care, refined rituals, and a calm studio experience designed around you.",
-        "badge_text": "Silla Beauty Studio",
+        "badge_text": "Clinical Aesthetics, Alberton PEI",
         "primary_label": "Book a consultation",
         "primary_link": "",
         "secondary_label": "Explore services",
@@ -42,47 +49,8 @@
         "overlay_gradient": true,
         "content_alignment": "left",
         "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_trust": {
-      "type": "sb-trust-bar",
-      "blocks": {
-        "sb_trust_item_1": {
-          "type": "item",
-          "settings": {
-            "icon": "",
-            "title": "Personalized intake",
-            "text": "We begin with a calm consultation."
-          }
-        },
-        "sb_trust_item_2": {
-          "type": "item",
-          "settings": {
-            "icon": "",
-            "title": "Tailored protocols",
-            "text": "Thoughtful plans for every visit."
-          }
-        },
-        "sb_trust_item_3": {
-          "type": "item",
-          "settings": {
-            "icon": "",
-            "title": "Refined environment",
-            "text": "Quiet, intentional, and elevated."
-          }
-        }
-      },
-      "block_order": [
-        "sb_trust_item_1",
-        "sb_trust_item_2",
-        "sb_trust_item_3"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "sb_services": {
@@ -92,9 +60,9 @@
           "type": "service",
           "settings": {
             "image": "",
-            "title": "Signature facials",
-            "text": "Holistic protocols with clinical-grade products.",
-            "link_label": "Book now",
+            "title": "Acne + pigmentation planning",
+            "text": "Personalized roadmap to clear, balanced tone.",
+            "link_label": "Learn more",
             "link_url": ""
           }
         },
@@ -102,9 +70,9 @@
           "type": "service",
           "settings": {
             "image": "",
-            "title": "Body renewal",
-            "text": "Targeted exfoliation and hydration rituals.",
-            "link_label": "View menu",
+            "title": "Microneedling",
+            "text": "Collagen-stimulating renewal with minimal downtime.",
+            "link_label": "Learn more",
             "link_url": ""
           }
         },
@@ -112,9 +80,39 @@
           "type": "service",
           "settings": {
             "image": "",
-            "title": "Finishing touches",
-            "text": "Lashes, brows, and elevated add-ons.",
-            "link_label": "Explore",
+            "title": "IPL / brightening",
+            "text": "Photo-facial glow for tone and clarity.",
+            "link_label": "Learn more",
+            "link_url": ""
+          }
+        },
+        "sb_services_item_4": {
+          "type": "service",
+          "settings": {
+            "image": "",
+            "title": "Laser hair removal",
+            "text": "Smooth, long-term reduction for face and body.",
+            "link_label": "Learn more",
+            "link_url": ""
+          }
+        },
+        "sb_services_item_5": {
+          "type": "service",
+          "settings": {
+            "image": "",
+            "title": "Facials",
+            "text": "Clinical facials tailored to your skin goals.",
+            "link_label": "Learn more",
+            "link_url": ""
+          }
+        },
+        "sb_services_item_6": {
+          "type": "service",
+          "settings": {
+            "image": "",
+            "title": "Permanent jewelry",
+            "text": "Custom-fit chains for effortless daily shine.",
+            "link_label": "Learn more",
             "link_url": ""
           }
         }
@@ -122,14 +120,17 @@
       "block_order": [
         "sb_services_item_1",
         "sb_services_item_2",
-        "sb_services_item_3"
+        "sb_services_item_3",
+        "sb_services_item_4",
+        "sb_services_item_5",
+        "sb_services_item_6"
       ],
       "settings": {
-        "heading": "Services curated for lasting results",
-        "subheading": "Advanced facial rituals, body treatments, and finishing touches designed to feel effortless.",
+        "heading": "Services",
+        "subheading": "Targeted treatments designed for clarity, radiance, and calm.",
         "color_scheme": "scheme-1",
-        "padding_top": 56,
-        "padding_bottom": 56
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "sb_feature": {
@@ -337,7 +338,6 @@
   },
   "order": [
     "sb_hero",
-    "sb_trust",
     "sb_services",
     "sb_feature",
     "sb_products",

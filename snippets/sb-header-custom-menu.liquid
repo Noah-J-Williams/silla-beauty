@@ -1,0 +1,28 @@
+{% comment %}
+  Renders a custom primary navigation for the header.
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    <li>
+      <a href="{{ routes.root_url }}" class="header__menu-item list-menu__item link link--text focus-inset">
+        <span{% if request.page_type == 'index' %} class="header__active-menu-item"{% endif %}>Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{ routes.root_url }}pages/services" class="header__menu-item list-menu__item link link--text focus-inset">
+        <span{% if request.path == '/pages/services' %} class="header__active-menu-item"{% endif %}>Services</span>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/all" class="header__menu-item list-menu__item link link--text focus-inset">
+        <span{% if request.path == '/collections/all' %} class="header__active-menu-item"{% endif %}>Shop</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{ routes.root_url }}pages/contact" class="header__menu-item list-menu__item link link--text focus-inset">
+        <span{% if request.path == '/pages/contact' %} class="header__active-menu-item"{% endif %}>Contact</span>
+      </a>
+    </li>
+  </ul>
+</nav>
