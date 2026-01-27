@@ -26,7 +26,8 @@
         {% assign has_image = block.settings.image %}
         {% assign row_reverse = false %}
         {% if section.settings.alternate_layout %}
-          {% if forloop.index0 | modulo: 2 == 1 %}
+          {% assign row_index_mod = forloop.index0 | modulo: 2 %}
+          {% if row_index_mod == 1 %}
             {% assign row_reverse = true %}
           {% endif %}
         {% elsif block.settings.image_position == 'right' %}
