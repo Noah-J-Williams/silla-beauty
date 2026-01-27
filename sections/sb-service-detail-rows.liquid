@@ -23,18 +23,25 @@
 
     <div class="sb-service-detail-rows__items">
       {% for block in section.blocks %}
-        {% assign has_image = block.settings.image != blank %}
+        {% assign has_image = block.settings.image %}
         {% assign row_reverse = false %}
         {% if section.settings.alternate_layout %}
-          {% if forloop.index0 | modulo: 2 == 1 %}
+          {% assign row_index_mod = forloop.index0 | modulo: 2 %}
+          {% if row_index_mod == 1 %}
             {% assign row_reverse = true %}
           {% endif %}
         {% elsif block.settings.image_position == 'right' %}
           {% assign row_reverse = true %}
         {% endif %}
 
-        {% assign show_primary = block.settings.primary_cta_label != blank and block.settings.primary_cta_link != blank %}
-        {% assign show_secondary = block.settings.secondary_cta_label != blank and block.settings.secondary_cta_link != blank %}
+        {% assign show_primary = false %}
+        {% assign show_secondary = false %}
+        {% if block.settings.primary_cta_label != blank and block.settings.primary_cta_link != blank %}
+          {% assign show_primary = true %}
+        {% endif %}
+        {% if block.settings.secondary_cta_label != blank and block.settings.secondary_cta_link != blank %}
+          {% assign show_secondary = true %}
+        {% endif %}
 
         <article
           class="sb-service-detail-rows__card{% if section.settings.card_style == 'surface' %} sb-card{% else %} sb-service-detail-rows__card--bordered{% endif %}{% if row_reverse %} sb-service-detail-rows__row--reverse{% endif %}{% unless has_image %} sb-service-detail-rows__row--no-image{% endunless %}"
