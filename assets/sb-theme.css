@@ -280,6 +280,82 @@ a:hover,
   gap: 1.6rem;
 }
 
+.sb-service-detail-rows__items {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.2rem);
+  margin-top: clamp(2.4rem, 3vw, 3.6rem);
+}
+
+.sb-service-detail-rows__card {
+  padding: clamp(2rem, 3vw, 3.2rem);
+  display: grid;
+  gap: clamp(1.6rem, 3vw, 3rem);
+  align-items: center;
+}
+
+.sb-service-detail-rows__card--bordered {
+  background: var(--sb-surface);
+  border: 1px solid var(--sb-border);
+  border-radius: var(--sb-radius);
+  box-shadow: none;
+}
+
+.sb-service-detail-rows__row--reverse {
+  direction: rtl;
+}
+
+.sb-service-detail-rows__content {
+  display: grid;
+  gap: 1.6rem;
+  direction: ltr;
+}
+
+.sb-service-detail-rows__media {
+  border-radius: calc(var(--sb-radius) + 10px);
+  overflow: hidden;
+  background: var(--sb-border);
+}
+
+.sb-service-detail-rows__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sb-service-detail-rows__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  color: var(--sb-muted);
+  font-weight: 500;
+}
+
+.sb-service-detail-rows__lists {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.sb-service-detail-rows__list h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.sb-service-detail-rows__list ul {
+  margin: 0;
+  padding-left: 1.4rem;
+  color: var(--sb-muted);
+  display: grid;
+  gap: 0.6rem;
+}
+
+.sb-service-detail-rows__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .sb-feature-split__bullets,
 .sb-permanent-jewelry__bullets {
   margin: 0;
@@ -365,8 +441,13 @@ a:hover,
   .sb-hero-horizon__grid,
   .sb-feature-split__grid,
   .sb-permanent-jewelry__grid,
-  .sb-location-hours__grid {
+  .sb-location-hours__grid,
+  .sb-service-detail-rows__card {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sb-service-detail-rows__row--no-image {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -378,5 +459,10 @@ a:hover,
 
   .sb-trust-bar__items {
     grid-template-columns: 1fr;
+  }
+
+  .sb-service-detail-rows__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
