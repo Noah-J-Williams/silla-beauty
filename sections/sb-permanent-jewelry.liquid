@@ -1,0 +1,154 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="sb-section sb-permanent-jewelry color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.image_position == 'right' %} sb-permanent-jewelry--reverse{% endif %}">
+  <div class="page-width">
+    <div class="sb-permanent-jewelry__grid">
+      <div class="sb-permanent-jewelry__media">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.image.alt | escape }}
+        {% else %}
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
+        {% endif %}
+      </div>
+      <div class="sb-permanent-jewelry__content">
+        {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="sb-muted rte">{{ section.settings.text }}</div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+          <ul class="sb-permanent-jewelry__bullets">
+            {% for block in section.blocks %}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if section.settings.button_label != blank %}
+          <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Permanent Jewelry",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Permanent jewelry, elevated"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Choose from delicate chains and a custom fit for a seamless finish that feels effortless every day.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Book a jewelry appointment"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Solid gold and modern chain styles"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "SB Permanent Jewelry",
+      "blocks": [
+        {
+          "type": "bullet"
+        },
+        {
+          "type": "bullet"
+        },
+        {
+          "type": "bullet"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

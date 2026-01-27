@@ -1,0 +1,197 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="sb-section sb-hero-horizon color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding{% if section.settings.overlay_gradient %} sb-hero-horizon--overlay{% endif %}">
+  <div class="page-width">
+    <div class="sb-hero-horizon__grid sb-align-{{ section.settings.content_alignment }}">
+      <div class="sb-hero-horizon__content">
+        {% if section.settings.badge_text != blank %}
+          <span class="sb-pill">{{ section.settings.badge_text }}</span>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <div class="sb-hero-horizon__heading rte">{{ section.settings.heading }}</div>
+        {% endif %}
+
+        {% if section.settings.subheading != blank %}
+          <p class="sb-hero-horizon__subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+
+        <div class="sb-hero-horizon__actions">
+          {% if section.settings.primary_label != blank %}
+            <a class="button" href="{{ section.settings.primary_link }}">{{ section.settings.primary_label }}</a>
+          {% endif %}
+          {% if section.settings.secondary_label != blank %}
+            <a class="button button--secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+          {% endif %}
+        </div>
+
+        {% if section.blocks.size > 0 %}
+          <ul class="sb-hero-horizon__trust">
+            {% for block in section.blocks %}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="sb-hero-horizon__media">
+        {% if section.settings.hero_image != blank %}
+          <picture>
+            {% if section.settings.hero_image_mobile != blank %}
+              <source media="(max-width: 749px)" srcset="{{ section.settings.hero_image_mobile | image_url: width: 900 }}">
+            {% endif %}
+            {{ section.settings.hero_image | image_url: width: 1400 | image_tag: class: 'sb-hero-horizon__image', loading: 'lazy', alt: section.settings.hero_image.alt | escape }}
+          </picture>
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'sb-hero-horizon__image placeholder' }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Hero Horizon",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Clinical luxury, curated for skin, body, and adornment.</p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Personalized care, refined rituals, and a calm studio experience designed around you."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Silla Beauty Studio"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Book a consultation"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Explore services"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Hero image (mobile)"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_gradient",
+      "label": "Enable overlay gradient",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Trust bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Licensed estheticians · Calm, private suites"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "SB Hero Horizon",
+      "blocks": [
+        {
+          "type": "bullet"
+        },
+        {
+          "type": "bullet"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

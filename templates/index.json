@@ -9,76 +9,342 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "sb_hero": {
+      "type": "sb-hero-horizon",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "sb_hero_bullet_1": {
+          "type": "bullet",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "Licensed estheticians · Calm, private suites"
           }
         },
-        "button": {
-          "type": "buttons",
+        "sb_hero_bullet_2": {
+          "type": "bullet",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "Clinical-grade care with a luxury touch"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "sb_hero_bullet_1",
+        "sb_hero_bullet_2"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "heading": "<p>Clinical luxury, curated for skin, body, and adornment.</p>",
+        "subheading": "Personalized care, refined rituals, and a calm studio experience designed around you.",
+        "badge_text": "Silla Beauty Studio",
+        "primary_label": "Book a consultation",
+        "primary_link": "",
+        "secondary_label": "Explore services",
+        "secondary_link": "",
+        "hero_image": "",
+        "hero_image_mobile": "",
+        "overlay_gradient": true,
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "sb_trust": {
+      "type": "sb-trust-bar",
+      "blocks": {
+        "sb_trust_item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "title": "Personalized intake",
+            "text": "We begin with a calm consultation."
+          }
+        },
+        "sb_trust_item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "title": "Tailored protocols",
+            "text": "Thoughtful plans for every visit."
+          }
+        },
+        "sb_trust_item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "title": "Refined environment",
+            "text": "Quiet, intentional, and elevated."
+          }
+        }
+      },
+      "block_order": [
+        "sb_trust_item_1",
+        "sb_trust_item_2",
+        "sb_trust_item_3"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "sb_services": {
+      "type": "sb-services-grid",
+      "blocks": {
+        "sb_services_item_1": {
+          "type": "service",
+          "settings": {
+            "image": "",
+            "title": "Signature facials",
+            "text": "Holistic protocols with clinical-grade products.",
+            "link_label": "Book now",
+            "link_url": ""
+          }
+        },
+        "sb_services_item_2": {
+          "type": "service",
+          "settings": {
+            "image": "",
+            "title": "Body renewal",
+            "text": "Targeted exfoliation and hydration rituals.",
+            "link_label": "View menu",
+            "link_url": ""
+          }
+        },
+        "sb_services_item_3": {
+          "type": "service",
+          "settings": {
+            "image": "",
+            "title": "Finishing touches",
+            "text": "Lashes, brows, and elevated add-ons.",
+            "link_label": "Explore",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "sb_services_item_1",
+        "sb_services_item_2",
+        "sb_services_item_3"
+      ],
+      "settings": {
+        "heading": "Services curated for lasting results",
+        "subheading": "Advanced facial rituals, body treatments, and finishing touches designed to feel effortless.",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "sb_feature": {
+      "type": "sb-feature-split",
+      "blocks": {
+        "sb_feature_bullet_1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Skin assessment and lifestyle review"
+          }
+        },
+        "sb_feature_bullet_2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Customized treatment recommendations"
+          }
+        },
+        "sb_feature_bullet_3": {
+          "type": "bullet",
+          "settings": {
+            "text": "Home care guidance for daily rituals"
+          }
+        }
+      },
+      "block_order": [
+        "sb_feature_bullet_1",
+        "sb_feature_bullet_2",
+        "sb_feature_bullet_3"
+      ],
+      "settings": {
+        "heading": "Treatment planning with intention",
+        "text": "<p>We begin with a thoughtful consultation to understand your goals, then map a plan you can feel confident about.</p>",
+        "button_label": "Learn about our approach",
+        "button_link": "",
+        "image": "",
+        "image_position": "left",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_products": {
+      "type": "sb-products-collection",
+      "settings": {
+        "heading": "Curated essentials",
+        "subheading": "Clinical formulas and everyday luxuries to support your in-studio ritual.",
+        "collection": "all",
+        "products_to_show": 4,
         "image_ratio": "adapt",
-        "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "show_view_all": true,
+        "view_all_label": "View all products",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_permanent": {
+      "type": "sb-permanent-jewelry",
+      "blocks": {
+        "sb_permanent_bullet_1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Solid gold and modern chain styles"
+          }
+        },
+        "sb_permanent_bullet_2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Custom fit in a serene appointment"
+          }
+        },
+        "sb_permanent_bullet_3": {
+          "type": "bullet",
+          "settings": {
+            "text": "A seamless finish for everyday wear"
+          }
+        }
+      },
+      "block_order": [
+        "sb_permanent_bullet_1",
+        "sb_permanent_bullet_2",
+        "sb_permanent_bullet_3"
+      ],
+      "settings": {
+        "heading": "Permanent jewelry, elevated",
+        "text": "<p>Choose from delicate chains and a custom fit for a seamless finish that feels effortless every day.</p>",
+        "button_label": "Book a jewelry appointment",
+        "button_link": "",
+        "image": "",
+        "image_position": "right",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_testimonials": {
+      "type": "sb-testimonials",
+      "blocks": {
+        "sb_testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The space is serene and the service feels so personalized.",
+            "name": "Client Name",
+            "label": "Signature facial"
+          }
+        },
+        "sb_testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Everything felt curated and calm from start to finish.",
+            "name": "Client Name",
+            "label": "Body renewal"
+          }
+        },
+        "sb_testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I left glowing and already booked my next visit.",
+            "name": "Client Name",
+            "label": "Custom consultation"
+          }
+        }
+      },
+      "block_order": [
+        "sb_testimonial_1",
+        "sb_testimonial_2",
+        "sb_testimonial_3"
+      ],
+      "settings": {
+        "heading": "Client love notes",
+        "subheading": "A calm, elevated experience every visit.",
+        "enable_slider": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_faq": {
+      "type": "sb-faq",
+      "blocks": {
+        "sb_faq_1": {
+          "type": "item",
+          "settings": {
+            "question": "How should I prepare for my appointment?",
+            "answer": "<p>Arrive makeup-free if possible, and share any sensitivities during your intake.</p>"
+          }
+        },
+        "sb_faq_2": {
+          "type": "item",
+          "settings": {
+            "question": "Do you offer customized treatment plans?",
+            "answer": "<p>Yes. Every visit begins with a consultation so we can tailor a plan to your goals.</p>"
+          }
+        },
+        "sb_faq_3": {
+          "type": "item",
+          "settings": {
+            "question": "Can I shop products used in the studio?",
+            "answer": "<p>We curate essentials in our online shop so you can continue your ritual at home.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "sb_faq_1",
+        "sb_faq_2",
+        "sb_faq_3"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "subheading": "Everything you need to plan your visit.",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_location": {
+      "type": "sb-location-hours",
+      "settings": {
+        "heading": "Visit the studio",
+        "address": "<p>123 Silla Avenue<br>Suite 200<br>Los Angeles, CA</p>",
+        "hours": "<p>Mon–Fri: 9am–7pm<br>Sat: 9am–5pm</p>",
+        "phone": "(555) 123-4567",
+        "email": "hello@sillabeauty.com",
+        "button_label": "Get directions",
+        "button_link": "",
+        "map_url": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sb_final": {
+      "type": "sb-final-cta",
+      "settings": {
+        "heading": "Ready for your next ritual?",
+        "text": "Book your visit and experience the Silla Beauty difference.",
+        "button_label": "Book now",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "sb_hero",
+    "sb_trust",
+    "sb_services",
+    "sb_feature",
+    "sb_products",
+    "sb_permanent",
+    "sb_testimonials",
+    "sb_faq",
+    "sb_location",
+    "sb_final"
   ]
 }
