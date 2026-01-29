@@ -6,9 +6,11 @@
   --sb-accent: #a88b72;
   --sb-border: #e5dbd1;
   --sb-divider: #efe6dd;
-  --sb-radius: 22px;
+  --sb-radius: 14px;
   --sb-shadow: 0 18px 40px rgba(73, 62, 54, 0.1);
   --sb-section-space: clamp(4.8rem, 5vw, 8.4rem);
+  --buttons-border-width: 0px;
+  --buttons-border-offset: 0px;
 }
 
 body {
@@ -48,26 +50,36 @@ a:hover,
 }
 
 .sb-section .button {
-  border-radius: calc(var(--sb-radius) + 6px);
+  border-radius: calc(var(--sb-radius) + 4px);
   text-transform: none;
   letter-spacing: 0.02em;
   font-weight: 600;
   padding: 1.2rem 2.6rem;
   min-height: 4.6rem;
   box-shadow: none;
+  border: 0;
 }
 
 .sb-section .button:not(.button--secondary) {
   background: var(--sb-accent);
-  border: 1px solid transparent;
   color: #fff;
   box-shadow: 0 14px 30px rgba(44, 42, 40, 0.16);
 }
 
 .sb-section .button.button--secondary {
-  background: transparent;
-  border: 1px solid var(--sb-accent);
+  background: rgba(168, 139, 114, 0.14);
   color: var(--sb-accent);
+}
+
+.button::after,
+.button:not([disabled]):hover::after,
+.shopify-challenge__button::after,
+.shopify-challenge__button:hover::after,
+.customer button::after,
+.customer button:hover::after,
+button.shopify-payment-button__button--unbranded::after,
+button.shopify-payment-button__button--unbranded:hover::after {
+  box-shadow: none;
 }
 
 .header-wrapper {
@@ -160,9 +172,12 @@ a:hover,
 .sb-hero-horizon .page-width {
   background: var(--sb-surface);
   border: 1px solid var(--sb-border);
-  border-radius: calc(var(--sb-radius) + 10px);
+  border-radius: calc(var(--sb-radius) + 4px);
   padding: clamp(3rem, 4vw, 5rem);
   box-shadow: var(--sb-shadow);
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 .sb-hero-horizon__grid {
@@ -225,7 +240,7 @@ a:hover,
 
 .sb-hero-horizon__media {
   position: relative;
-  border-radius: calc(var(--sb-radius) + 14px);
+  border-radius: calc(var(--sb-radius) + 6px);
   overflow: hidden;
   min-height: 320px;
   background: radial-gradient(circle at 30% 30%, #f8f3ee 0%, #e7ddd2 60%, #d9cec3 100%);
