@@ -172,12 +172,18 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-hero-horizon .page-width {
   background: linear-gradient(135deg, #f7f2ec 0%, #efe4da 45%, #e4d3c8 100%);
   border: 1px solid var(--sb-border);
-  border-radius: calc(var(--sb-radius) + 4px);
+  border-radius: 0;
   padding: clamp(3rem, 4vw, 5rem);
   box-shadow: var(--sb-shadow);
   max-width: 100%;
   width: 100%;
   margin: 0;
+}
+
+.sb-section.sb-hero-horizon {
+  padding-inline: clamp(1.6rem, 4vw, 4rem);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .template-index .section-header {
@@ -244,7 +250,7 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-hero-horizon__media {
   position: relative;
-  border-radius: calc(var(--sb-radius) + 6px);
+  border-radius: 0;
   overflow: hidden;
   min-height: 320px;
   background: radial-gradient(circle at 30% 30%, #f8f3ee 0%, #e7ddd2 60%, #d9cec3 100%);
