@@ -33,13 +33,14 @@ a:hover,
   padding: var(--sb-section-space) 0;
 }
 
-.sb-section[class*='section-'] {
+/* IMPORTANT: Don't globally override hero spacing */
+.sb-section[class*='section-']:not(.sb-hero-horizon) {
   padding-top: 5.6rem !important;
   padding-bottom: 5.6rem !important;
 }
 
 @media screen and (min-width: 750px) {
-  .sb-section[class*='section-'] {
+  .sb-section[class*='section-']:not(.sb-hero-horizon) {
     padding-top: 9.6rem !important;
     padding-bottom: 9.6rem !important;
   }
@@ -169,21 +170,29 @@ button.shopify-payment-button__button--unbranded:hover::after {
   color: var(--sb-muted);
 }
 
-.sb-hero-horizon .page-width {
-  background: linear-gradient(135deg, #f7f2ec 0%, #efe4da 45%, #e4d3c8 100%);
-  border: 1px solid var(--sb-border);
-  border-radius: 0;
-  padding: clamp(3rem, 4vw, 5rem);
-  box-shadow: var(--sb-shadow);
-  max-width: 100%;
-  width: 100%;
-  margin: 0;
+/* HERO: remove gap + align to header gutters */
+.sb-section.sb-hero-horizon {
+  padding-inline: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
+/* Let the section handle background if you want edge-to-edge */
 .sb-section.sb-hero-horizon {
-  padding-inline: clamp(1.6rem, 4vw, 4rem);
-  padding-top: 0;
-  padding-bottom: 0;
+  background: linear-gradient(135deg, #f7f2ec 0%, #efe4da 45%, #e4d3c8 100%);
+  border-bottom: 1px solid var(--sb-border);
+}
+
+/* Keep content aligned to Dawn's page-width gutters */
+.sb-hero-horizon .page-width {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  /* IMPORTANT: do NOT override max-width/margins, use Dawn defaults */
+  padding-top: clamp(5rem, 4vw, 5rem);
+  padding-bottom: clamp(5rem, 4vw, 5rem);
 }
 
 .template-index .section-header {
@@ -216,6 +225,7 @@ button.shopify-payment-button__button--unbranded:hover::after {
   font-size: clamp(3.4rem, 4.6vw, 5.6rem);
   line-height: 1.08;
   color: var(--sb-text);
+  margin-top: 0; /* prevents extra top gap */
 }
 
 .sb-hero-horizon__heading em {
