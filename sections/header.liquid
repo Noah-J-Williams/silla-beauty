@@ -226,11 +226,6 @@
     {%- endif -%}
 
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
-      {%- if section.settings.show_book_button and section.settings.book_label != blank -%}
-        <a class="button button--secondary sb-header__book small-hide medium-hide" href="{{ section.settings.book_link }}">
-          {{ section.settings.book_label }}
-        </a>
-      {%- endif -%}
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form class="small-hide medium-hide" data-prevent-hide>

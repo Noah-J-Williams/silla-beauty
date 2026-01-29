@@ -170,7 +170,7 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-hero-horizon .page-width {
-  background: var(--sb-surface);
+  background: linear-gradient(135deg, #f7f2ec 0%, #efe4da 45%, #e4d3c8 100%);
   border: 1px solid var(--sb-border);
   border-radius: calc(var(--sb-radius) + 4px);
   padding: clamp(3rem, 4vw, 5rem);
@@ -178,6 +178,10 @@ button.shopify-payment-button__button--unbranded:hover::after {
   max-width: 100%;
   width: 100%;
   margin: 0;
+}
+
+.template-index .section-header {
+  margin-bottom: 0 !important;
 }
 
 .sb-hero-horizon__grid {
