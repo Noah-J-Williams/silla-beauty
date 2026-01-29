@@ -11,38 +11,15 @@
   "sections": {
     "sb_hero": {
       "type": "sb-hero-horizon",
-      "blocks": {
-        "sb_hero_bullet_1": {
-          "type": "bullet",
-          "settings": {
-            "text": "Licensed estheticians"
-          }
-        },
-        "sb_hero_bullet_2": {
-          "type": "bullet",
-          "settings": {
-            "text": "Tailored protocols"
-          }
-        },
-        "sb_hero_bullet_3": {
-          "type": "bullet",
-          "settings": {
-            "text": "Calm, private suites"
-          }
-        }
-      },
-      "block_order": [
-        "sb_hero_bullet_1",
-        "sb_hero_bullet_2",
-        "sb_hero_bullet_3"
-      ],
+      "blocks": {},
+      "block_order": [],
       "settings": {
-        "heading": "<p>Clinical luxury, curated for <em>skin</em>, body, and adornment.</p>",
-        "subheading": "Personalized care, refined rituals, and a calm studio experience designed around you.",
-        "badge_text": "Clinical Aesthetics, Alberton PEI",
-        "primary_label": "Book a consultation",
+        "heading": "<p>Clinical Aesthetics<br><em>for glowing skin</em></p>",
+        "subheading": "Experience advanced skincare and beauty treatments tailored for radiant results.",
+        "badge_text": "",
+        "primary_label": "Book Appointment",
         "primary_link": "",
-        "secondary_label": "Explore services",
+        "secondary_label": "",
         "secondary_link": "",
         "hero_image": "",
         "hero_image_mobile": "",
@@ -175,14 +152,14 @@
     "sb_products": {
       "type": "sb-products-collection",
       "settings": {
-        "heading": "Curated essentials",
-        "subheading": "Clinical formulas and everyday luxuries to support your in-studio ritual.",
+        "heading": "Our Products",
+        "subheading": "",
         "collection": "all",
         "products_to_show": 4,
         "image_ratio": "adapt",
         "show_secondary_image": true,
-        "show_view_all": true,
-        "view_all_label": "View all products",
+        "show_view_all": false,
+        "view_all_label": "Shop all products",
         "color_scheme": "scheme-1",
         "padding_top": 64,
         "padding_bottom": 64
@@ -338,9 +315,9 @@
   },
   "order": [
     "sb_hero",
+    "sb_products",
     "sb_services",
     "sb_feature",
-    "sb_products",
     "sb_permanent",
     "sb_testimonials",
     "sb_faq",
