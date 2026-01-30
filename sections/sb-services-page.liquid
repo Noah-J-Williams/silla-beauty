@@ -1,0 +1,443 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .sb-services-page__header {
+    background: #f6f3ef;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sb-services-page__header-inner {
+    padding: 48px 0 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-services-page__header-inner {
+      padding: 64px 0 48px;
+    }
+  }
+
+  .sb-services-page__header-illustration {
+    position: absolute;
+    inset: 0;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .sb-services-page__header-illustration svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sb-services-page__divider {
+    height: 1px;
+    background: rgba(30, 30, 30, 0.2);
+    margin-top: 24px;
+  }
+
+  .sb-services-page__grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-services-page__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .sb-services-page__card {
+    border: 1px solid rgba(30, 30, 30, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 100%;
+    background: #fff;
+  }
+
+  .sb-services-page__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sb-services-page__card-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .sb-services-page__card a {
+    font-weight: 600;
+  }
+
+  .sb-services-page__details {
+    display: grid;
+    gap: 64px;
+    margin-top: 72px;
+  }
+
+  @media screen and (min-width: 990px) {
+    .sb-services-page__details {
+      gap: 96px;
+    }
+  }
+
+  .sb-services-page__detail {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 990px) {
+    .sb-services-page__detail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sb-services-page__detail--reverse .sb-services-page__detail-media {
+      order: 2;
+    }
+  }
+
+  .sb-services-page__detail-media img,
+  .sb-services-page__detail-media svg {
+    width: 100%;
+    border-radius: 18px;
+    display: block;
+  }
+
+  .sb-services-page__cta {
+    margin-top: 80px;
+    text-align: center;
+    padding: 56px 0 24px;
+  }
+
+  .sb-services-page__cta p {
+    margin-bottom: 24px;
+  }
+{% endstyle %}
+
+<section class="sb-section sb-services-page section-{{ section.id }}-padding">
+  <div class="sb-services-page__header">
+    <div class="sb-services-page__header-illustration" aria-hidden="true">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none" focusable="false">
+        <path d="M0 120 C 240 60, 360 180, 600 120 C 840 60, 960 180, 1200 120" fill="none" stroke="#4b463e" stroke-width="2" stroke-linecap="round" />
+        <path d="M0 160 C 240 100, 360 220, 600 160 C 840 100, 960 220, 1200 160" fill="none" stroke="#4b463e" stroke-width="1" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div class="page-width sb-services-page__header-inner">
+      {% if section.settings.heading != blank %}
+        <h1>{{ section.settings.heading }}</h1>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="sb-muted">{{ section.settings.subheading }}</p>
+      {% endif %}
+      <div class="sb-services-page__divider"></div>
+    </div>
+  </div>
+
+  <div class="page-width">
+    <div class="sb-services-page__grid">
+      {% assign card_blocks = section.blocks | where: 'type', 'card' %}
+      {% for block in card_blocks %}
+        <div class="sb-services-page__card" {{ block.shopify_attributes }}>
+          <div class="sb-services-page__card-content">
+            <strong>{{ block.settings.title }}</strong>
+            {% if block.settings.description != blank %}
+              <p class="sb-muted">{{ block.settings.description }}</p>
+            {% endif %}
+          </div>
+          <div class="sb-services-page__card-footer">
+            {% if block.settings.price_duration != blank %}
+              <span>{{ block.settings.price_duration }}</span>
+            {% endif %}
+            {% if block.settings.anchor_id != blank %}
+              <a href="#{{ block.settings.anchor_id }}">{{ block.settings.link_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="sb-services-page__details">
+      {% assign detail_blocks = section.blocks | where: 'type', 'detail' %}
+      {% for block in detail_blocks %}
+        <div id="{{ block.settings.anchor_id }}" class="sb-services-page__detail{% if forloop.index0 | modulo: 2 == 1 %} sb-services-page__detail--reverse{% endif %}" {{ block.shopify_attributes }}>
+          <div class="sb-services-page__detail-media">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: block.settings.image.alt | escape }}
+            {% else %}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
+            {% endif %}
+          </div>
+          <div class="sb-services-page__detail-text">
+            <h2>{{ block.settings.heading }}</h2>
+            {% if block.settings.text != blank %}
+              <div class="sb-muted rte">{{ block.settings.text }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="sb-services-page__cta">
+      {% if section.settings.cta_text != blank %}
+        <p>{{ section.settings.cta_text }}</p>
+      {% endif %}
+      {% if section.settings.cta_button_label != blank %}
+        <a class="button" href="{{ section.settings.cta_button_link }}">{{ section.settings.cta_button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Services Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Services"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Clinical skin, body, and adornment treatments. Personalized to your goals, delivered with intention."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Not sure where to start? Book a consultation and we'll guide the rest."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "CTA button label",
+      "default": "Book appointment"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Service card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service name",
+          "default": "Microneedling"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Collagen-stimulating renewal for refined texture and glow."
+        },
+        {
+          "type": "text",
+          "id": "price_duration",
+          "label": "Price + duration",
+          "default": "From $X · 75 min"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "View details →"
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Anchor ID",
+          "default": "microneedling"
+        }
+      ]
+    },
+    {
+      "type": "detail",
+      "name": "Service detail",
+      "settings": [
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Anchor ID",
+          "default": "microneedling"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Microneedling"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Targeted collagen induction to soften texture, tighten pores, and restore luminosity. Ideal for refining scars, tone, and overall skin resilience.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Services Page",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Acne + Pigmentation Planning",
+            "description": "Strategic mapping to calm breakouts, balance tone, and build clarity.",
+            "price_duration": "From $X · 60 min",
+            "anchor_id": "acne-pigmentation-planning"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Microneedling",
+            "description": "Collagen-stimulating renewal for refined texture and glow.",
+            "price_duration": "From $X · 75 min",
+            "anchor_id": "microneedling"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "IPL Brightening",
+            "description": "Even the look of sun damage and reveal balanced radiance.",
+            "price_duration": "From $X · 45 min",
+            "anchor_id": "ipl-brightening"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Laser Hair Removal",
+            "description": "Smooth, low-maintenance results with precision treatments.",
+            "price_duration": "From $X · 30 min",
+            "anchor_id": "laser-hair-removal"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Facials",
+            "description": "Customized rituals to nourish, refine, and restore glow.",
+            "price_duration": "From $X · 60 min",
+            "anchor_id": "facials"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Permanent Jewelry",
+            "description": "Delicate, clasp-free adornment made to stay with you.",
+            "price_duration": "From $X · 30 min",
+            "anchor_id": "permanent-jewelry"
+          }
+        },
+        {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "acne-pigmentation-planning",
+            "heading": "Acne + Pigmentation Planning",
+            "text": "<p>Begin with an intentional plan tailored to inflammation, congestion, and discoloration. We build a timeline of treatments and home care that supports lasting clarity.</p>"
+          }
+        },
+        {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "microneedling",
+            "heading": "Microneedling",
+            "text": "<p>Collagen induction therapy to soften texture, refine pores, and support supple skin. Best for scars, fine lines, and resilient glow.</p>"
+          }
+        },
+        {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "ipl-brightening",
+            "heading": "IPL Brightening",
+            "text": "<p>Targeted light pulses balance tone, reduce visible redness, and lift sun damage. Expect luminous, even-looking skin with minimal downtime.</p>"
+          }
+        },
+        {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "laser-hair-removal",
+            "heading": "Laser Hair Removal",
+            "text": "<p>Precision treatments for smooth results and less upkeep. Customized settings ensure comfort and effectiveness across treatment areas.</p>"
+          }
+        },
+        {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "facials",
+            "heading": "Facials",
+            "text": "<p>Customized facials that nourish, refine, and reset. We blend targeted actives with restorative massage for balanced, radiant skin.</p>"
+          }
+        },
+        {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "permanent-jewelry",
+            "heading": "Permanent Jewelry",
+            "text": "<p>Delicate, clasp-free jewelry welded to fit. Choose your chain, add a charm, and leave adorned with a lasting finish.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
