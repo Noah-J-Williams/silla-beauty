@@ -180,7 +180,8 @@
     <div class="sb-services-page__details">
       {% assign detail_blocks = section.blocks | where: 'type', 'detail' %}
       {% for block in detail_blocks %}
-        <div id="{{ block.settings.anchor_id }}" class="sb-services-page__detail{% if forloop.index0 | modulo: 2 == 1 %} sb-services-page__detail--reverse{% endif %}" {{ block.shopify_attributes }}>
+        {% assign detail_index_modulo = forloop.index0 | modulo: 2 %}
+        <div id="{{ block.settings.anchor_id }}" class="sb-services-page__detail{% if detail_index_modulo == 1 %} sb-services-page__detail--reverse{% endif %}" {{ block.shopify_attributes }}>
           <div class="sb-services-page__detail-media">
             {% if block.settings.image != blank %}
               {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: block.settings.image.alt | escape }}
