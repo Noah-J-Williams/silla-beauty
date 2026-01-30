@@ -11,103 +11,78 @@
   "sections": {
     "sb_hero": {
       "type": "sb-hero-horizon",
-      "blocks": {},
-      "block_order": [],
       "settings": {
-        "heading": "<p>Clinical Aesthetics<br><em>for glowing skin</em></p>",
+        "heading": "<p>Clinical Aesthetics<br/><em>for glowing skin</em></p>",
         "subheading": "Experience advanced skincare and beauty treatments tailored for radiant results.",
         "badge_text": "",
         "primary_label": "Book Appointment",
         "primary_link": "",
         "secondary_label": "",
         "secondary_link": "",
-        "hero_image": "",
-        "hero_image_mobile": "",
-        "overlay_gradient": true,
+        "hero_image": "shopify://shop_images/logo-11-silla-final.png",
+        "hero_image_mobile": "shopify://shop_images/silla_working.jpg",
+        "overlay_gradient": false,
         "content_alignment": "left",
         "color_scheme": "scheme-1",
         "padding_top": 56,
         "padding_bottom": 56
       }
     },
-    "sb_services": {
-      "type": "sb-services-grid",
+    "sb_products": {
+      "type": "sb-products-collection",
+      "settings": {
+        "heading": "Our Products",
+        "subheading": "",
+        "collection": "all",
+        "products_to_show": 4,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_view_all": false,
+        "view_all_label": "Shop all products",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "services_ornament": {
+      "type": "sb-services-ornament",
       "blocks": {
-        "sb_services_item_1": {
+        "services_ornament_item_1": {
           "type": "service",
           "settings": {
-            "image": "",
-            "title": "Acne + pigmentation planning",
-            "text": "Personalized roadmap to clear, balanced tone.",
-            "link_label": "Learn more",
-            "link_url": ""
+            "icon": "shopify://shop_images/facial.svg",
+            "label": "Facials",
+            "link": ""
           }
         },
-        "sb_services_item_2": {
+        "services_ornament_item_2": {
           "type": "service",
           "settings": {
-            "image": "",
-            "title": "Microneedling",
-            "text": "Collagen-stimulating renewal with minimal downtime.",
-            "link_label": "Learn more",
-            "link_url": ""
+            "icon": "shopify://shop_images/needle.svg",
+            "label": "Microneedling",
+            "link": ""
           }
         },
-        "sb_services_item_3": {
+        "services_ornament_item_3": {
           "type": "service",
           "settings": {
-            "image": "",
-            "title": "IPL / brightening",
-            "text": "Photo-facial glow for tone and clarity.",
-            "link_label": "Learn more",
-            "link_url": ""
-          }
-        },
-        "sb_services_item_4": {
-          "type": "service",
-          "settings": {
-            "image": "",
-            "title": "Laser hair removal",
-            "text": "Smooth, long-term reduction for face and body.",
-            "link_label": "Learn more",
-            "link_url": ""
-          }
-        },
-        "sb_services_item_5": {
-          "type": "service",
-          "settings": {
-            "image": "",
-            "title": "Facials",
-            "text": "Clinical facials tailored to your skin goals.",
-            "link_label": "Learn more",
-            "link_url": ""
-          }
-        },
-        "sb_services_item_6": {
-          "type": "service",
-          "settings": {
-            "image": "",
-            "title": "Permanent jewelry",
-            "text": "Custom-fit chains for effortless daily shine.",
-            "link_label": "Learn more",
-            "link_url": ""
+            "icon": "shopify://shop_images/jewlery.svg",
+            "label": "Permanent Jewelry",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "sb_services_item_1",
-        "sb_services_item_2",
-        "sb_services_item_3",
-        "sb_services_item_4",
-        "sb_services_item_5",
-        "sb_services_item_6"
+        "services_ornament_item_1",
+        "services_ornament_item_2",
+        "services_ornament_item_3"
       ],
       "settings": {
-        "heading": "Services",
-        "subheading": "Targeted treatments designed for clarity, radiance, and calm.",
+        "heading": "Reveal Your Best Self",
+        "subheading": "Explore our personalized aesthetic treatments",
         "color_scheme": "scheme-1",
-        "padding_top": 96,
-        "padding_bottom": 96
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "sb_feature": {
@@ -142,65 +117,8 @@
         "text": "<p>We begin with a thoughtful consultation to understand your goals, then map a plan you can feel confident about.</p>",
         "button_label": "Learn about our approach",
         "button_link": "",
-        "image": "",
+        "image": "shopify://shop_images/care.jpg",
         "image_position": "left",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_products": {
-      "type": "sb-products-collection",
-      "settings": {
-        "heading": "Our Products",
-        "subheading": "",
-        "collection": "all",
-        "products_to_show": 4,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_view_all": false,
-        "view_all_label": "Shop all products",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "services_ornament": {
-      "type": "sb-services-ornament",
-      "blocks": {
-        "services_ornament_item_1": {
-          "type": "service",
-          "settings": {
-            "icon": "",
-            "label": "Facials",
-            "link": ""
-          }
-        },
-        "services_ornament_item_2": {
-          "type": "service",
-          "settings": {
-            "icon": "",
-            "label": "Microneedling",
-            "link": ""
-          }
-        },
-        "services_ornament_item_3": {
-          "type": "service",
-          "settings": {
-            "icon": "",
-            "label": "Permanent Jewelry",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "services_ornament_item_1",
-        "services_ornament_item_2",
-        "services_ornament_item_3"
-      ],
-      "settings": {
-        "heading": "Reveal Your Best Self",
-        "subheading": "Explore our personalized aesthetic treatments",
         "color_scheme": "scheme-1",
         "padding_top": 64,
         "padding_bottom": 64
@@ -238,7 +156,7 @@
         "text": "<p>Choose from delicate chains and a custom fit for a seamless finish that feels effortless every day.</p>",
         "button_label": "Book a jewelry appointment",
         "button_link": "",
-        "image": "",
+        "image": "shopify://shop_images/jewlery.jpg",
         "image_position": "right",
         "color_scheme": "scheme-1",
         "padding_top": 64,
@@ -329,13 +247,13 @@
       "type": "sb-location-hours",
       "settings": {
         "heading": "Visit the studio",
-        "address": "<p>123 Silla Avenue<br>Suite 200<br>Los Angeles, CA</p>",
-        "hours": "<p>Mon–Fri: 9am–7pm<br>Sat: 9am–5pm</p>",
-        "phone": "(555) 123-4567",
-        "email": "hello@sillabeauty.com",
+        "address": "<p>Location</p>",
+        "hours": "<p>Hours</p>",
+        "phone": "Phone",
+        "email": "Email",
         "button_label": "Get directions",
         "button_link": "",
-        "map_url": "",
+        "map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.618300268146!2d-64.0641547!3d46.8118243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca01739b7c7722f%3A0xa004bb7be34ba7f2!2sSilla%20Beauty!5e0!3m2!1sen!2sca!4v1769777691145!5m2!1sen!2sca",
         "color_scheme": "scheme-1",
         "padding_top": 64,
         "padding_bottom": 64
@@ -358,7 +276,6 @@
     "sb_hero",
     "sb_products",
     "services_ornament",
-    "sb_services",
     "sb_feature",
     "sb_permanent",
     "sb_testimonials",

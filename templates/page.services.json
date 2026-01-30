@@ -9,15 +9,145 @@
  */
 {
   "sections": {
-    "main": {
+    "sb_services_page_akwrHT": {
       "type": "sb-services-page",
+      "blocks": {
+        "card_WU9TLT": {
+          "type": "card",
+          "settings": {
+            "title": "Acne + Pigmentation Planning",
+            "description": "Strategic mapping to calm breakouts, balance tone, and build clarity.",
+            "price_duration": "From $X · 60 min",
+            "link_label": "View details →",
+            "anchor_id": "acne-pigmentation-planning"
+          }
+        },
+        "card_EKmP8W": {
+          "type": "card",
+          "settings": {
+            "title": "Microneedling",
+            "description": "Collagen-stimulating renewal for refined texture and glow.",
+            "price_duration": "From $X · 75 min",
+            "link_label": "View details →",
+            "anchor_id": "microneedling"
+          }
+        },
+        "card_UAcAkR": {
+          "type": "card",
+          "settings": {
+            "title": "IPL Brightening",
+            "description": "Even the look of sun damage and reveal balanced radiance.",
+            "price_duration": "From $X · 45 min",
+            "link_label": "View details →",
+            "anchor_id": "ipl-brightening"
+          }
+        },
+        "card_Rf6Jaz": {
+          "type": "card",
+          "settings": {
+            "title": "Laser Hair Removal",
+            "description": "Smooth, low-maintenance results with precision treatments.",
+            "price_duration": "From $X · 30 min",
+            "link_label": "View details →",
+            "anchor_id": "laser-hair-removal"
+          }
+        },
+        "card_fyKhpR": {
+          "type": "card",
+          "settings": {
+            "title": "Facials",
+            "description": "Customized rituals to nourish, refine, and restore glow.",
+            "price_duration": "From $X · 60 min",
+            "link_label": "View details →",
+            "anchor_id": "facials"
+          }
+        },
+        "card_Tpfin8": {
+          "type": "card",
+          "settings": {
+            "title": "Permanent Jewelry",
+            "description": "Delicate, clasp-free adornment made to stay with you.",
+            "price_duration": "From $X · 30 min",
+            "link_label": "View details →",
+            "anchor_id": "permanent-jewelry"
+          }
+        },
+        "detail_7GbcPr": {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "acne-pigmentation-planning",
+            "heading": "Acne + Pigmentation Planning",
+            "text": "<p>Begin with an intentional plan tailored to inflammation, congestion, and discoloration. We build a timeline of treatments and home care that supports lasting clarity.</p>"
+          }
+        },
+        "detail_zrqFBi": {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "microneedling",
+            "heading": "Microneedling",
+            "text": "<p>Collagen induction therapy to soften texture, refine pores, and support supple skin. Best for scars, fine lines, and resilient glow.</p>"
+          }
+        },
+        "detail_URRLQ6": {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "ipl-brightening",
+            "heading": "IPL Brightening",
+            "text": "<p>Targeted light pulses balance tone, reduce visible redness, and lift sun damage. Expect luminous, even-looking skin with minimal downtime.</p>"
+          }
+        },
+        "detail_bYXcnE": {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "laser-hair-removal",
+            "heading": "Laser Hair Removal",
+            "text": "<p>Precision treatments for smooth results and less upkeep. Customized settings ensure comfort and effectiveness across treatment areas.</p>"
+          }
+        },
+        "detail_DDAQhq": {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "facials",
+            "heading": "Facials",
+            "text": "<p>Customized facials that nourish, refine, and reset. We blend targeted actives with restorative massage for balanced, radiant skin.</p>"
+          }
+        },
+        "detail_hkrPcV": {
+          "type": "detail",
+          "settings": {
+            "anchor_id": "permanent-jewelry",
+            "heading": "Permanent Jewelry",
+            "text": "<p>Delicate, clasp-free jewelry welded to fit. Choose your chain, add a charm, and leave adorned with a lasting finish.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_WU9TLT",
+        "card_EKmP8W",
+        "card_UAcAkR",
+        "card_Rf6Jaz",
+        "card_fyKhpR",
+        "card_Tpfin8",
+        "detail_7GbcPr",
+        "detail_zrqFBi",
+        "detail_URRLQ6",
+        "detail_bYXcnE",
+        "detail_DDAQhq",
+        "detail_hkrPcV"
+      ],
+      "name": "SB Services Page",
       "settings": {
+        "heading": "Services",
+        "subheading": "Clinical skin, body, and adornment treatments. Personalized to your goals, delivered with intention.",
+        "cta_text": "Not sure where to start? Book a consultation and we'll guide the rest.",
+        "cta_button_label": "Book appointment",
+        "cta_button_link": "",
         "padding_top": 0,
         "padding_bottom": 72
       }
     }
   },
   "order": [
-    "main"
+    "sb_services_page_akwrHT"
   ]
 }
