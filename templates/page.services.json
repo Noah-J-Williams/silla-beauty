@@ -9,8 +9,17 @@
  */
 {
   "sections": {
-    "sb_services_page_akwrHT": {
-      "type": "sb-services-page",
+    "sb_services_page_header_Wo4t8G": {
+      "type": "sb-services-page-header",
+      "settings": {
+        "heading": "Services",
+        "subheading": "Clinical skin, body, and adornment treatments. Personalized to your goals, delivered with intention.",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_services_page_grid_H9c4Vn": {
+      "type": "sb-services-page-grid",
       "blocks": {
         "card_WU9TLT": {
           "type": "card",
@@ -71,7 +80,24 @@
             "link_label": "View details →",
             "anchor_id": "permanent-jewelry"
           }
-        },
+        }
+      },
+      "block_order": [
+        "card_WU9TLT",
+        "card_EKmP8W",
+        "card_UAcAkR",
+        "card_Rf6Jaz",
+        "card_fyKhpR",
+        "card_Tpfin8"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_services_page_details_F3nCh9": {
+      "type": "sb-services-page-details",
+      "blocks": {
         "detail_7GbcPr": {
           "type": "detail",
           "settings": {
@@ -122,12 +148,6 @@
         }
       },
       "block_order": [
-        "card_WU9TLT",
-        "card_EKmP8W",
-        "card_UAcAkR",
-        "card_Rf6Jaz",
-        "card_fyKhpR",
-        "card_Tpfin8",
         "detail_7GbcPr",
         "detail_zrqFBi",
         "detail_URRLQ6",
@@ -135,10 +155,14 @@
         "detail_DDAQhq",
         "detail_hkrPcV"
       ],
-      "name": "SB Services Page",
       "settings": {
-        "heading": "Services",
-        "subheading": "Clinical skin, body, and adornment treatments. Personalized to your goals, delivered with intention.",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_services_page_cta_T9q2cM": {
+      "type": "sb-services-page-cta",
+      "settings": {
         "cta_text": "Not sure where to start? Book a consultation and we'll guide the rest.",
         "cta_button_label": "Book appointment",
         "cta_button_link": "",
@@ -148,6 +172,9 @@
     }
   },
   "order": [
-    "sb_services_page_akwrHT"
+    "sb_services_page_header_Wo4t8G",
+    "sb_services_page_grid_H9c4Vn",
+    "sb_services_page_details_F3nCh9",
+    "sb_services_page_cta_T9q2cM"
   ]
 }
