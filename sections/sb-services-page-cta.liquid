@@ -14,10 +14,17 @@
   .sb-services-page__cta {
     margin-top: 80px;
     text-align: center;
-    padding: 56px 0 24px;
   }
 
-  .sb-services-page__cta p {
+  .sb-services-page__cta-inner {
+    background: var(--sb-surface);
+    border: 1px solid var(--sb-border);
+    border-radius: var(--sb-radius);
+    padding: clamp(2rem, 3vw, 3.6rem);
+    box-shadow: var(--sb-shadow);
+  }
+
+  .sb-services-page__cta-inner p {
     margin-bottom: 24px;
   }
 {% endstyle %}
@@ -25,12 +32,14 @@
 <section class="sb-section sb-services-page-cta section-{{ section.id }}-padding">
   <div class="page-width">
     <div class="sb-services-page__cta">
-      {% if section.settings.cta_text != blank %}
-        <p>{{ section.settings.cta_text }}</p>
-      {% endif %}
-      {% if section.settings.cta_button_label != blank %}
-        <a class="button" href="{{ section.settings.cta_button_link }}">{{ section.settings.cta_button_label }}</a>
-      {% endif %}
+      <div class="sb-services-page__cta-inner">
+        {% if section.settings.cta_text != blank %}
+          <p>{{ section.settings.cta_text }}</p>
+        {% endif %}
+        {% if section.settings.cta_button_label != blank %}
+          <a class="button" href="{{ section.settings.cta_button_link }}">{{ section.settings.cta_button_label }}</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
