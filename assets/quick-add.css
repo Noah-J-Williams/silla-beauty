@@ -252,7 +252,6 @@
 .quick-add-modal__toggle {
   background-color: rgb(var(--color-background));
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
-  border-radius: 50%;
   color: rgba(var(--color-foreground), 0.55);
   display: flex;
   align-items: center;
@@ -387,7 +386,6 @@ quick-add-bulk .progress-bar-container {
   height: 100%;
   display: flex;
   overflow: hidden;
-  border-radius: var(--inputs-radius-outset);
   border: var(--inputs-border-width) solid transparent;
   z-index: -1;
 }

@@ -53,7 +53,6 @@ a:hover,
 }
 
 .sb-section .button {
-  border-radius: calc(var(--sb-radius) + 4px);
   text-transform: none;
   letter-spacing: 0.02em;
   font-weight: 600;
@@ -150,7 +149,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-card {
   background: var(--sb-surface);
   border: 1px solid var(--sb-border);
-  border-radius: var(--sb-radius);
   box-shadow: var(--sb-shadow);
   padding: clamp(1.6rem, 2vw, 2.4rem);
 }
@@ -159,7 +157,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
   display: inline-flex;
   align-items: center;
   padding: 0.3rem 1rem;
-  border-radius: 999px;
   border: 1px solid var(--sb-divider);
   background: rgba(255, 255, 255, 0.6);
   font-size: 1.05rem;
@@ -189,7 +186,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-hero-horizon .page-width {
   background: transparent;
   border: 0;
-  border-radius: 0;
   box-shadow: none;
 
   /* IMPORTANT: do NOT override max-width/margins, use Dawn defaults */
@@ -262,7 +258,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-hero-horizon__media {
   position: relative;
-  border-radius: 0;
   overflow: hidden;
   min-height: 320px;
   background: radial-gradient(circle at 30% 30%, #f8f3ee 0%, #e7ddd2 60%, #d9cec3 100%);
@@ -290,7 +285,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-header__book {
-  border-radius: 999px;
   padding: 0.7rem 1.8rem;
   min-height: 3.8rem;
   font-size: 1.05rem;
@@ -315,7 +309,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-trust-bar__icon {
   width: 36px;
   height: 36px;
-  border-radius: 12px;
   background: var(--sb-surface);
   border: 1px solid var(--sb-border);
   display: grid;
@@ -333,7 +326,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-products-collection .page-width {
   background: transparent;
   border: none;
-  border-radius: 0;
   padding: 0;
   box-shadow: none;
 }
@@ -352,7 +344,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-products-collection__item .card {
   position: relative;
-  border-radius: var(--sb-radius);
   border: 1px solid var(--sb-border);
   overflow: hidden;
   background: var(--sb-surface);
@@ -397,7 +388,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-products-collection__cta {
   justify-self: center;
   padding: 0.6rem 1.8rem;
-  border-radius: 999px;
   background: var(--sb-accent);
   color: #fff;
   font-size: 1.2rem;
@@ -501,7 +491,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-feature-split__media,
 .sb-permanent-jewelry__media {
-  border-radius: calc(var(--sb-radius) + 10px);
   overflow: hidden;
   background: var(--sb-border);
 }
@@ -545,7 +534,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-service-detail-rows__card--bordered {
   background: var(--sb-surface);
   border: 1px solid var(--sb-border);
-  border-radius: var(--sb-radius);
   box-shadow: none;
 }
 
@@ -560,7 +548,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-service-detail-rows__media {
-  border-radius: calc(var(--sb-radius) + 10px);
   overflow: hidden;
   background: var(--sb-border);
 }
@@ -653,7 +640,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-faq__item {
   border: 1px solid var(--sb-border);
-  border-radius: var(--sb-radius);
   background: var(--sb-surface);
   padding: 1.2rem 1.6rem;
 }
@@ -683,7 +669,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-location-hours__map {
-  border-radius: var(--sb-radius);
   overflow: hidden;
   min-height: 260px;
   border: 1px solid var(--sb-border);
@@ -692,7 +677,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-final-cta__inner {
   background: var(--sb-surface);
   border: 1px solid var(--sb-border);
-  border-radius: calc(var(--sb-radius) + 10px);
   padding: clamp(2.6rem, 4vw, 4.2rem);
   text-align: center;
   box-shadow: var(--sb-shadow);

@@ -89,7 +89,6 @@
 
 .facet-filters__field .select__select,
 .mobile-facets__sort .select__select {
-  border-radius: 0;
   min-width: auto;
   min-height: auto;
   transition: none;
@@ -106,7 +105,6 @@
 .facet-filters__sort {
   background-color: transparent;
   border: 0;
-  border-radius: 0;
   font-size: 1.4rem;
   height: auto;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
@@ -268,7 +266,6 @@
   border-width: var(--popup-border-width);
   border-style: solid;
   border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
-  border-radius: var(--popup-corner-radius);
   box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
     rgba(var(--color-shadow), var(--popup-shadow-opacity));
   background-color: rgb(var(--color-background));
@@ -592,7 +589,6 @@ button.facets__button {
 span.active-facets__button-inner {
   color: rgb(var(--color-foreground));
   box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground));
-  border-radius: 2.6rem;
   font-size: 1rem;
   min-height: 0;
   min-width: 0;
@@ -1087,7 +1083,6 @@ input.mobile-facets__checkbox {
 
 .mobile-facets__sort .select__select {
   background-color: transparent;
-  border-radius: 0;
   box-shadow: none;
   filter: none;
   margin-left: 0.5rem;

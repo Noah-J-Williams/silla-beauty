@@ -381,9 +381,6 @@ a.product__text {
 }
 
 /* Product media */
-.product__media-list video {
-  border-radius: calc(var(--media-radius) - var(--media-border-width));
-}
 
 @media screen and (max-width: 749px) {
   .product__media-list {
@@ -465,7 +462,6 @@ a.product__text {
 .product__media-icon,
 .thumbnail__badge {
   background-color: rgb(var(--color-background));
-  border-radius: 50%;
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
   color: rgb(var(--color-foreground));
   display: flex;
@@ -595,12 +591,10 @@ a.product__text {
 
 .product__media-toggle:focus-visible:after {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0rem 0.5rem rgba(var(--color-foreground), 0.5);
-  border-radius: var(--media-radius);
 }
 
 .product__media-toggle.focused:after {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0rem 0.5rem rgba(var(--color-foreground), 0.5);
-  border-radius: var(--media-radius);
 }
 
 .product-media-modal {
@@ -686,7 +680,6 @@ a.product__text {
 .product-media-modal__toggle {
   background-color: rgb(var(--color-background));
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
-  border-radius: 50%;
   color: rgba(var(--color-foreground), 0.55);
   display: flex;
   align-items: center;
@@ -775,7 +768,6 @@ a.product__text {
 }
 
 .product-popup-modal__content {
-  border-radius: var(--popup-corner-radius);
   background-color: rgb(var(--color-background));
   overflow: auto;
   height: 80%;
@@ -838,7 +830,6 @@ a.product__text {
   .product-media-modal__dialog .global-media-settings iframe,
   .product-media-modal__dialog .global-media-settings img {
     border: none;
-    border-radius: 0;
   }
 }
 
@@ -880,7 +871,6 @@ a.product__text {
 .product-popup-modal__toggle {
   background-color: rgb(var(--color-background));
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
-  border-radius: 50%;
   color: rgba(var(--color-foreground), 0.55);
   display: flex;
   align-items: center;
@@ -1027,9 +1017,6 @@ a.product__text {
   opacity: 0.7;
 }
 
-.thumbnail.global-media-settings img {
-  border-radius: 0;
-}
 
 .thumbnail[aria-current] {
   box-shadow: 0 0 0rem 0.1rem rgb(var(--color-foreground));
@@ -1040,7 +1027,6 @@ a.product__text {
   cursor: zoom-out;
   z-index: 1;
   margin: 0;
-  border-radius: calc(var(--media-radius) - var(--media-border-width));
 }
 
 .image-magnify-hover {
