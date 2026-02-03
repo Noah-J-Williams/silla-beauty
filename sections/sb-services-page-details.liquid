@@ -13,8 +13,8 @@
 
   .sb-services-page__details {
     display: grid;
-    gap: 64px;
-    margin-top: 72px;
+    gap: 72px;
+    margin-top: 80px;
   }
 
   @media screen and (min-width: 990px) {
@@ -42,8 +42,22 @@
   .sb-services-page__detail-media img,
   .sb-services-page__detail-media svg {
     width: 100%;
-    border-radius: 18px;
+    border-radius: calc(var(--sb-radius) + 6px);
     display: block;
+    box-shadow: var(--sb-shadow);
+  }
+
+  .sb-services-page__detail-text {
+    background: var(--sb-surface);
+    border-radius: var(--sb-radius);
+    border: 1px solid var(--sb-border);
+    padding: clamp(1.6rem, 2vw, 2.8rem);
+    box-shadow: var(--sb-shadow);
+  }
+
+  .sb-services-page__detail-text h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 {% endstyle %}
 

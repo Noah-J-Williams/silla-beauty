@@ -12,7 +12,8 @@
   }
 
   .sb-services-page__header {
-    background: #f6f3ef;
+    background: linear-gradient(135deg, #f7f2ec 0%, #efe4da 45%, #e4d3c8 100%);
+    border-bottom: 1px solid var(--sb-border);
     position: relative;
     overflow: hidden;
   }
@@ -32,7 +33,7 @@
   .sb-services-page__header-illustration {
     position: absolute;
     inset: 0;
-    opacity: 0.25;
+    opacity: 0.18;
     pointer-events: none;
   }
 
@@ -41,9 +42,13 @@
     height: 100%;
   }
 
+  .sb-services-page__header-illustration path {
+    stroke: var(--sb-accent);
+  }
+
   .sb-services-page__divider {
     height: 1px;
-    background: rgba(30, 30, 30, 0.2);
+    background: var(--sb-divider);
     margin-top: 24px;
   }
 {% endstyle %}
