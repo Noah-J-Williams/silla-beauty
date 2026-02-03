@@ -1,0 +1,156 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .sb-services-page__grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sb-services-page__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .sb-services-page__card {
+    border: 1px solid rgba(30, 30, 30, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 100%;
+    background: #fff;
+  }
+
+  .sb-services-page__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sb-services-page__card-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .sb-services-page__card a {
+    font-weight: 600;
+  }
+{% endstyle %}
+
+<section class="sb-section sb-services-page-grid section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="sb-services-page__grid">
+      {% for block in section.blocks %}
+        <div class="sb-services-page__card" {{ block.shopify_attributes }}>
+          <div class="sb-services-page__card-content">
+            <strong>{{ block.settings.title }}</strong>
+            {% if block.settings.description != blank %}
+              <p class="sb-muted">{{ block.settings.description }}</p>
+            {% endif %}
+          </div>
+          <div class="sb-services-page__card-footer">
+            {% if block.settings.price_duration != blank %}
+              <span>{{ block.settings.price_duration }}</span>
+            {% endif %}
+            {% if block.settings.anchor_id != blank %}
+              <a href="#{{ block.settings.anchor_id }}">{{ block.settings.link_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Services Page Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Service card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Service name",
+          "default": "Microneedling"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Collagen-stimulating renewal for refined texture and glow."
+        },
+        {
+          "type": "text",
+          "id": "price_duration",
+          "label": "Price + duration",
+          "default": "From $X · 75 min"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "View details →"
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Anchor ID",
+          "default": "microneedling"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Services Page Grid",
+      "blocks": [
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
