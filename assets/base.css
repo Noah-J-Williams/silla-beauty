@@ -10,7 +10,6 @@
 
 .product-card-wrapper .card,
 .contains-card--product {
-  --border-radius: var(--product-card-corner-radius);
   --border-width: var(--product-card-border-width);
   --border-opacity: var(--product-card-border-opacity);
   --shadow-horizontal-offset: var(--product-card-shadow-horizontal-offset);
@@ -24,7 +23,6 @@
 
 .collection-card-wrapper .card,
 .contains-card--collection {
-  --border-radius: var(--collection-card-corner-radius);
   --border-width: var(--collection-card-border-width);
   --border-opacity: var(--collection-card-border-opacity);
   --shadow-horizontal-offset: var(--collection-card-shadow-horizontal-offset);
@@ -38,7 +36,6 @@
 
 .article-card-wrapper .card,
 .contains-card--article {
-  --border-radius: var(--blog-card-corner-radius);
   --border-width: var(--blog-card-border-width);
   --border-opacity: var(--blog-card-border-opacity);
   --shadow-horizontal-offset: var(--blog-card-shadow-horizontal-offset);
@@ -52,7 +49,6 @@
 
 .contains-content-container,
 .content-container {
-  --border-radius: var(--text-boxes-radius);
   --border-width: var(--text-boxes-border-width);
   --border-opacity: var(--text-boxes-border-opacity);
   --shadow-horizontal-offset: var(--text-boxes-shadow-horizontal-offset);
@@ -64,7 +60,6 @@
 
 .contains-media,
 .global-media-settings {
-  --border-radius: var(--media-radius);
   --border-width: var(--media-border-width);
   --border-opacity: var(--media-border-opacity);
   --shadow-horizontal-offset: var(--media-shadow-horizontal-offset);
@@ -1154,7 +1149,6 @@ summary::-webkit-details-marker {
 
 .media--circle {
   padding-bottom: 100%;
-  border-radius: 50%;
 }
 
 .media.media--hover-effect > img + img {
@@ -1196,7 +1190,6 @@ button.shopify-payment-button__button--unbranded {
   --shadow-visible: var(--buttons-shadow-visible);
   --border-offset: var(--buttons-border-offset); /* reduce radius edge artifacts */
   --border-opacity: calc(1 - var(--buttons-border-opacity));
-  border-radius: var(--buttons-radius-outset);
   position: relative;
 }
 
@@ -1238,7 +1231,6 @@ button.shopify-payment-button__button--unbranded {
   bottom: 0;
   left: 0;
   z-index: -1;
-  border-radius: var(--buttons-radius-outset);
   box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
     rgba(var(--color-shadow), var(--shadow-opacity));
 }
@@ -1254,7 +1246,6 @@ button.shopify-payment-button__button--unbranded {
   bottom: var(--buttons-border-width);
   left: var(--buttons-border-width);
   z-index: 1;
-  border-radius: var(--buttons-radius);
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
       rgba(var(--color-button-text), var(--border-opacity)),
     0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
@@ -1319,12 +1310,10 @@ button.shopify-payment-button__button--unbranded {
 /* Shopify Accelerated Checkout */
 
 shopify-accelerated-checkout {
-  --shopify-accelerated-checkout-button-border-radius: var(--buttons-radius-outset);
   --shopify-accelerated-checkout-button-box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
   rgba(var(--color-shadow), var(--shadow-opacity));
 }
 shopify-accelerated-checkout-cart {
-  --shopify-accelerated-checkout-button-border-radius: var(--buttons-radius-outset);
   --shopify-accelerated-checkout-button-box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
   rgba(var(--color-shadow), var(--shadow-opacity));
 }
@@ -1429,7 +1418,6 @@ details[open] > .share-button__fallback {
   z-index: 3;
   width: 100%;
   min-width: max-content;
-  border-radius: var(--inputs-radius);
   border: 0;
 }
 
@@ -1442,7 +1430,6 @@ details[open] > .share-button__fallback {
   bottom: var(--inputs-border-width);
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
-  border-radius: var(--inputs-radius);
   box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
@@ -1457,7 +1444,6 @@ details[open] > .share-button__fallback {
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: var(--inputs-radius-outset);
   box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset)
     var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
@@ -1516,7 +1502,6 @@ details[open] > .share-button__fallback {
 }
 
 .share-button__fallback .field {
-  border-radius: 0;
   min-width: auto;
   min-height: auto;
   transition: none;
@@ -1578,7 +1563,6 @@ details[open] > .share-button__fallback {
   width: 100%;
   box-sizing: border-box;
   transition: box-shadow var(--duration-short) ease;
-  border-radius: var(--inputs-radius);
   height: 4.5rem;
   min-height: calc(var(--inputs-border-width) * 2);
   min-width: calc(7rem + (var(--inputs-border-width) * 2));
@@ -1598,7 +1582,6 @@ details[open] > .share-button__fallback {
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: var(--inputs-radius-outset);
   box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset)
     var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
@@ -1617,7 +1600,6 @@ details[open] > .share-button__fallback {
   bottom: var(--inputs-border-width);
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
-  border-radius: var(--inputs-radius);
   box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
@@ -1640,7 +1622,6 @@ details[open] > .share-button__fallback {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width))
     rgba(var(--color-foreground), var(--inputs-border-opacity));
   outline: 0;
-  border-radius: var(--inputs-radius);
 }
 
 .field__input:focus-visible,
@@ -1650,7 +1631,6 @@ details[open] > .share-button__fallback {
 .localization-form__select:focus-visible.localization-form__select:after {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
-  border-radius: var(--inputs-radius);
 }
 
 .field__input:focus,
@@ -1660,7 +1640,6 @@ details[open] > .share-button__fallback {
 .localization-form__select:focus.localization-form__select:after {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
-  border-radius: var(--inputs-radius);
 }
 
 .localization-form__select:focus {
@@ -1879,7 +1858,6 @@ input[type='checkbox'] {
   position: relative;
   width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
   display: flex;
-  border-radius: var(--inputs-radius);
   min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
 }
 
@@ -1892,7 +1870,6 @@ input[type='checkbox'] {
   bottom: var(--inputs-border-width);
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
-  border-radius: var(--inputs-radius);
   box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
@@ -1907,7 +1884,6 @@ input[type='checkbox'] {
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: var(--inputs-radius-outset);
   box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset)
     var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
@@ -2079,7 +2055,6 @@ input[type='checkbox'] {
   color: rgb(var(--color-button-text));
   height: 1.7rem;
   width: 1.7rem;
-  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2840,7 +2815,6 @@ details[open] > .header__menu-item .icon-caret {
 
 .global-settings-popup,
 .header__submenu.global-settings-popup {
-  border-radius: var(--popup-corner-radius);
   border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
   border-style: solid;
   border-width: var(--popup-border-width);
@@ -2919,7 +2893,6 @@ details-disclosure > details {
 
 .badge {
   border: 1px solid transparent;
-  border-radius: var(--badge-corner-radius);
   display: inline-block;
   font-size: 1.2rem;
   letter-spacing: 0.1rem;
@@ -2963,7 +2936,6 @@ details-disclosure > details {
 }
 
 .content-container {
-  border-radius: var(--text-boxes-radius);
   border: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
   position: relative;
 }
@@ -2975,7 +2947,6 @@ details-disclosure > details {
   right: calc(var(--text-boxes-border-width) * -1);
   bottom: calc(var(--text-boxes-border-width) * -1);
   left: calc(var(--text-boxes-border-width) * -1);
-  border-radius: var(--text-boxes-radius);
   box-shadow: var(--text-boxes-shadow-horizontal-offset) var(--text-boxes-shadow-vertical-offset)
     var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
   z-index: -1;
@@ -2984,14 +2955,12 @@ details-disclosure > details {
 .content-container--full-width:after {
   left: 0;
   right: 0;
-  border-radius: 0;
 }
 
 @media screen and (max-width: 749px) {
   .content-container--full-width-mobile {
     border-left: none;
     border-right: none;
-    border-radius: 0;
   }
   .content-container--full-width-mobile:after {
     display: none;
@@ -3001,7 +2970,6 @@ details-disclosure > details {
 .global-media-settings {
   position: relative;
   border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity));
-  border-radius: var(--media-radius);
   overflow: visible !important;
   background-color: rgb(var(--color-background));
 }
@@ -3013,7 +2981,6 @@ details-disclosure > details {
   right: calc(var(--media-border-width) * -1);
   bottom: calc(var(--media-border-width) * -1);
   left: calc(var(--media-border-width) * -1);
-  border-radius: var(--media-radius);
   box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
     rgba(var(--color-shadow), var(--media-shadow-opacity));
   z-index: -1;
@@ -3032,9 +2999,6 @@ details-disclosure > details {
 .global-media-settings iframe,
 .global-media-settings model-viewer,
 .global-media-settings video,
-.global-media-settings .placeholder-svg {
-  border-radius: calc(var(--media-radius) - var(--media-border-width));
-}
 
 .content-container--full-width,
 .global-media-settings--full-width,
@@ -3042,7 +3006,6 @@ details-disclosure > details {
 .global-media-settings--full-width video,
 .global-media-settings--full-width iframe,
 .global-media-settings--full-width .placeholder-svg {
-  border-radius: 0;
   border-left: none;
   border-right: none;
 }
@@ -3155,7 +3118,6 @@ details-disclosure > details {
   height: auto;
   max-width: 100%;
   border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity));
-  border-radius: var(--media-radius);
   box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
     rgba(var(--color-shadow), var(--media-shadow-opacity));
   margin-bottom: var(--media-shadow-vertical-offset);

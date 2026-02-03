@@ -379,7 +379,6 @@ cart-drawer-items::-webkit-scrollbar {
 
 cart-drawer-items::-webkit-scrollbar-thumb {
   background-color: rgba(var(--color-foreground), 0.7);
-  border-radius: 100px;
 }
 
 cart-drawer-items::-webkit-scrollbar-track-piece {

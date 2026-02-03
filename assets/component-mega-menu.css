@@ -5,7 +5,6 @@
 .mega-menu__content {
   background-color: rgb(var(--color-background));
   border-left: 0;
-  border-radius: 0;
   border-right: 0;
   left: 0;
   overflow-y: auto;
