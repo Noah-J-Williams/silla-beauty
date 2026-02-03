@@ -1,9 +1,7 @@
 /* swatch-input lives in its own file for reusability of the swatch in other areas than the product form context */
 .swatch-input__input + .swatch-input__label {
-  --swatch-input--border-radius: 50%;
   display: inline-block;
   max-width: 100%;
-  border-radius: var(--swatch-input--border-radius);
   cursor: pointer;
   outline-offset: 0.2rem;
   outline-color: transparent;
@@ -14,9 +12,6 @@
   forced-color-adjust: none;
 }
 
-.swatch-input__input + .swatch-input__label.swatch-input__label--square {
-  --swatch-input--border-radius: 0.2rem;
-}
 
 /* Active state */
 .swatch-input__input:active + .swatch-input__label,

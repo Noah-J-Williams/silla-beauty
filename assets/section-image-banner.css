@@ -234,7 +234,6 @@
 
   .banner:not(.banner--mobile-bottom) .banner__box {
     border: none;
-    border-radius: 0;
     box-shadow: none;
   }
 
@@ -363,7 +362,6 @@
     background: transparent;
     max-width: 89rem;
     border: none;
-    border-radius: 0;
     box-shadow: none;
   }
 
