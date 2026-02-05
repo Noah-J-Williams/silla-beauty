@@ -31,8 +31,8 @@ a:hover,
 
 .sb-section {
   padding: var(--sb-section-space) 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* IMPORTANT: Don't globally override hero spacing */
@@ -184,13 +184,14 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 /* Keep content aligned to Dawn's page-width gutters */
 .sb-hero-horizon .page-width {
+  max-width: none !important;
   background: transparent;
   border: 0;
   box-shadow: none;
+  padding: 0;
 
   /* IMPORTANT: do NOT override max-width/margins, use Dawn defaults */
-  padding-top: clamp(5rem, 4vw, 5rem);
-  padding-bottom: clamp(5rem, 4vw, 5rem);
+
 }
 
 .template-index .section-header {
@@ -200,7 +201,8 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-hero-horizon__grid {
   display: grid;
   gap: clamp(2.4rem, 4vw, 5rem);
-  align-items: stretch;
+  align-items: center;
+  width: 100%;
 }
 
 .sb-align-center .sb-hero-horizon__content {
@@ -213,6 +215,7 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-hero-horizon__content {
+  padding: 5rem;
   display: grid;
   gap: 1.6rem;
 }
@@ -260,19 +263,21 @@ button.shopify-payment-button__button--unbranded:hover::after {
   position: relative;
   overflow: hidden;
   min-height: 320px;
-  height: 100%;
-  align-self: stretch;
 }
 
 .sb-hero-horizon__media picture {
   display: block;
-  height: 100%;
-}
-
-.sb-hero-horizon__media .placeholder {
   width: 100%;
   height: 100%;
 }
+
+.sb-hero-horizon__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .sb-hero-horizon__image {
   width: 100%;
