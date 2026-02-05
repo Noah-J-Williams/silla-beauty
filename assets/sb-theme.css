@@ -260,7 +260,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
   position: relative;
   overflow: hidden;
   min-height: 320px;
-  background: radial-gradient(circle at 30% 30%, #f8f3ee 0%, #e7ddd2 60%, #d9cec3 100%);
 }
 
 .sb-hero-horizon__image {
