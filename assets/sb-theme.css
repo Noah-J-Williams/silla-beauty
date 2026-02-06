@@ -30,7 +30,7 @@ a:hover,
 }
 
 .sb-section {
-  padding: var(--sb-section-space) 0;
+  padding: 0;
   padding-left: 0;
   padding-right: 0;
 }
@@ -202,6 +202,8 @@ button.shopify-payment-button__button--unbranded:hover::after {
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sb-hero-horizon__background svg {
@@ -218,6 +220,8 @@ button.shopify-payment-button__button--unbranded:hover::after {
   gap: clamp(2.4rem, 4vw, 5rem);
   align-items: center;
   width: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 .sb-align-center .sb-hero-horizon__content {

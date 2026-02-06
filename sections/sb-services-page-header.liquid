@@ -1,21 +1,12 @@
 {% style %}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
 
   .sb-services-page__header {
     background: linear-gradient(135deg, #f7f2ec 0%, #efe4da 45%, #e4d3c8 100%);
     border-bottom: 1px solid var(--sb-border);
     position: relative;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
 
   .sb-services-page__header-inner {
@@ -35,6 +26,8 @@
     inset: 0;
     opacity: 1;
     pointer-events: none;
+    width: 100%;
+    height: 100%;
   }
 
   .sb-services-page__header-illustration svg {
@@ -49,10 +42,10 @@
   }
 {% endstyle %}
 
-<section class="sb-section sb-services-page-header section-{{ section.id }}-padding">
+<section class="sb-section sb-services-page-header">
   <div class="sb-services-page__header">
     <div class="sb-services-page__header-illustration" aria-hidden="true">
-      <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+      <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
         <defs>
           <linearGradient id="gradient" x1="49%" y1="0%" x2="51%" y2="100%">
             <stop offset="5%" stop-color="#a88b72"></stop>
@@ -103,26 +96,6 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "Clinical skin, body, and adornment treatments. Personalized to your goals, delivered with intention."
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 0
     }
   ],
   "presets": [
