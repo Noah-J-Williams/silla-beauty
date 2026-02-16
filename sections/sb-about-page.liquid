@@ -1,0 +1,464 @@
+{% style %}
+  .sb-about-page {
+    display: block;
+  }
+
+  .sb-about-page__hero {
+    background: var(--sb-surface);
+    border-bottom: 1px solid var(--sb-border);
+    padding: 4rem 0 3rem;
+  }
+
+  .sb-about-page__hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sb-about-page__eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sb-about-page__section {
+    padding: 4rem 0;
+  }
+
+  .sb-about-page__section--muted {
+    background: var(--sb-bg);
+  }
+
+  .sb-about-page__split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .sb-about-page__split h2,
+  .sb-about-page__values h2,
+  .sb-about-page__visit h2,
+  .sb-about-page__cta h2 {
+    margin: 0 0 1rem;
+  }
+
+  .sb-about-page__richtext :last-child {
+    margin-bottom: 0;
+  }
+
+  .sb-about-page__bullets {
+    margin: 1.5rem 0 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .sb-about-page__image {
+    border-radius: var(--sb-radius);
+    overflow: hidden;
+    box-shadow: var(--sb-shadow);
+  }
+
+  .sb-about-page__image picture,
+  .sb-about-page__image img {
+    display: block;
+  }
+
+  .sb-about-page__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sb-about-page__values-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sb-about-page__value-card {
+    border: 1px solid var(--sb-border);
+    border-radius: var(--sb-radius);
+    padding: 1.5rem;
+    background: var(--sb-surface);
+    box-shadow: var(--sb-shadow);
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .sb-about-page__value-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .sb-about-page__value-icon img,
+  .sb-about-page__value-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sb-about-page__visit-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+
+  .sb-about-page__info-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .sb-about-page__info-label {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+
+  .sb-about-page__map {
+    border-radius: var(--sb-radius);
+    overflow: hidden;
+    border: 1px solid var(--sb-border);
+    background: var(--sb-surface);
+  }
+
+  .sb-about-page__map-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+  }
+
+  .sb-about-page__map-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .sb-about-page__cta {
+    padding: 3.5rem 0;
+    background: var(--sb-accent);
+    color: var(--sb-text);
+  }
+
+  .sb-about-page__cta-inner {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .sb-about-page__cta-text p {
+    margin: 0;
+  }
+
+  .sb-about-page__cta .button {
+    background: var(--sb-text);
+    color: var(--sb-bg);
+  }
+
+  @media screen and (max-width: 990px) {
+    .sb-about-page__split,
+    .sb-about-page__visit-grid,
+    .sb-about-page__cta-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .sb-about-page__values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<section class="sb-about-page">
+  <div class="sb-about-page__hero">
+    <div class="page-width sb-about-page__hero-inner">
+      <span class="sb-about-page__eyebrow sb-muted">{{ section.settings.hero_eyebrow }}</span>
+      <h1>{{ section.settings.hero_heading }}</h1>
+      <div class="sb-about-page__richtext sb-muted">
+        {{ section.settings.hero_subheading }}
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-about-page__section">
+    <div class="page-width sb-about-page__split">
+      <div>
+        <h2>{{ section.settings.philosophy_heading }}</h2>
+        <div class="sb-about-page__richtext">
+          {{ section.settings.philosophy_text }}
+        </div>
+        {% if section.settings.philosophy_bullets != blank %}
+          <ul class="sb-about-page__bullets">
+            {{ section.settings.philosophy_bullets }}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="sb-about-page__image">
+        {% if section.settings.philosophy_image != blank %}
+          <picture>
+            {{ section.settings.philosophy_image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+          </picture>
+        {% else %}
+          <picture>
+            {{ 'image' | placeholder_svg_tag }}
+          </picture>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-about-page__section sb-about-page__section--muted">
+    <div class="page-width sb-about-page__values">
+      <h2>{{ section.settings.values_heading }}</h2>
+      <p class="sb-muted">{{ section.settings.values_subheading }}</p>
+      <div class="sb-about-page__values-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'value' %}
+            <div class="sb-about-page__value-card" {{ block.shopify_attributes }}>
+              {% if block.settings.icon != blank %}
+                <div class="sb-about-page__value-icon">
+                  {{ block.settings.icon | image_url: width: 80 | image_tag: loading: 'lazy' }}
+                </div>
+              {% endif %}
+              <h3>{{ block.settings.title }}</h3>
+              <p class="sb-muted">{{ block.settings.text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-about-page__section">
+    <div class="page-width sb-about-page__visit">
+      <h2>{{ section.settings.visit_heading }}</h2>
+      <div class="sb-about-page__visit-grid">
+        <div class="sb-about-page__info-list">
+          <div>
+            <div class="sb-about-page__info-label">{{ section.settings.address_label }}</div>
+            <div class="sb-muted">{{ section.settings.address }}</div>
+          </div>
+          <div>
+            <div class="sb-about-page__info-label">{{ section.settings.hours_label }}</div>
+            <div class="sb-muted">{{ section.settings.hours }}</div>
+          </div>
+          <div>
+            <div class="sb-about-page__info-label">{{ section.settings.contact_label }}</div>
+            <div class="sb-muted">{{ section.settings.contact }}</div>
+          </div>
+        </div>
+        {% if section.settings.map_embed != blank %}
+          <div class="sb-about-page__map">
+            <div class="sb-about-page__map-wrapper">
+              {{ section.settings.map_embed }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-about-page__cta">
+    <div class="page-width sb-about-page__cta-inner">
+      <div class="sb-about-page__cta-text">
+        <h2>{{ section.settings.cta_heading }}</h2>
+        <div class="sb-muted">{{ section.settings.cta_text }}</div>
+      </div>
+      {% if section.settings.cta_link != blank %}
+        <a class="button" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB About page",
+  "tag": "section",
+  "class": "sb-about-page-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Hero eyebrow",
+      "default": "Meet Silla Beauty"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero heading",
+      "default": "About Silla Beauty"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_subheading",
+      "label": "Hero subheading",
+      "default": "<p>We are a holistic beauty studio focused on radiant skin, mindful rituals, and results you can feel.</p>"
+    },
+    {
+      "type": "text",
+      "id": "philosophy_heading",
+      "label": "Philosophy heading",
+      "default": "Our philosophy"
+    },
+    {
+      "type": "richtext",
+      "id": "philosophy_text",
+      "label": "Philosophy text",
+      "default": "<p>Every appointment is designed to restore balance and highlight what makes your skin unique. We blend modern techniques with gentle, nurturing care.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "philosophy_bullets",
+      "label": "Philosophy bullet list",
+      "default": "<li>Customized facial journeys</li><li>Clean, clinical-grade formulas</li><li>Calming studio atmosphere</li>"
+    },
+    {
+      "type": "image_picker",
+      "id": "philosophy_image",
+      "label": "Philosophy image"
+    },
+    {
+      "type": "text",
+      "id": "values_heading",
+      "label": "Values heading",
+      "default": "Credentials & studio values"
+    },
+    {
+      "type": "text",
+      "id": "values_subheading",
+      "label": "Values subheading",
+      "default": "Professional, welcoming, and grounded in skin health."
+    },
+    {
+      "type": "text",
+      "id": "visit_heading",
+      "label": "Visit heading",
+      "default": "Visit the studio"
+    },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "Address label",
+      "default": "Address"
+    },
+    {
+      "type": "richtext",
+      "id": "address",
+      "label": "Address",
+      "default": "<p>123 Glow Avenue, Suite 201<br>Los Angeles, CA 90026</p>"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours label",
+      "default": "Hours"
+    },
+    {
+      "type": "richtext",
+      "id": "hours",
+      "label": "Hours",
+      "default": "<p>Tuesday – Saturday<br>10am – 7pm</p>"
+    },
+    {
+      "type": "text",
+      "id": "contact_label",
+      "label": "Contact label",
+      "default": "Contact"
+    },
+    {
+      "type": "richtext",
+      "id": "contact",
+      "label": "Contact",
+      "default": "<p>hello@sillabeauty.com<br>(555) 123-4567</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "map_embed",
+      "label": "Map embed iframe",
+      "default": "<iframe src=\"https://www.google.com/maps\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Ready to book your glow?"
+    },
+    {
+      "type": "richtext",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "<p>Reserve your next facial and enjoy a personalized, restorative experience.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Book an appointment"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Licensed esthetics"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Expert-led treatments with a focus on skin wellness."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "SB About page",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "title": "Clean formulations",
+            "text": "We prioritize gentle, high-performance ingredients."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Results-driven",
+            "text": "Customized plans that support long-term skin health."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Warm studio care",
+            "text": "A calming environment that feels like a reset."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
