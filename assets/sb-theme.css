@@ -764,6 +764,10 @@ button.shopify-payment-button__button--unbranded:hover::after {
   align-items: center;
 }
 
+.sb-about-page__hero {
+  gap: 1.8rem;
+}
+
 .sb-about-page__hero-content,
 .sb-about-page__founder-content,
 .sb-about-page__credentials,
@@ -774,6 +778,14 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-about-page__hero-subheading {
   max-width: 52ch;
+  margin-bottom: 0;
+}
+
+.sb-about-page__hero-divider {
+  display: block;
+  width: min(280px, 100%);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(107, 92, 83, 0.28), rgba(107, 92, 83, 0.08));
 }
 
 .sb-about-page__hero-media,
@@ -799,14 +811,28 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-about-page__pillar {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.9rem;
   height: 100%;
+  padding: clamp(2rem, 2.4vw, 2.4rem);
+  box-shadow: 0 14px 32px rgba(73, 62, 54, 0.08);
+}
+
+.sb-about-page__pillar-icon {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: rgba(168, 139, 114, 0.4);
+}
+
+.sb-about-page__pillar h3 {
+  font-size: clamp(2rem, 2.2vw, 2.3rem);
 }
 
 .sb-about-page__credentials {
   border-top: 1px solid var(--sb-divider);
   border-bottom: 1px solid var(--sb-divider);
-  padding-block: clamp(2rem, 4vw, 3.2rem);
+  background: var(--sb-surface);
+  padding: clamp(2rem, 4vw, 3.2rem);
 }
 
 .sb-about-page__specialties {
@@ -834,6 +860,10 @@ button.shopify-payment-button__button--unbranded:hover::after {
     gap: 3.2rem;
   }
 
+  .sb-about-page__hero-content h1 {
+    font-size: clamp(4.2rem, 5vw, 5.4rem);
+  }
+
   .sb-about-page__pillars {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -843,6 +873,10 @@ button.shopify-payment-button__button--unbranded:hover::after {
   .sb-about-page__hero,
   .sb-about-page__founder {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sb-about-page__hero-content {
+    padding-right: 1.2rem;
   }
 
   .sb-about-page__pillars {

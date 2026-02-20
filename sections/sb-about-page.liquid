@@ -27,6 +27,7 @@
         {% endif %}
         {% if section.settings.hero_subheading != blank %}
           <p class="sb-muted sb-about-page__hero-subheading">{{ section.settings.hero_subheading }}</p>
+          <span class="sb-about-page__hero-divider" aria-hidden="true"></span>
         {% endif %}
       </div>
       {% if section.settings.hero_image != blank %}
@@ -38,11 +39,6 @@
 
     {% if founder_block != blank %}
       <div class="sb-about-page__founder" {{ founder_block.shopify_attributes }}>
-        {% if founder_block.settings.image != blank %}
-          <div class="sb-about-page__founder-media sb-card">
-            {{ founder_block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '550, 750, 990, 1200, 1400', alt: founder_block.settings.image.alt | escape }}
-          </div>
-        {% endif %}
         <div class="sb-about-page__founder-content">
           {% if founder_block.settings.heading != blank %}
             <h2>{{ founder_block.settings.heading }}</h2>
@@ -51,6 +47,11 @@
             <div class="rte sb-muted">{{ founder_block.settings.text }}</div>
           {% endif %}
         </div>
+        {% if founder_block.settings.image != blank %}
+          <div class="sb-about-page__founder-media sb-card">
+            {{ founder_block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '550, 750, 990, 1200, 1400', alt: founder_block.settings.image.alt | escape }}
+          </div>
+        {% endif %}
       </div>
     {% endif %}
 
@@ -59,6 +60,7 @@
       <div class="sb-about-page__pillars" aria-label="Values and pillars">
         {% for block in pillar_blocks %}
           <article class="sb-card sb-about-page__pillar" {{ block.shopify_attributes }}>
+            <span class="sb-about-page__pillar-icon" aria-hidden="true"></span>
             {% if block.settings.title != blank %}
               <h3>{{ block.settings.title }}</h3>
             {% endif %}
