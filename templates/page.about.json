@@ -1,18 +1,67 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-page",
-      "settings": {}
+      "type": "sb-about-page",
+      "blocks": {
+        "founder": {
+          "type": "founder_story",
+          "settings": {
+            "heading": "Rooted in Community. Driven by Clinical Results.",
+            "text": "<p>Silla Beauty was created from a simple belief: everyone deserves access to advanced, ethical aesthetic care close to home.</p><p>After noticing many people in our rural community were travelling long distances, often off island, for clinical skin treatments, I knew something needed to change. High-level aesthetic services should be available locally, without compromising quality, safety, or expertise.</p><p>That belief became Silla Beauty.</p>"
+          }
+        },
+        "pillar_1": {
+          "type": "pillar",
+          "settings": {
+            "title": "Education-first",
+            "text": "Advanced training and continuous learning, because results require mastery."
+          }
+        },
+        "pillar_2": {
+          "type": "pillar",
+          "settings": {
+            "title": "Ethical care",
+            "text": "No pressure, no trend-chasing, and honest recommendations based on suitability."
+          }
+        },
+        "pillar_3": {
+          "type": "pillar",
+          "settings": {
+            "title": "Barrier health",
+            "text": "Skin is supported, not over-treated, and routines are built one step at a time."
+          }
+        },
+        "credentials": {
+          "type": "credentials",
+          "settings": {
+            "heading": "Education, Experience & Ongoing Mastery",
+            "text": "<p>I began my career in aesthetics in 2014 and graduated in 2015. Since then, I’ve pursued advanced training across multiple disciplines and hold multiple certifications in several services I offer.</p><p>Treatments include microneedling, corrective peels, dermaplaning, IPL, laser hair removal, and acne-focused treatments. I specialize in acne and pigmented skin.</p>",
+            "specialties": "Microneedling\nCorrective peels\nDermaplaning\nIPL\nLaser hair removal\nAcne-focused treatments"
+          }
+        }
+      },
+      "block_order": [
+        "founder",
+        "pillar_1",
+        "pillar_2",
+        "pillar_3",
+        "credentials"
+      ],
+      "settings": {
+        "badge": "Rooted in community",
+        "hero_heading": "About Silla Beauty",
+        "hero_subheading": "Clinical aesthetics for long-term skin health, delivered with intention.",
+        "cta_heading": "Ready to begin your skin journey?",
+        "cta_text": "Book a consultation and we’ll build a plan that fits your goals.",
+        "cta_label": "Book now",
+        "cta_link": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
