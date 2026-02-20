@@ -9,6 +9,12 @@
   --sb-radius: 14px;
   --sb-shadow: 0 18px 40px rgba(73, 62, 54, 0.1);
   --sb-section-space: clamp(4.8rem, 5vw, 8.4rem);
+  --sb-section-space-mobile: clamp(3.8rem, 8vw, 5.2rem);
+  --sb-section-space-desktop: clamp(5.2rem, 6vw, 8rem);
+  --sb-button-padding-y: 1.2rem;
+  --sb-button-padding-x: 2.6rem;
+  --sb-button-radius: 999px;
+  --sb-button-shadow: 0 12px 26px rgba(73, 62, 54, 0.18);
   --buttons-border-width: 0px;
   --buttons-border-offset: 0px;
 }
@@ -35,16 +41,20 @@ a:hover,
   padding-right: 0;
 }
 
-/* IMPORTANT: Don't globally override hero spacing */
-.sb-section[class*='section-']:not(.sb-hero-horizon) {
-  padding-top: 2rem !important;
-  padding-bottom: 2rem !important;
+/* Consistent section rhythm on key brand pages. */
+.template-index .sb-section[class*='section-'][class*='-padding']:not(.sb-hero-horizon),
+.template-page-about .sb-section[class*='section-'][class*='-padding'],
+.template-page-services .sb-section[class*='section-'][class*='-padding'] {
+  padding-top: var(--sb-section-space-mobile);
+  padding-bottom: var(--sb-section-space-mobile);
 }
 
 @media screen and (min-width: 750px) {
-  .sb-section[class*='section-']:not(.sb-hero-horizon) {
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
+  .template-index .sb-section[class*='section-'][class*='-padding']:not(.sb-hero-horizon),
+  .template-page-about .sb-section[class*='section-'][class*='-padding'],
+  .template-page-services .sb-section[class*='section-'][class*='-padding'] {
+    padding-top: var(--sb-section-space-desktop);
+    padding-bottom: var(--sb-section-space-desktop);
   }
 }
 
@@ -56,21 +66,23 @@ a:hover,
   text-transform: none;
   letter-spacing: 0.02em;
   font-weight: 600;
-  padding: 1.2rem 2.6rem;
+  padding: var(--sb-button-padding-y) var(--sb-button-padding-x);
   min-height: 4.6rem;
-  box-shadow: none;
+  border-radius: var(--sb-button-radius);
+  box-shadow: var(--sb-button-shadow);
   border: 0;
 }
 
 .sb-section .button:not(.button--secondary) {
   background: var(--sb-accent);
   color: #fff;
-  box-shadow: 0 14px 30px rgba(44, 42, 40, 0.16);
 }
 
 .sb-section .button.button--secondary {
-  background: rgba(168, 139, 114, 0.14);
+  background: rgba(168, 139, 114, 0.12);
+  border: 1px solid rgba(168, 139, 114, 0.35);
   color: var(--sb-accent);
+  box-shadow: none;
 }
 
 .button::after,
@@ -174,6 +186,59 @@ button.shopify-payment-button__button--unbranded:hover::after {
   padding-inline: 0;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+/* Services hero follows the same soft language as the home hero. */
+.template-page-services .sb-services-page__header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(140deg, #f7f2ec 0%, #efe4da 45%, #e7d7cb 100%);
+  border-bottom: 1px solid var(--sb-border);
+}
+
+.template-page-services .sb-services-page__header::before,
+.template-page-services .sb-services-page__header::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.template-page-services .sb-services-page__header::before {
+  width: clamp(24rem, 46vw, 56rem);
+  height: clamp(24rem, 46vw, 56rem);
+  top: -35%;
+  right: -14%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 72%);
+}
+
+.template-page-services .sb-services-page__header::after {
+  width: clamp(20rem, 34vw, 42rem);
+  height: clamp(20rem, 34vw, 42rem);
+  bottom: -36%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(168, 139, 114, 0.18) 0%, rgba(168, 139, 114, 0) 74%);
+}
+
+.template-page-services .sb-services-page__header-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(5.6rem, 10vw, 8.8rem) 0 clamp(4rem, 7vw, 5.6rem);
+}
+
+.template-page-services .sb-services-page__header-title {
+  font-size: clamp(4rem, 8vw, 8rem);
+  color: var(--sb-text);
+}
+
+.template-page-services .sb-services-page__header-subheading {
+  margin-top: 1.4rem;
+  color: var(--sb-muted);
+}
+
+.template-page-services .sb-services-page__divider {
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+  background: rgba(107, 92, 83, 0.22);
 }
 
 /* Let the section handle background if you want edge-to-edge */
@@ -626,6 +691,55 @@ button.shopify-payment-button__button--unbranded:hover::after {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+/* Services alternating detail rows: tighter and more connected. */
+.template-page-services .sb-services-page__details {
+  gap: clamp(6.4rem, 6vw, 8.6rem);
+  margin-top: clamp(6rem, 8vw, 7.2rem);
+}
+
+.template-page-services .sb-services-page__detail {
+  gap: clamp(2rem, 3vw, 2.8rem);
+  align-items: stretch;
+}
+
+.template-page-services .sb-services-page__detail-media {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(24rem, 38vw, 34rem);
+  overflow: hidden;
+  background: var(--sb-border);
+  border: 1px solid var(--sb-border);
+  box-shadow: var(--sb-shadow);
+}
+
+.template-page-services .sb-services-page__detail-media img,
+.template-page-services .sb-services-page__detail-media svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: none;
+}
+
+.template-page-services .sb-services-page__detail-text {
+  display: grid;
+  align-content: center;
+  gap: 1.2rem;
+  min-height: clamp(24rem, 36vw, 34rem);
+  max-width: 62ch;
+  margin: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .template-page-services .sb-services-page__detail {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  }
+
+  .template-page-services .sb-services-page__detail--reverse {
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  }
 }
 
 .sb-feature-split__bullets,
