@@ -1,0 +1,296 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% assign founder_block = section.blocks | where: 'type', 'founder_story' | first %}
+{% assign credentials_block = section.blocks | where: 'type', 'credentials' | first %}
+
+<section class="sb-section sb-about-page color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="sb-about-page__hero">
+      <div class="sb-about-page__hero-content">
+        {% if section.settings.badge != blank %}
+          <p class="sb-pill">{{ section.settings.badge }}</p>
+        {% endif %}
+        {% if section.settings.hero_heading != blank %}
+          <h1>{{ section.settings.hero_heading }}</h1>
+        {% endif %}
+        {% if section.settings.hero_subheading != blank %}
+          <p class="sb-muted sb-about-page__hero-subheading">{{ section.settings.hero_subheading }}</p>
+        {% endif %}
+      </div>
+      {% if section.settings.hero_image != blank %}
+        <div class="sb-about-page__hero-media sb-card">
+          {{ section.settings.hero_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '550, 750, 990, 1200, 1600', alt: section.settings.hero_image.alt | escape }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if founder_block != blank %}
+      <div class="sb-about-page__founder" {{ founder_block.shopify_attributes }}>
+        {% if founder_block.settings.image != blank %}
+          <div class="sb-about-page__founder-media sb-card">
+            {{ founder_block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '550, 750, 990, 1200, 1400', alt: founder_block.settings.image.alt | escape }}
+          </div>
+        {% endif %}
+        <div class="sb-about-page__founder-content">
+          {% if founder_block.settings.heading != blank %}
+            <h2>{{ founder_block.settings.heading }}</h2>
+          {% endif %}
+          {% if founder_block.settings.text != blank %}
+            <div class="rte sb-muted">{{ founder_block.settings.text }}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% assign pillar_blocks = section.blocks | where: 'type', 'pillar' %}
+    {% if pillar_blocks.size > 0 %}
+      <div class="sb-about-page__pillars" aria-label="Values and pillars">
+        {% for block in pillar_blocks %}
+          <article class="sb-card sb-about-page__pillar" {{ block.shopify_attributes }}>
+            {% if block.settings.title != blank %}
+              <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p class="sb-muted">{{ block.settings.text }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if credentials_block != blank %}
+      <div class="sb-about-page__credentials" {{ credentials_block.shopify_attributes }}>
+        {% if credentials_block.settings.heading != blank %}
+          <h2>{{ credentials_block.settings.heading }}</h2>
+        {% endif %}
+        {% if credentials_block.settings.text != blank %}
+          <div class="rte sb-muted">{{ credentials_block.settings.text }}</div>
+        {% endif %}
+
+        {% if credentials_block.settings.specialties != blank %}
+          {% assign specialties = credentials_block.settings.specialties | newline_to_br | strip_newlines | split: '<br />' %}
+          <ul class="sb-about-page__specialties" role="list" aria-label="Specialties">
+            {% for specialty in specialties %}
+              {% assign trimmed_specialty = specialty | strip %}
+              {% if trimmed_specialty != blank %}
+                <li class="sb-pill">{{ trimmed_specialty }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="sb-about-page__cta">
+      {% if section.settings.cta_heading != blank %}
+        <h2>{{ section.settings.cta_heading }}</h2>
+      {% endif %}
+      {% if section.settings.cta_text != blank %}
+        <p class="sb-muted">{{ section.settings.cta_text }}</p>
+      {% endif %}
+      {% if section.settings.cta_label != blank %}
+        {% if section.settings.cta_link != blank %}
+          <a class="button" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+        {% else %}
+          <span class="button button--secondary" aria-disabled="true">{{ section.settings.cta_label }}</span>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB About Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Rooted in community"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero heading",
+      "default": "About Silla Beauty"
+    },
+    {
+      "type": "text",
+      "id": "hero_subheading",
+      "label": "Hero subheading",
+      "default": "Clinical aesthetics for long-term skin health, delivered with intention."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Ready to begin your skin journey?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Book a consultation and we’ll build a plan that fits your goals."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Book now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "founder_story",
+      "name": "Founder story",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Rooted in Community. Driven by Clinical Results."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Silla Beauty was created from a simple belief: everyone deserves access to advanced, ethical aesthetic care close to home.</p><p>After noticing many people in our rural community were travelling long distances, often off island, for clinical skin treatments, I knew something needed to change. High-level aesthetic services should be available locally, without compromising quality, safety, or expertise.</p><p>That belief became Silla Beauty.</p>"
+        }
+      ]
+    },
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Education-first"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Advanced training and continuous learning, because results require mastery."
+        }
+      ]
+    },
+    {
+      "type": "credentials",
+      "name": "Credentials & trust",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Education, Experience & Ongoing Mastery"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>I began my career in aesthetics in 2014 and graduated in 2015. Since then, I’ve pursued advanced training across multiple disciplines and hold multiple certifications in several services I offer.</p><p>Treatments include microneedling, corrective peels, dermaplaning, IPL, laser hair removal, and acne-focused treatments. I specialize in acne and pigmented skin.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "specialties",
+          "label": "Specialties (one per line)",
+          "default": "Microneedling\nCorrective peels\nDermaplaning\nIPL\nLaser hair removal\nAcne-focused treatments"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB About Page",
+      "blocks": [
+        {
+          "type": "founder_story"
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Education-first",
+            "text": "Advanced training and continuous learning, because results require mastery."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Ethical care",
+            "text": "No pressure, no trend-chasing, and honest recommendations based on suitability."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Barrier health",
+            "text": "Skin is supported, not over-treated, and routines are built one step at a time."
+          }
+        },
+        {
+          "type": "credentials"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
