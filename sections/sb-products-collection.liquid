@@ -34,7 +34,7 @@
           <div class="sb-products-collection__item">
             {% render 'card-product',
               card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
+              media_aspect_ratio: 'square',
               image_shape: 'default',
               lazy_load: lazy_load,
               show_secondary_image: section.settings.show_secondary_image,
@@ -51,7 +51,7 @@
           <div class="sb-products-collection__item">
             {% render 'card-product',
               show_vendor: false,
-              media_aspect_ratio: section.settings.image_ratio,
+              media_aspect_ratio: 'square',
               image_shape: 'default',
               lazy_load: false,
               placeholder_image: placeholder_image

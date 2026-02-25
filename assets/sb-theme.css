@@ -438,21 +438,32 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-products-collection__item {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.8rem;
+  height: 100%;
+}
+
+.sb-products-collection__item .card-wrapper {
+  display: flex;
+  height: 100%;
 }
 
 .sb-products-collection__item .card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   border: 1px solid var(--sb-border);
   overflow: hidden;
   background: var(--sb-surface);
   box-shadow: var(--sb-shadow);
-  --ratio-percent: 60% !important;
 }
 
-.sb-products-collection__item .card__inner {
-  --ratio-percent: 60% !important;
+.sb-products-collection__item .card__inner,
+.sb-products-collection__item .card__inner.ratio,
+.sb-products-collection__item .card__inner.ratio::before {
+  --ratio-percent: 100% !important;
 }
 
 .sb-products-collection__item .card__inner .card__content {
@@ -464,6 +475,10 @@ button.shopify-payment-button__button--unbranded:hover::after {
 }
 
 .sb-products-collection__item .card__heading {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--sb-text);
@@ -474,6 +489,8 @@ button.shopify-payment-button__button--unbranded:hover::after {
   padding: 1rem 1.4rem;
   background: var(--sb-surface);
   border-top: 1px solid var(--sb-border);
+  flex-grow: 1;
+  align-content: start;
 }
 
 .sb-products-collection__item .card > .card__content .card__information {
@@ -487,6 +504,7 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-products-collection__cta {
   justify-self: center;
+  margin-top: auto;
   padding: 0.6rem 1.8rem;
   background: var(--sb-accent);
   color: #fff;
