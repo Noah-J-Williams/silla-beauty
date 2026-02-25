@@ -1,28 +1,31 @@
 {% comment %}
-  Renders a custom primary navigation for the header.
+  Renders an inline header navigation from a Shopify menu.
+
+  Accepts:
+  - menu: Linklist object (optional). Falls back to settings.menu if provided by caller.
 {% endcomment %}
 
-<nav class="header__inline-menu">
-  <ul class="list-menu list-menu--inline" role="list">
-    <li>
-      <a href="{{ routes.root_url }}" class="header__menu-item list-menu__item link link--text focus-inset">
-        <span{% if request.page_type == 'index' %} class="header__active-menu-item"{% endif %}>Home</span>
-      </a>
-    </li>
-    <li>
-      <a href="{{ routes.root_url }}pages/services" class="header__menu-item list-menu__item link link--text focus-inset">
-        <span{% if request.path == '/pages/services' %} class="header__active-menu-item"{% endif %}>Services</span>
-      </a>
-    </li>
-    <li>
-      <a href="/collections/all" class="header__menu-item list-menu__item link link--text focus-inset">
-        <span{% if request.path == '/collections/all' %} class="header__active-menu-item"{% endif %}>Shop</span>
-      </a>
-    </li>
-    <li>
-      <a href="{{ routes.root_url }}pages/about" class="header__menu-item list-menu__item link link--text focus-inset">
-        <span{% if request.path == '/pages/about' %} class="header__active-menu-item"{% endif %}>About</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+{%- assign navigation_menu = menu -%}
+{%- if navigation_menu == blank and section != blank and section.settings.menu != blank -%}
+  {%- assign navigation_menu = section.settings.menu -%}
+{%- endif -%}
+
+{%- if navigation_menu != blank and navigation_menu.links.size > 0 -%}
+  <nav class="header__inline-menu" aria-label="{{ 'sections.header.menu' | t }}">
+    <ul class="list-menu list-menu--inline" role="list">
+      {%- for link in navigation_menu.links -%}
+        <li>
+          <a
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span{% if link.current %} class="header__active-menu-item"{% endif %}>{{- link.title | escape -}}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}
