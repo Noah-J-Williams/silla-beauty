@@ -66,6 +66,8 @@ a:hover,
   .sb-section .page-width {
     padding-left: 2.4rem;
     padding-right: 2.4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 
@@ -73,6 +75,8 @@ a:hover,
   .sb-section .page-width {
     padding-left: 6rem;
     padding-right: 6rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 
