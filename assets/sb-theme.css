@@ -450,6 +450,7 @@ button.shopify-payment-button__button--unbranded:hover::after {
 
 .sb-products-collection__item .card-wrapper {
   display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
   height: 100%;
 }
@@ -469,29 +470,22 @@ button.shopify-payment-button__button--unbranded:hover::after {
 .sb-products-collection__item .card__media,
 .sb-products-collection__item .card__media .media {
   width: 100%;
-  aspect-ratio: 4 / 3;
 }
 
-.sb-products-collection__item .card__inner.ratio::before {
-  display: none;
-}
-
-.sb-products-collection__item .card__inner,
 .sb-products-collection__item .card__inner.ratio {
-  --ratio-percent: auto !important;
-  height: auto;
+  --ratio-percent: 75% !important;
 }
 
 .sb-products-collection__item .card__media,
-.sb-products-collection__item .card__media .media,
-.sb-products-collection__item .card__media img {
+.sb-products-collection__item .card__media .media {
   height: 100%;
 }
 
 .sb-products-collection__item .card__media img {
   width: 100%;
-  display: block;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .sb-products-collection__item .card__inner .card__content {
