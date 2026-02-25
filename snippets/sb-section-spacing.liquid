@@ -1,0 +1,20 @@
+{% comment %}
+  Shared vertical spacing helper for custom Silla Beauty sections.
+
+  Accepts:
+  - section: section object with padding_top and padding_bottom settings
+  - class_name: unique class applied to the section wrapper
+{% endcomment %}
+{%- style -%}
+  .{{ class_name }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .{{ class_name }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
