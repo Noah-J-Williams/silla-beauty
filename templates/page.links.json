@@ -1,0 +1,127 @@
+{
+  "sections": {
+    "main": {
+      "type": "sb-links",
+      "settings": {
+        "pill_text": "Stay connected",
+        "heading": "Silla Beauty links",
+        "subheading": "Book, shop skincare favorites, and follow along.",
+        "nav_label": "Silla Beauty links",
+        "max_width": 680,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "group_book_shop": {
+          "type": "group",
+          "settings": {
+            "heading": "Book & Shop",
+            "description": "Appointments, skincare, and gift cards"
+          }
+        },
+        "link_vagaro": {
+          "type": "link",
+          "settings": {
+            "label": "Book with Vagaro",
+            "url": "https://www.vagaro.com/sillabeauty",
+            "description": "Reserve your appointment online",
+            "style": "primary",
+            "open_new_tab": true
+          }
+        },
+        "link_glymed": {
+          "type": "link",
+          "settings": {
+            "label": "Shop GlyMed Plus",
+            "url": "https://www.glymedpluscanada.ca/sillabeauty/",
+            "description": "Professional homecare products",
+            "style": "secondary",
+            "open_new_tab": true
+          }
+        },
+        "link_skinbetter": {
+          "type": "link",
+          "settings": {
+            "label": "Shop skinbetter science",
+            "url": "https://www.skinbetter.ca/en/best-sellers/?trlid=T-_mTcuQU&utm_source=instagram&utm_medium=social_influencer&utm_campaign=skin_skin_ldb---skinbetter-science-clinic-affiliate-program_ldb---skinbetter-science-clinic-affiliate-programcourtney-%E2%80%A2-clinical-aesthetician-%E2%80%A2-pei_ifcom&utm_content=skin_skin_ldb---skinbetter-science-clinic-affiliate-program_display_cv&utm_term=courtney-%E2%80%A2-clinical-aesthetician-%E2%80%A2-pei",
+            "description": "Top best-sellers and clinical skincare",
+            "style": "secondary",
+            "open_new_tab": true
+          }
+        },
+        "link_omnilux": {
+          "type": "link",
+          "settings": {
+            "label": "Shop Omnilux LED",
+            "url": "https://omniluxled.com/?attributes=%7B%22sf-external-session-uuid%22%20%3D%3E%20%22f3272192-e695-4477-81d5-a1480fb2b943%22%2C%20%22sf-origin%22%20%3D%3E%20%22organic--COURTNEYGAUDETTE%22%7D&gclid=Cj0KCQiA0oagBhDHARIsAI-BbgeG_viVVCDKnvivz6ONQKe0lh44jbyFGX6VEY6_hF8ZY-bjcAkJ7gIaAgw_EALw_wcB&nb_adtype=&nb_ap=&nb_fii=&nb_kwd=omnilux&nb_li_ms=&nb_lp_ms=&nb_mi=&nb_mt=e&nb_pc=&nb_pi=&nb_placement=&nb_ppi=&nb_si=%7Bsourceid%7D&nb_ti=kwd-299573310855&nbt=nb%3Aadwords%3Ag%3A15165222716%3A128955456443%3A616021329526&ref=superfiliate-COURTNEYGAUDETTE&utm_campaign=COURTNEYGAUDETTE&utm_content=eyJzZi1leHRlcm5hbC1zZXNzaW9uLXV1aWQiOiI3MDZlNDk1ZS0zMGIxLTQ0ZjAtYTUyOC04NThmZTVlZWVmZjkifQ%3D%3D&utm_medium=organic&utm_source=superfiliate",
+            "description": "LED devices and treatments",
+            "style": "secondary",
+            "open_new_tab": true
+          }
+        },
+        "link_giftcard": {
+          "type": "link",
+          "settings": {
+            "label": "Buy a gift card",
+            "url": "https://squareup.com/gift/720KNSK4D5RE6/order",
+            "description": "Send a digital gift card instantly",
+            "style": "primary",
+            "open_new_tab": true
+          }
+        },
+        "group_socials": {
+          "type": "group",
+          "settings": {
+            "heading": "Socials",
+            "description": "Follow us online"
+          }
+        },
+        "link_instagram": {
+          "type": "link",
+          "settings": {
+            "label": "Instagram",
+            "url": "https://instagram.com",
+            "description": "Latest posts and stories",
+            "style": "secondary",
+            "open_new_tab": true
+          }
+        },
+        "link_facebook": {
+          "type": "link",
+          "settings": {
+            "label": "Facebook",
+            "url": "https://facebook.com",
+            "description": "Community updates",
+            "style": "secondary",
+            "open_new_tab": true
+          }
+        },
+        "link_tiktok": {
+          "type": "link",
+          "settings": {
+            "label": "TikTok",
+            "url": "https://tiktok.com",
+            "description": "Short-form skincare tips",
+            "style": "secondary",
+            "open_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "group_book_shop",
+        "link_vagaro",
+        "link_glymed",
+        "link_skinbetter",
+        "link_omnilux",
+        "link_giftcard",
+        "group_socials",
+        "link_instagram",
+        "link_facebook",
+        "link_tiktok"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

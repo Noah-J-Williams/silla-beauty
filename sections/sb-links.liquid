@@ -1,0 +1,388 @@
+{% comment %}
+  Silla Beauty Links page section (link-in-bio style).
+
+  Admin setup:
+  1) Create a Page named "Links" in Shopify admin.
+  2) Set that page template to "page.links".
+  3) Optional: create a URL redirect from /links to /pages/links in Shopify admin.
+{% endcomment %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .sb-links-{{ section.id }} {
+    background: var(--sb-bg);
+    color: var(--sb-text);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__container {
+    max-width: min(100%, {{ section.settings.max_width }}px);
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(2rem, 3vw, 3rem);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__header {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--sb-border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--sb-muted);
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__title {
+    margin: 0;
+    color: var(--sb-text);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__subtitle {
+    margin: 0;
+    color: var(--sb-muted);
+    max-width: 56ch;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__nav {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__group {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__group-heading {
+    margin: 0;
+    font-size: clamp(1.7rem, 2.3vw, 2rem);
+    color: var(--sb-text);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__group-description {
+    margin: 0;
+    color: var(--sb-muted);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__item {
+    margin: 0;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__button {
+    width: 100%;
+    min-height: 5.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.2rem 1.6rem;
+    border-radius: var(--sb-radius);
+    border: 1px solid var(--sb-border);
+    background: var(--sb-surface);
+    color: var(--sb-text);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__button-content {
+    display: grid;
+    gap: 0.3rem;
+    justify-items: center;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__label {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__description {
+    margin: 0;
+    color: inherit;
+    opacity: 0.86;
+    font-size: 1.3rem;
+    line-height: 1.35;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__button--primary {
+    background: var(--sb-accent);
+    border-color: var(--sb-accent);
+    color: #fff;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__button--secondary {
+    background: rgba(168, 139, 114, 0.12);
+    border-color: rgba(168, 139, 114, 0.38);
+    color: var(--sb-accent);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__button:hover,
+  .sb-links-{{ section.id }} .sb-links__button:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: var(--sb-shadow);
+  }
+
+  .sb-links-{{ section.id }} .sb-links__button:focus-visible {
+    outline: 2px solid var(--sb-accent);
+    outline-offset: 2px;
+  }
+
+  .sb-links-{{ section.id }} .sb-links__empty {
+    margin: 0;
+    color: var(--sb-muted);
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .sb-links-{{ section.id }} .sb-links__button {
+      min-height: 6.2rem;
+      padding: 1.4rem 2.2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="sb-links sb-links-{{ section.id }} section-{{ section.id }}-padding" aria-labelledby="sb-links-heading-{{ section.id }}">
+  <div class="page-width">
+    <div class="sb-links__container">
+      <header class="sb-links__header">
+        {%- if section.settings.pill_text != blank -%}
+          <p class="sb-links__pill">{{ section.settings.pill_text | escape }}</p>
+        {%- endif -%}
+
+        <h1 id="sb-links-heading-{{ section.id }}" class="sb-links__title h1">{{ section.settings.heading | escape }}</h1>
+
+        {%- if section.settings.subheading != blank -%}
+          <p class="sb-links__subtitle">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+      </header>
+
+      <nav class="sb-links__nav" aria-label="{{ section.settings.nav_label | escape }}">
+        {%- if section.blocks.size > 0 -%}
+          {%- assign has_open_group = false -%}
+
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'group' -%}
+                {%- if has_open_group -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+
+                <div class="sb-links__group" {{ block.shopify_attributes }}>
+                  {%- if block.settings.heading != blank -%}
+                    <h2 class="sb-links__group-heading">{{ block.settings.heading | escape }}</h2>
+                  {%- endif -%}
+                  {%- if block.settings.description != blank -%}
+                    <p class="sb-links__group-description">{{ block.settings.description | escape }}</p>
+                  {%- endif -%}
+                  <ul class="sb-links__list" role="list">
+                {%- assign has_open_group = true -%}
+
+              {%- when 'link' -%}
+                {%- if has_open_group == false -%}
+                  <div class="sb-links__group">
+                    <ul class="sb-links__list" role="list">
+                  {%- assign has_open_group = true -%}
+                {%- endif -%}
+
+                <li class="sb-links__item" {{ block.shopify_attributes }}>
+                  <a
+                    class="sb-links__button sb-links__button--{{ block.settings.style }}"
+                    href="{{ block.settings.url | default: '#' }}"
+                    {% if block.settings.open_new_tab %}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    {% endif %}
+                    {% if block.settings.label == blank %}
+                      aria-label="Visit link"
+                    {% endif %}
+                  >
+                    <span class="sb-links__button-content">
+                      <span class="sb-links__label">{{ block.settings.label | default: 'Link' | escape }}</span>
+                      {%- if block.settings.description != blank -%}
+                        <span class="sb-links__description">{{ block.settings.description | escape }}</span>
+                      {%- endif -%}
+                    </span>
+                  </a>
+                </li>
+            {%- endcase -%}
+          {%- endfor -%}
+
+          {%- if has_open_group -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <p class="sb-links__empty">Add link blocks in the Theme Editor to build your Links page.</p>
+        {%- endif -%}
+      </nav>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Links",
+  "tag": "section",
+  "class": "section sb-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Pill text",
+      "default": "Stay connected"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Links"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Find our latest offers, services, and social channels in one place."
+    },
+    {
+      "type": "text",
+      "id": "nav_label",
+      "label": "Navigation label",
+      "default": "Links navigation"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content max width",
+      "min": 420,
+      "max": 860,
+      "step": 20,
+      "unit": "px",
+      "default": 680
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Featured"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Book an appointment"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button style",
+          "default": "primary",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 40,
+  "presets": [
+    {
+      "name": "SB Links",
+      "blocks": [
+        {
+          "type": "group"
+        },
+        {
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
