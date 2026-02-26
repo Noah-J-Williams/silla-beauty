@@ -13,9 +13,7 @@
       "type": "sb-services-page-header",
       "settings": {
         "heading": "Services",
-        "subheading": "Tailored treatments for skin, body, and beauty.",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "subheading": "Tailored treatments for skin, body, and beauty."
       }
     },
     "sb_services_page_grid_H9c4Vn": {
@@ -103,7 +101,8 @@
           "settings": {
             "anchor_id": "acne-pigmentation-planning",
             "heading": "Acne + Pigmentation Planning",
-            "text": "<p>Begin with an intentional plan tailored to inflammation, congestion, and discoloration. We build a timeline of treatments and home care that supports lasting clarity.</p>"
+            "text": "<p>Begin with an intentional plan tailored to inflammation, congestion, and discoloration. We build a timeline of treatments and home care that supports lasting clarity.</p>",
+            "image": "shopify://shop_images/silla_working.jpg"
           }
         },
         "detail_zrqFBi": {
@@ -111,7 +110,8 @@
           "settings": {
             "anchor_id": "microneedling",
             "heading": "Microneedling",
-            "text": "<p>Collagen induction therapy to soften texture, refine pores, and support supple skin. Best for scars, fine lines, and resilient glow.</p>"
+            "text": "<p>Collagen induction therapy to soften texture, refine pores, and support supple skin. Best for scars, fine lines, and resilient glow.</p>",
+            "image": "shopify://shop_images/Microneedling.heic"
           }
         },
         "detail_URRLQ6": {
@@ -119,7 +119,8 @@
           "settings": {
             "anchor_id": "ipl-brightening",
             "heading": "IPL Brightening",
-            "text": "<p>Targeted light pulses balance tone, reduce visible redness, and lift sun damage. Expect luminous, even-looking skin with minimal downtime.</p>"
+            "text": "<p>Targeted light pulses balance tone, reduce visible redness, and lift sun damage. Expect luminous, even-looking skin with minimal downtime.</p>",
+            "image": "shopify://shop_images/PrintRes-0697.jpg"
           }
         },
         "detail_bYXcnE": {
@@ -127,7 +128,8 @@
           "settings": {
             "anchor_id": "laser-hair-removal",
             "heading": "Laser Hair Removal",
-            "text": "<p>Precision treatments for smooth results and less upkeep. Customized settings ensure comfort and effectiveness across treatment areas.</p>"
+            "text": "<p>Precision treatments for smooth results and less upkeep. Customized settings ensure comfort and effectiveness across treatment areas.</p>",
+            "image": "shopify://shop_images/Microneedling_cf5ff753-3717-4e5a-b7bc-dd2cde87cb0e.heic"
           }
         },
         "detail_DDAQhq": {
@@ -135,7 +137,8 @@
           "settings": {
             "anchor_id": "facials",
             "heading": "Facials",
-            "text": "<p>Customized facials that nourish, refine, and reset. We blend targeted actives with restorative massage for balanced, radiant skin.</p>"
+            "text": "<p>Customized facials that nourish, refine, and reset. We blend targeted actives with restorative massage for balanced, radiant skin.</p>",
+            "image": "shopify://shop_images/SillaBeauty-1.jpg"
           }
         },
         "detail_hkrPcV": {
@@ -143,7 +146,8 @@
           "settings": {
             "anchor_id": "permanent-jewelry",
             "heading": "Permanent Jewelry",
-            "text": "<p>Delicate, clasp-free jewelry welded to fit. Choose your chain, add a charm, and leave adorned with a lasting finish.</p>"
+            "text": "<p>Delicate, clasp-free jewelry welded to fit. Choose your chain, add a charm, and leave adorned with a lasting finish.</p>",
+            "image": "shopify://shop_images/IMG_1695.jpg"
           }
         }
       },

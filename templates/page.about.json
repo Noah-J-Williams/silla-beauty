@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -51,6 +60,7 @@
         "badge": "Rooted in community",
         "hero_heading": "About Silla Beauty",
         "hero_subheading": "Clinical aesthetics for long-term skin health, delivered with intention.",
+        "hero_image": "shopify://shop_images/Courtney_Gaudette3.heic",
         "cta_heading": "Ready to begin your skin journey?",
         "cta_text": "Book a consultation and we’ll build a plan that fits your goals.",
         "cta_label": "Book now",
