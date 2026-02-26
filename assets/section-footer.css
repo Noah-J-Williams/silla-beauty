@@ -506,3 +506,93 @@
     }
   }
 }
+
+.footer {
+  --footer-surface: var(--sb-surface, rgb(var(--color-background)));
+  --footer-border: var(--sb-border, rgba(var(--color-foreground), 0.16));
+  --footer-divider: var(--sb-divider, rgba(var(--color-foreground), 0.12));
+  --footer-text: var(--sb-text, rgb(var(--color-foreground)));
+  --footer-muted: var(--sb-muted, rgba(var(--color-foreground), 0.75));
+  --footer-accent: var(--sb-accent, rgb(var(--color-button)));
+  border-top-color: var(--footer-border);
+  background: linear-gradient(180deg, rgba(249, 244, 238, 0.82) 0%, rgba(242, 236, 230, 0.95) 100%);
+}
+
+.footer .footer__content-top {
+  padding-bottom: 4rem;
+}
+
+.footer .footer__content-bottom {
+  border-top-color: var(--footer-divider);
+  padding-top: 2.4rem;
+}
+
+.footer .footer-block__heading {
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: calc(var(--font-heading-scale) * 1.3rem);
+  color: var(--footer-text);
+}
+
+.footer .footer-block__details-content {
+  margin-bottom: 2.6rem;
+}
+
+.footer .footer-block__details-content .list-menu__item--link,
+.footer .copyright__content,
+.footer .copyright__content a,
+.footer .footer__localization h2 {
+  color: var(--footer-muted);
+}
+
+.footer .footer-block__details-content .list-menu__item--link,
+.footer .copyright__content,
+.footer .copyright__content a {
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+}
+
+.footer .footer-block__details-content .list-menu__item--link,
+.footer .copyright__content a,
+.footer .list-social__link {
+  transition: color var(--duration-default) ease, transform var(--duration-default) ease;
+}
+
+.footer .footer-block__details-content .list-menu__item--link:hover,
+.footer .copyright__content a:hover {
+  color: var(--footer-accent);
+  text-decoration: none;
+}
+
+.footer .footer-block__details-content .list-menu__item--link:hover {
+  transform: translateX(0.2rem);
+}
+
+.footer .list-social__item .icon {
+  color: var(--footer-text);
+  transition: transform var(--duration-default) ease, color var(--duration-default) ease;
+}
+
+.footer .list-social__link:hover .icon {
+  transform: translateY(-0.2rem);
+  color: var(--footer-accent);
+}
+
+.footer .footer__copyright {
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 750px) {
+  .footer .footer__content-top {
+    padding-bottom: 4.8rem;
+  }
+
+  .footer .footer__content-top .grid {
+    row-gap: 4.2rem;
+  }
+
+  .footer .footer-block__details-content {
+    margin-bottom: 0;
+  }
+}
