@@ -1,0 +1,20 @@
+{% comment %}
+  Reusable section heading wrapper.
+  Accepts:
+  - title: Required heading text.
+  - eyebrow: Optional small label.
+  - text: Optional body copy.
+  - align: left or center.
+  - class: Optional extra class names.
+{% endcomment %}
+<div class="sb-section-heading sb-section-heading--{{ align | default: 'left' }}{% if class != blank %} {{ class }}{% endif %}">
+  {% if eyebrow != blank %}
+    <p class="sb-section-heading__eyebrow">{{ eyebrow }}</p>
+  {% endif %}
+  {% if title != blank %}
+    <h2 class="sb-section-heading__title">{{ title }}</h2>
+  {% endif %}
+  {% if text != blank %}
+    <div class="sb-section-heading__text rte">{{ text }}</div>
+  {% endif %}
+</div>
