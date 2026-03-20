@@ -1,0 +1,97 @@
+{% comment %}
+  Brand product card used across homepage, collection, and recommendations.
+  Accepts:
+  - product: Product object.
+  - section_id: Section id for unique ids.
+  - show_vendor: Boolean.
+  - show_rating: Boolean.
+  - show_secondary_image: Boolean.
+  - lazy_load: Boolean.
+  - button_label: CTA label.
+  - cta_mode: 'link' or 'add'.
+  - class: Optional wrapper classes.
+{% endcomment %}
+{%- liquid
+  assign card_product = product
+  assign cta_mode = cta_mode | default: 'link'
+  assign card_variant = card_product.selected_or_first_available_variant
+  assign review_rating = card_product.metafields.reviews.rating.value
+  assign review_count = card_product.metafields.reviews.rating_count
+  assign has_secondary_image = false
+  assign image_loading = 'lazy'
+  if lazy_load == false
+    assign image_loading = 'eager'
+  endif
+  if show_secondary_image and card_product.media.size > 1
+    assign has_secondary_image = true
+  endif
+-%}
+
+<article class="sb-product-card{% if class != blank %} {{ class }}{% endif %}">
+  <a class="sb-product-card__media-link" href="{{ card_product.url }}" aria-label="{{ card_product.title | escape }}">
+    <div class="sb-product-card__media">
+      {% if card_product.featured_media != blank %}
+        {{
+          card_product.featured_media
+          | image_url: width: 960
+          | image_tag:
+            class: 'sb-product-card__image sb-product-card__image--primary',
+            widths: '320, 480, 640, 800, 960',
+            sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 50vw',
+            alt: card_product.featured_media.alt | default: card_product.title | escape,
+            loading: image_loading
+        }}
+        {% if has_secondary_image %}
+          {{
+            card_product.media[1]
+            | image_url: width: 960
+            | image_tag:
+              class: 'sb-product-card__image sb-product-card__image--secondary',
+              widths: '320, 480, 640, 800, 960',
+              sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 50vw',
+              alt: card_product.media[1].alt | default: card_product.title | escape,
+              loading: 'lazy'
+          }}
+        {% endif %}
+      {% else %}
+        {{ 'product-apparel-1' | placeholder_svg_tag: 'sb-product-card__image sb-product-card__image--placeholder placeholder-svg' }}
+      {% endif %}
+    </div>
+  </a>
+
+  <div class="sb-product-card__content">
+    {% if show_vendor and card_product.vendor != blank %}
+      <p class="sb-product-card__meta">{{ card_product.vendor }}</p>
+    {% elsif card_product.type != blank %}
+      <p class="sb-product-card__meta">{{ card_product.type }}</p>
+    {% endif %}
+
+    <h3 class="sb-product-card__title">
+      <a href="{{ card_product.url }}">{{ card_product.title | escape }}</a>
+    </h3>
+
+    {% if show_rating and review_rating != blank %}
+      <p class="sb-product-card__rating" aria-label="{{ review_rating.rating }} out of {{ review_rating.scale_max }} stars">
+        <span aria-hidden="true">★★★★★</span>
+        <span class="sb-product-card__rating-text">{{ review_rating.rating }}{% if review_count != blank %} · {{ review_count }}{% endif %}</span>
+      </p>
+    {% endif %}
+
+    <div class="sb-product-card__footer">
+      <div class="sb-product-card__price">
+        {% render 'price', product: card_product, use_variant: true, show_compare_at_price: true %}
+      </div>
+
+      {% if cta_mode == 'add' and card_product.available and card_product.has_only_default_variant %}
+        <product-form class="sb-product-card__form">
+          {%- form 'product', card_product, id: 'sb-card-form-' | append: section_id | append: '-' | append: card_product.id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input type="hidden" name="id" value="{{ card_variant.id }}">
+            {% render 'sb-button', label: button_label | default: 'ADD', element: 'button', type: 'submit', class: 'sb-product-card__cta' %}
+          {%- endform -%}
+        </product-form>
+      {% else %}
+        {% render 'sb-button', label: button_label | default: 'SHOP NOW', link: card_product.url, class: 'sb-product-card__cta' %}
+      {% endif %}
+    </div>
+  </div>
+</article>
