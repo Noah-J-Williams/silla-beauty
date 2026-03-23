@@ -21,7 +21,7 @@
         "show_book_button": true,
         "book_label": "Book",
         "book_link": "/pages/booking",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "drawer",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "scheme-1",

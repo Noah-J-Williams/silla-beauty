@@ -36,7 +36,7 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} collection-page collection-page--silla">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
@@ -97,7 +97,7 @@
       </facet-filters-form>
     {%- endif -%}
 
-    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+    <div class="collection-page__body {% if section.settings.filter_type == 'vertical' %}facets-vertical page-width{% endif %}">
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
@@ -140,9 +140,15 @@
           </div>
         {%- else -%}
           <div
-            class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+            class="collection collection--silla{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
           >
             <div class="loading-overlay gradient"></div>
+            <div class="collection-toolbar page-width{% if section.settings.filter_type == 'vertical' %} collection-toolbar--vertical{% endif %}">
+              <div class="collection-toolbar__meta">
+                <p class="collection-toolbar__label">Browse the collection</p>
+                <p class="collection-toolbar__count">{{ collection.products_count }} products</p>
+              </div>
+            </div>
             <ul
               id="product-grid"
               data-id="{{ section.id }}"

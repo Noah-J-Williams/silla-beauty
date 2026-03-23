@@ -81,9 +81,13 @@
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
           id="ProductInfo-{{ section.id }}"
-          class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
+          class="product__info-container product__info-container--silla{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
+          {%- assign rating_value = product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value -%}
+          {%- assign rating_count = product.metafields.reviews.rating_count | default: product.metafields.reviews.rating.value.count -%}
+          {%- assign category_label = product.type | default: product.vendor -%}
+          {%- assign short_description = product.description | strip_html | truncatewords: 24 -%}
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -104,6 +108,20 @@
                       {{ product.title | escape }}
                     </h2>
                   </a>
+                  {%- if category_label != blank -%}
+                    <p class="product__eyebrow caption-with-letter-spacing">{{ category_label | escape }}</p>
+                  {%- endif -%}
+                  {%- if rating_value != blank -%}
+                    <div class="product__review-summary" aria-label="{{ rating_value }} out of 5 stars{% if rating_count != blank %} from {{ rating_count }} reviews{% endif %}">
+                      <span class="product__review-stars" aria-hidden="true">★★★★★</span>
+                      <span class="product__review-copy">{{ rating_value }}{% if rating_count != blank %} · {{ rating_count }} reviews{% endif %}</span>
+                    </div>
+                  {%- endif -%}
+                  {%- if short_description != blank -%}
+                    <div class="product__summary rte">
+                      <p>{{ short_description }}</p>
+                    </div>
+                  {%- endif -%}
                 </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
@@ -193,7 +211,7 @@
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <div class="product__description product__description--silla rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
                   </div>
                 {%- endif -%}
