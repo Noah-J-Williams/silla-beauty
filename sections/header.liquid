@@ -28,13 +28,6 @@
     }
   {%- endif -%}
 
-  {%- if section.settings.menu_type_desktop != "drawer" -%}
-    @media screen and (min-width: 990px) {
-      header-drawer {
-        display: none;
-      }
-    }
-  {%- endif -%}
 
   .menu-drawer-container {
     display: flex;
@@ -98,6 +91,54 @@
       padding-bottom: {{ section.settings.padding_bottom | times: 0.8 | round: 0 }}px;
     }
   }
+
+
+  .header--silla {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .header__drawer-slot {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 4.4rem;
+  }
+
+  .header--silla .header__heading {
+    grid-column: 2;
+    justify-self: center;
+    margin: 0;
+  }
+
+  .header--silla .header__heading-link {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .header__icons--silla {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .header--silla .desktop-localization-wrapper,
+  .header--silla .header__inline-menu,
+  .header--silla .header__submenu {
+    display: none;
+  }
+
+  .header--silla .header__icon--account {
+    display: none;
+  }
+
+  @media screen and (min-width: 990px) {
+    .header--silla {
+      grid-template-columns: 6rem 1fr 6rem;
+    }
+  }
+
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -136,27 +177,24 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
-    {%- liquid
-      if section.settings.menu != blank
-        render 'header-drawer'
-      endif
-
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank
-        render 'header-search', input_id: 'Search-In-Modal-1'
-      endif
-    -%}
-
-    {%- if section.settings.logo_position != 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+  <header class="header header--silla page-width drawer-menu{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+    <div class="header__drawer-slot">
+      {%- if section.settings.menu != blank -%}
+        {% render 'header-drawer' %}
       {%- endif -%}
+    </div>
+
+    {%- if request.page_type == 'index' -%}
+      <h1 class="header__heading">
+    {%- else -%}
+      <div class="header__heading">
+    {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
         {%- if settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
             {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
             {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
             {{
               settings.logo
@@ -175,56 +213,13 @@
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>
-      {%- if request.page_type == 'index' -%}
-        </h1>
-      {%- endif -%}
+    {%- if request.page_type == 'index' -%}
+      </h1>
+    {%- else -%}
+      </div>
     {%- endif -%}
 
-    {%- liquid
-  if section.settings.menu != blank
-    if section.settings.menu_type_desktop == 'dropdown'
-      render 'header-dropdown-menu'
-    elsif section.settings.menu_type_desktop != 'drawer'
-      render 'header-mega-menu'
-    endif
-  endif
--%}
-
-
-    {%- if section.settings.logo_position == 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
-      {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
-          <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{
-              settings.logo
-              | image_url: width: 600
-              | image_tag:
-                class: 'header__heading-logo',
-                widths: widths,
-                height: logo_height,
-                width: settings.logo_width,
-                alt: logo_alt,
-                sizes: sizes,
-                preload: true
-            }}
-          </div>
-        {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
-        {%- endif -%}
-      </a>
-      {%- if request.page_type == 'index' -%}
-        </h1>
-      {%- endif -%}
-    {%- endif -%}
-
-    <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
+    <div class="header__icons header__icons--silla{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form class="small-hide medium-hide" data-prevent-hide>
