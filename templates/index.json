@@ -279,6 +279,8 @@
     "sb_permanent",
     "services_ornament",
     "sb_testimonials",
-    "sb_faq"
+    "sb_faq",
+    "sb_location",
+    "sb_final"
   ]
 }

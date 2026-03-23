@@ -9,13 +9,6 @@
  */
 {
   "sections": {
-    "sb_services_page_header_Wo4t8G": {
-      "type": "sb-services-page-header",
-      "settings": {
-        "heading": "Services",
-        "subheading": "Tailored treatments for skin, body, and beauty."
-      }
-    },
     "sb_services_page_grid_H9c4Vn": {
       "type": "sb-services-page-grid",
       "blocks": {
@@ -176,7 +169,6 @@
     }
   },
   "order": [
-    "sb_services_page_header_Wo4t8G",
     "sb_services_page_grid_H9c4Vn",
     "sb_services_page_details_F3nCh9",
     "sb_services_page_cta_T9q2cM"
