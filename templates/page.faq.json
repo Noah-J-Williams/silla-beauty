@@ -1,0 +1,132 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq_intro": {
+      "type": "sb-page-intro",
+      "blocks": {
+        "faq_intro_link_shipping": {
+          "type": "link",
+          "settings": {
+            "label": "Shipping policy",
+            "link": "/policies/shipping-policy"
+          }
+        },
+        "faq_intro_link_returns": {
+          "type": "link",
+          "settings": {
+            "label": "Return policy",
+            "link": "/policies/refund-policy"
+          }
+        },
+        "faq_intro_link_contact": {
+          "type": "link",
+          "settings": {
+            "label": "Contact us",
+            "link": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "faq_intro_link_shipping",
+        "faq_intro_link_returns",
+        "faq_intro_link_contact"
+      ],
+      "settings": {
+        "eyebrow": "Support",
+        "heading": "",
+        "text": "<p>Find quick answers for orders, shipping, returns, and shopping support.</p>",
+        "show_page_content": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 20
+      }
+    },
+    "faq_items": {
+      "type": "sb-faq",
+      "blocks": {
+        "faq_item_1": {
+          "type": "item",
+          "settings": {
+            "question": "When will my order ship?",
+            "answer": "<p>Orders are processed according to the timelines listed in our shipping policy. For the most current delivery and processing details, please review the shipping policy page before ordering.</p>"
+          }
+        },
+        "faq_item_2": {
+          "type": "item",
+          "settings": {
+            "question": "Do you accept returns?",
+            "answer": "<p>Return eligibility and refund timing are outlined in our return policy. Please review that page for the most up-to-date details before purchasing.</p>"
+          }
+        },
+        "faq_item_3": {
+          "type": "item",
+          "settings": {
+            "question": "How do I choose the right products?",
+            "answer": "<p>Start with the featured edits on the homepage or contact us if you need help narrowing down a routine. We can help point you toward the best fit for your goals.</p>"
+          }
+        },
+        "faq_item_4": {
+          "type": "item",
+          "settings": {
+            "question": "Can I ask a question before I order?",
+            "answer": "<p>Yes. If you need help before placing an order, use the contact page and we will point you in the right direction.</p>"
+          }
+        },
+        "faq_item_5": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I find shipping and return details quickly?",
+            "answer": "<p>Use the quick links at the top of this page to jump directly to the shipping or return policy pages.</p>"
+          }
+        },
+        "faq_item_6": {
+          "type": "item",
+          "settings": {
+            "question": "Are the products on the site curated?",
+            "answer": "<p>Yes. The storefront is designed as a considered edit of skincare, studio favorites, and beauty essentials rather than a large catalog.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_1",
+        "faq_item_2",
+        "faq_item_3",
+        "faq_item_4",
+        "faq_item_5",
+        "faq_item_6"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "faq_cta": {
+      "type": "sb-final-cta",
+      "settings": {
+        "heading": "Still need help?",
+        "text": "If you cannot find the answer here, reach out and we will help with your order or product questions.",
+        "button_label": "CONTACT US",
+        "button_link": "shopify://pages/contact",
+        "color_scheme": "scheme-1",
+        "padding_top": 16,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "faq_intro",
+    "faq_items",
+    "faq_cta"
+  ]
+}

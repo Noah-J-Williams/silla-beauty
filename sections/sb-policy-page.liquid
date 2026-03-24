@@ -1,0 +1,238 @@
+{{ 'section-sb-info-pages.css' | asset_url | stylesheet_tag }}
+
+{%- assign sb_section_spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: sb_section_spacing_class %}
+
+{%- liquid
+  assign current_policy = policy
+  assign policy_type = 'general'
+  assign shipping_url = shop.shipping_policy.url
+  assign refund_url = shop.refund_policy.url
+  assign faq_url = routes.root_url | append: 'pages/faq'
+  assign contact_url = routes.root_url | append: 'pages/contact'
+
+  if current_policy == blank
+    if request.path contains '/policies/shipping-policy'
+      assign current_policy = shop.shipping_policy
+      assign policy_type = 'shipping'
+    elsif request.path contains '/policies/refund-policy'
+      assign current_policy = shop.refund_policy
+      assign policy_type = 'refund'
+    endif
+  endif
+
+  if current_policy != blank
+    if current_policy.url contains 'shipping-policy'
+      assign policy_type = 'shipping'
+    elsif current_policy.url contains 'refund-policy'
+      assign policy_type = 'refund'
+    endif
+  endif
+
+  if shipping_url == blank
+    assign shipping_url = routes.root_url | append: 'policies/shipping-policy'
+  endif
+
+  if refund_url == blank
+    assign refund_url = routes.root_url | append: 'policies/refund-policy'
+  endif
+
+  case policy_type
+    when 'shipping'
+      assign policy_eyebrow = section.settings.shipping_eyebrow
+      assign policy_intro = section.settings.shipping_intro
+      assign fallback_title = 'Shipping policy'
+    when 'refund'
+      assign policy_eyebrow = section.settings.refund_eyebrow
+      assign policy_intro = section.settings.refund_intro
+      assign fallback_title = 'Return policy'
+    else
+      assign policy_eyebrow = section.settings.general_eyebrow
+      assign policy_intro = section.settings.general_intro
+      assign fallback_title = 'Store policy'
+  endcase
+
+  assign policy_title = fallback_title
+  if current_policy != blank and current_policy.title != blank
+    assign policy_title = current_policy.title
+  endif
+
+  assign show_shipping_link = false
+  assign show_refund_link = false
+  if shop.shipping_policy.body != blank or policy_type == 'shipping'
+    assign show_shipping_link = true
+  endif
+  if shop.refund_policy.body != blank or policy_type == 'refund'
+    assign show_refund_link = true
+  endif
+-%}
+
+<section class="sb-section sb-policy-page color-{{ section.settings.color_scheme }} {{ sb_section_spacing_class }}">
+  <div class="page-width">
+    <div class="sb-policy-page__shell">
+      {% if policy_eyebrow != blank %}
+        <p class="sb-policy-page__eyebrow">{{ policy_eyebrow }}</p>
+      {% endif %}
+
+      <h1 class="sb-policy-page__title">{{ policy_title }}</h1>
+
+      {% if policy_intro != blank %}
+        <div class="sb-policy-page__intro rte">
+          {{ policy_intro }}
+        </div>
+      {% endif %}
+
+      <div class="sb-policy-page__nav" role="navigation" aria-label="Policy links">
+        {% if show_shipping_link %}
+          <a
+            class="sb-policy-page__nav-link{% if policy_type == 'shipping' %} sb-policy-page__nav-link--active{% endif %}"
+            href="{{ shipping_url }}"
+          >
+            Shipping policy
+          </a>
+        {% endif %}
+
+        {% if show_refund_link %}
+          <a
+            class="sb-policy-page__nav-link{% if policy_type == 'refund' %} sb-policy-page__nav-link--active{% endif %}"
+            href="{{ refund_url }}"
+          >
+            Return policy
+          </a>
+        {% endif %}
+
+        <a class="sb-policy-page__nav-link" href="{{ faq_url }}">FAQ</a>
+      </div>
+
+      <div class="sb-policy-page__grid">
+        <div class="sb-policy-page__panel">
+          {% if current_policy != blank and current_policy.body != blank %}
+            <div class="sb-policy-page__body rte">
+              {{ current_policy.body }}
+            </div>
+          {% else %}
+            <div class="sb-policy-page__empty">
+              {% if request.design_mode %}
+                <p>Add this policy in Shopify admin under Settings > Policies to populate this page automatically.</p>
+              {% else %}
+                <p>This policy is currently unavailable. Please contact us if you need help.</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        <aside class="sb-policy-page__support">
+          <h2 class="sb-policy-page__support-title">{{ section.settings.support_heading }}</h2>
+
+          {% if section.settings.support_text != blank %}
+            <p class="sb-policy-page__support-text">{{ section.settings.support_text }}</p>
+          {% endif %}
+
+          <div class="sb-policy-page__support-actions">
+            <a class="button button--secondary" href="{{ faq_url }}">{{ section.settings.faq_button_label }}</a>
+            <a class="button" href="{{ contact_url }}">{{ section.settings.contact_button_label }}</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Policy Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "shipping_eyebrow",
+      "label": "Shipping eyebrow",
+      "default": "Orders & delivery"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping_intro",
+      "label": "Shipping intro",
+      "default": "<p>Review shipping timelines, order processing, and delivery information for Silla Beauty purchases.</p>"
+    },
+    {
+      "type": "text",
+      "id": "refund_eyebrow",
+      "label": "Returns eyebrow",
+      "default": "Returns & refunds"
+    },
+    {
+      "type": "richtext",
+      "id": "refund_intro",
+      "label": "Returns intro",
+      "default": "<p>Find return and refund details before ordering, including eligibility, timing, and how to get support.</p>"
+    },
+    {
+      "type": "text",
+      "id": "general_eyebrow",
+      "label": "Fallback eyebrow",
+      "default": "Store policy"
+    },
+    {
+      "type": "richtext",
+      "id": "general_intro",
+      "label": "Fallback intro",
+      "default": "<p>Helpful policy information for shopping with Silla Beauty.</p>"
+    },
+    {
+      "type": "text",
+      "id": "support_heading",
+      "label": "Support heading",
+      "default": "Need help with an order?"
+    },
+    {
+      "type": "text",
+      "id": "support_text",
+      "label": "Support text",
+      "default": "Visit the FAQ for quick answers or reach out if you need help before or after placing an order."
+    },
+    {
+      "type": "text",
+      "id": "faq_button_label",
+      "label": "FAQ button label",
+      "default": "VIEW FAQ"
+    },
+    {
+      "type": "text",
+      "id": "contact_button_label",
+      "label": "Contact button label",
+      "default": "CONTACT US"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 88
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Policy Page"
+    }
+  ]
+}
+{% endschema %}

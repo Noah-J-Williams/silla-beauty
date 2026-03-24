@@ -1,0 +1,138 @@
+{{ 'section-sb-info-pages.css' | asset_url | stylesheet_tag }}
+
+{%- assign sb_section_spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: sb_section_spacing_class %}
+
+{%- liquid
+  assign intro_heading = section.settings.heading | strip
+  assign intro_text = section.settings.text
+
+  if intro_heading == blank
+    assign intro_heading = page.title
+  endif
+
+  if intro_text == blank and section.settings.show_page_content and page.content != blank
+    assign intro_text = page.content
+  endif
+-%}
+
+<section class="sb-section sb-page-intro color-{{ section.settings.color_scheme }} {{ sb_section_spacing_class }}">
+  <div class="page-width">
+    <div class="sb-page-intro__inner">
+      {% if section.settings.eyebrow != blank %}
+        <p class="sb-page-intro__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if intro_heading != blank %}
+        <h1 class="sb-page-intro__heading">{{ intro_heading }}</h1>
+      {% endif %}
+
+      {% if intro_text != blank %}
+        <div class="sb-page-intro__text rte">
+          {{ intro_text }}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="sb-page-intro__links" role="list">
+          {% for block in section.blocks %}
+            {% if block.settings.label != blank and block.settings.link != blank %}
+              <a class="sb-page-intro__link" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                {{ block.settings.label }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Page Intro",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Support"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading override"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Intro text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_content",
+      "label": "Use page content if intro text is blank",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Quick link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Contact us"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "SB Page Intro",
+      "blocks": [
+        {
+          "type": "link"
+        },
+        {
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
