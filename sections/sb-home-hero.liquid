@@ -1,0 +1,247 @@
+{%- assign sb_section_spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: sb_section_spacing_class %}
+
+{%- liquid
+  assign hero_loading = 'lazy'
+  assign hero_fetchpriority = 'auto'
+  assign homepage_seo_title = 'Silla Beauty | Skincare, Studio Favorites & Beauty Essentials'
+  assign homepage_seo_description = 'Shop curated skincare, studio favorites, and elevated beauty essentials from Silla Beauty. Minimal, results-driven products selected for daily ritual.'
+  assign hero_image_alt = section.settings.image_alt_override | strip
+
+  if section.index == 1
+    assign hero_loading = 'eager'
+    assign hero_fetchpriority = 'high'
+  endif
+
+  if hero_image_alt == blank and section.settings.image != blank
+    assign hero_image_alt = section.settings.image.alt
+  endif
+-%}
+
+<section
+  class="sb-home-hero color-{{ section.settings.color_scheme }} {{ sb_section_spacing_class }}"
+  style="--sb-home-hero-overlay-opacity: {{ section.settings.overlay_opacity | times: 0.01 }};"
+>
+  <div class="sb-home-hero__media">
+    {% if section.settings.image != blank %}
+      <picture>
+        {% if section.settings.image_mobile != blank %}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ section.settings.image_mobile | image_url: width: 480 }} 480w,
+              {{ section.settings.image_mobile | image_url: width: 750 }} 750w,
+              {{ section.settings.image_mobile | image_url: width: 1100 }} 1100w
+            "
+            sizes="100vw"
+          >
+        {% endif %}
+
+        {{
+          section.settings.image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'sb-home-hero__image',
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            loading: hero_loading,
+            fetchpriority: hero_fetchpriority,
+            alt: hero_image_alt | escape
+        }}
+      </picture>
+    {% else %}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'sb-home-hero__placeholder placeholder-svg' }}
+    {% endif %}
+  </div>
+
+  <div class="sb-home-hero__content-shell page-width">
+    <div class="sb-home-hero__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="sb-home-kicker">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="sb-home-hero__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="sb-home-hero__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <div class="sb-home-hero__actions">
+          <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="sb-home-hero__trust list-unstyled" role="list">
+          {% for block in section.blocks %}
+            {% assign trust_label = block.settings.label | strip %}
+
+            {% if trust_label != blank %}
+              <li class="sb-home-hero__trust-item" {{ block.shopify_attributes }}>
+                {% if block.settings.link != blank %}
+                  <a class="sb-home-hero__trust-link" href="{{ block.settings.link }}">{{ trust_label }}</a>
+                {% else %}
+                  <span class="sb-home-hero__trust-text">{{ trust_label }}</span>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if request.page_type == 'index' %}
+  {% comment %}
+    Keep homepage structured data lightweight and factual: a single WebPage
+    entity tied to the hero image and the homepage search description.
+  {% endcomment %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": {{ homepage_seo_title | json }},
+      "headline": {{ section.settings.heading | default: homepage_seo_title | strip_html | json }},
+      "description": {{ homepage_seo_description | json }},
+      "url": {{ canonical_url | json }},
+      "inLanguage": {{ request.locale.iso_code | json }}{% if section.settings.image != blank %},
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": {{ section.settings.image | image_url: width: 2400 | prepend: 'https:' | json }},
+        "width": {{ section.settings.image.width | json }},
+        "height": {{ section.settings.image.height | json }}
+      }{% endif %}
+    }
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "SB Home Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Silla Beauty"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop the Silla edit."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Supporting copy",
+      "default": "Skincare, studio favorites, and elevated daily essentials."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP THE EDIT"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_override",
+      "label": "Image alt text override"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 35
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Secure checkout"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Optional link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "SB Home Hero",
+      "blocks": [
+        {
+          "type": "trust"
+        },
+        {
+          "type": "trust"
+        },
+        {
+          "type": "trust"
+        },
+        {
+          "type": "trust"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

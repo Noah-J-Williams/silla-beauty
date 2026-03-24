@@ -1,0 +1,242 @@
+{%- assign sb_section_spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: sb_section_spacing_class %}
+
+<section class="sb-home-feature-stack color-{{ section.settings.color_scheme }} {{ sb_section_spacing_class }}">
+  <div class="sb-home-feature-stack__blocks">
+    {% for block in section.blocks %}
+      {% comment %}
+        Resolve each feature block from the most specific source available:
+        custom copy/image first, then collection, then product defaults.
+      {% endcomment %}
+      {%- liquid
+        assign featured_heading = block.settings.heading
+        assign featured_text = block.settings.text
+        assign featured_link = block.settings.button_link
+        assign featured_button = block.settings.button_label
+        assign featured_image = block.settings.image
+        assign featured_image_alt = block.settings.image_alt_override | strip
+        assign featured_eyebrow = block.settings.eyebrow
+        assign featured_type = ''
+
+        if block.settings.collection != blank
+          assign featured_type = 'collection'
+          if featured_heading == blank
+            assign featured_heading = block.settings.collection.title
+          endif
+          if featured_text == blank and block.settings.collection.description != blank
+            assign featured_text = block.settings.collection.description | strip_html | truncatewords: 18
+          endif
+          if featured_link == blank
+            assign featured_link = block.settings.collection.url
+          endif
+          if featured_image == blank and block.settings.collection.featured_image != blank
+            assign featured_image = block.settings.collection.featured_image
+          endif
+        endif
+
+        if block.settings.product != blank
+          assign featured_type = 'product'
+          if featured_heading == blank
+            assign featured_heading = block.settings.product.title
+          endif
+          if featured_text == blank and block.settings.product.description != blank
+            assign featured_text = block.settings.product.description | strip_html | truncatewords: 18
+          endif
+          if featured_link == blank
+            assign featured_link = block.settings.product.url
+          endif
+          if featured_image == blank and block.settings.product.featured_media != blank
+            assign featured_image = block.settings.product.featured_media
+          endif
+        endif
+
+        if featured_eyebrow == blank
+          if featured_type == 'product'
+            assign featured_eyebrow = 'Featured product'
+          elsif featured_type == 'collection'
+            assign featured_eyebrow = 'Featured collection'
+          else
+            assign featured_eyebrow = 'Featured edit'
+          endif
+        endif
+
+        if featured_button == blank
+          if featured_type == 'product'
+            assign featured_button = 'SHOP PRODUCT'
+          elsif featured_type == 'collection'
+            assign featured_button = 'SHOP COLLECTION'
+          else
+            assign featured_button = 'EXPLORE'
+          endif
+        endif
+
+        if featured_heading == blank
+          assign featured_heading = 'Curated highlight'
+        endif
+
+      -%}
+
+      <article class="sb-home-feature-block" {{ block.shopify_attributes }}>
+        <div class="sb-home-feature-block__media">
+          {% if featured_link != blank %}
+            <a class="sb-home-feature-block__media-link" href="{{ featured_link }}" aria-label="{{ featured_heading | escape }}">
+          {% endif %}
+
+          {% if featured_image != blank %}
+            {{
+              featured_image
+              | image_url: width: 1800
+              | image_tag:
+                class: 'sb-home-feature-block__image',
+                widths: '750, 1100, 1500, 1800',
+                sizes: '(min-width: 990px) 64vw, 100vw',
+                loading: 'lazy',
+                alt: featured_image_alt | default: featured_image.alt | escape
+            }}
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'sb-home-feature-block__placeholder placeholder-svg' }}
+          {% endif %}
+
+          {% if featured_link != blank %}
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="page-width">
+          <div class="sb-home-feature-block__content">
+            <div class="sb-home-feature-block__copy">
+              {% if featured_eyebrow != blank %}
+                <p class="sb-home-kicker">{{ featured_eyebrow }}</p>
+              {% endif %}
+
+              <h2 class="sb-home-feature-block__title">
+                {% if featured_link != blank %}
+                  <a href="{{ featured_link }}">{{ featured_heading }}</a>
+                {% else %}
+                  {{ featured_heading }}
+                {% endif %}
+              </h2>
+
+              {% if featured_text != blank %}
+                <p class="sb-home-feature-block__text">{{ featured_text }}</p>
+              {% endif %}
+            </div>
+
+            {% if featured_button != blank and featured_link != blank %}
+              <div>
+                <a class="button" href="{{ featured_link }}">{{ featured_button }}</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Home Feature Stack",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Supporting text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt_override",
+          "label": "Image alt text override"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "SB Home Feature Stack",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

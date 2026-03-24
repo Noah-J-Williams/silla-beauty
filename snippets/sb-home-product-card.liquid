@@ -1,0 +1,57 @@
+{% comment %}
+  Minimal homepage product card used by the curated home product grid.
+
+  Accepts:
+  - product: Product object (optional)
+  - loading: Image loading value, defaults to lazy
+  - placeholder_index: Placeholder number for onboarding states (optional)
+{% endcomment %}
+
+{%- assign image_loading = loading | default: 'lazy' -%}
+
+{%- if product != blank -%}
+  <article class="sb-home-product-card">
+    <a class="sb-home-product-card__media-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      <div class="sb-home-product-card__media">
+        {%- if product.featured_media != blank -%}
+          {{
+            product.featured_media
+            | image_url: width: 900
+            | image_tag:
+              class: 'sb-home-product-card__image',
+              widths: '320, 480, 640, 900',
+              sizes: '(min-width: 990px) calc((100vw - 15rem) / 3), (min-width: 560px) calc((100vw - 6rem) / 2), calc(100vw - 4rem)',
+              loading: image_loading,
+              alt: product.featured_media.alt | default: product.title | escape
+          }}
+        {%- else -%}
+          {{ 'product-apparel-1' | placeholder_svg_tag: 'sb-home-product-card__placeholder placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </a>
+
+    <div class="sb-home-product-card__content">
+      <h3 class="sb-home-product-card__title">
+        <a href="{{ product.url }}">{{ product.title | escape }}</a>
+      </h3>
+
+      <div class="sb-home-product-card__price">
+        {% render 'price', product: product, price_class: '' %}
+      </div>
+    </div>
+  </article>
+{%- else -%}
+  {%- assign placeholder_number = placeholder_index | default: 1 -%}
+  {%- assign placeholder_key = 'product-apparel-' | append: placeholder_number -%}
+  <article class="sb-home-product-card">
+    <div class="sb-home-product-card__media">
+      {{ placeholder_key | placeholder_svg_tag: 'sb-home-product-card__placeholder placeholder-svg' }}
+    </div>
+    <div class="sb-home-product-card__content">
+      <h3 class="sb-home-product-card__title">Curated product</h3>
+      <div class="sb-home-product-card__price">
+        <span class="price">$00.00</span>
+      </div>
+    </div>
+  </article>
+{%- endif -%}

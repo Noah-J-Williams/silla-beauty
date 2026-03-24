@@ -15,18 +15,27 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- liquid
+      assign meta_title = page_title
+      assign meta_description = page_description
+      if request.page_type == 'index'
+        assign meta_title = 'Silla Beauty | Skincare, Studio Favorites & Beauty Essentials'
+        assign meta_description = 'Shop curated skincare, studio favorites, and elevated beauty essentials from Silla Beauty. Minimal, results-driven products selected for daily ritual.'
+      endif
+    -%}
+
     <title>
-      {{ page_title }}
+      {{ meta_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- unless meta_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if meta_description %}
+      <meta name="description" content="{{ meta_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', seo_title: meta_title, seo_description: meta_description %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -257,6 +266,9 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'sb-theme.css' | asset_url | stylesheet_tag }}
+    {%- if request.page_type == 'index' -%}
+      {{ 'section-sb-homepage.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}

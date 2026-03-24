@@ -1476,3 +1476,225 @@ button.shopify-payment-button__button--unbranded:focus-visible {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* Scandinavian ecommerce refresh for shared UI. */
+
+:root {
+  --sb-bg: #f5f2ed;
+  --sb-surface: #fbf8f4;
+  --sb-text: #27231f;
+  --sb-muted: #6f685f;
+  --sb-accent: #38342f;
+  --sb-border: #ddd6cc;
+  --sb-divider: #ebe4db;
+  --sb-radius: 8px;
+  --sb-shadow: 0 14px 34px rgba(39, 35, 31, 0.06);
+  --sb-button-padding-y: 1.35rem;
+  --sb-button-padding-x: 2.2rem;
+  --sb-button-radius: 0.6rem;
+  --sb-button-shadow: none;
+}
+
+body {
+  background-color: var(--sb-bg);
+  color: var(--sb-text);
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  color: var(--sb-text);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+p,
+.subtitle,
+.rte {
+  color: var(--sb-muted);
+}
+
+.button,
+.shopify-challenge__button,
+.customer button,
+button.shopify-payment-button__button--unbranded {
+  min-height: 4.8rem;
+  padding: var(--sb-button-padding-y) var(--sb-button-padding-x);
+  border-radius: var(--sb-button-radius);
+  border: 1px solid rgba(39, 35, 31, 0.14);
+  background: var(--sb-accent);
+  color: #fbf8f4;
+  box-shadow: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.button.button--secondary,
+.shopify-payment-button__button--unbranded.button--secondary {
+  background: transparent;
+  color: var(--sb-text);
+  border-color: rgba(39, 35, 31, 0.18);
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover,
+button.shopify-payment-button__button--unbranded:hover {
+  background: #4a453f;
+  color: #fbf8f4;
+  transform: translateY(-1px);
+}
+
+.button.button--secondary:hover {
+  background: rgba(39, 35, 31, 0.05);
+  color: var(--sb-text);
+}
+
+.button::before,
+.button::after,
+.shopify-challenge__button::before,
+.shopify-challenge__button::after,
+.customer button::before,
+.customer button::after,
+button.shopify-payment-button__button--unbranded::before,
+button.shopify-payment-button__button--unbranded::after {
+  display: none;
+}
+
+.header-wrapper {
+  background: rgba(251, 248, 244, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--sb-border);
+  box-shadow: none;
+}
+
+.header__heading .h2,
+.header__heading-link {
+  color: var(--sb-text);
+  letter-spacing: -0.02em;
+}
+
+.header__menu-item {
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sb-muted);
+}
+
+.header__menu-item:hover,
+.header__active-menu-item {
+  color: var(--sb-text);
+}
+
+.header__icon .svg-wrapper {
+  color: var(--sb-text);
+}
+
+.header--silla .header__icon,
+.header--silla .header__icon--summary {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.header--silla .header__icon:hover,
+.header--silla .header__icon--summary:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--sb-border);
+}
+
+.header__drawer-slot .header__icon {
+  background: transparent;
+}
+
+.card-wrapper .card,
+.sb-card,
+.sb-final-cta__inner,
+.footer .sb-footer__newsletter,
+.product__info-container--silla,
+.collection-hero--silla .collection-hero__image-container {
+  border-radius: 1rem;
+  border: 1px solid var(--sb-border);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: none;
+}
+
+.card-wrapper .card__content {
+  padding: 1.6rem;
+}
+
+.card__heading {
+  color: var(--sb-text);
+}
+
+.card__category,
+.price--end,
+.price__sale,
+.price__regular {
+  color: var(--sb-text);
+}
+
+.field__input,
+.select__select,
+.customer .field input,
+.customer select {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.field:before,
+.select:before,
+.customer .field:before,
+.localization-form__select:before {
+  box-shadow: none;
+  border-color: var(--sb-border);
+}
+
+.field:after,
+.select:after,
+.customer .field:after,
+.localization-form__select:after {
+  box-shadow: none;
+}
+
+.footer,
+.sb-footer {
+  border-top: 1px solid var(--sb-border);
+  background: var(--sb-surface);
+}
+
+.footer .sb-footer__newsletter,
+.footer .sb-footer__main,
+.footer .sb-footer__column {
+  color: var(--sb-text);
+}
+
+.footer .sb-footer__newsletter-copy,
+.footer .sb-footer__brand-copy,
+.footer .footer-block__details-content,
+.footer .copyright__content {
+  color: var(--sb-muted);
+}
+
+.footer .newsletter-form__field-wrapper .field {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.footer .newsletter-form__button {
+  color: var(--sb-text);
+}

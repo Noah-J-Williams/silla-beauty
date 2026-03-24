@@ -9,278 +9,149 @@
  */
 {
   "sections": {
-    "sb_hero": {
-      "type": "sb-hero-horizon",
+    "sb_home_hero": {
+      "type": "sb-home-hero",
+      "blocks": {
+        "sb_home_trust_1": {
+          "type": "trust",
+          "settings": {
+            "label": "Secure checkout",
+            "link": ""
+          }
+        },
+        "sb_home_trust_2": {
+          "type": "trust",
+          "settings": {
+            "label": "Shipping & returns",
+            "link": "/pages/faq"
+          }
+        },
+        "sb_home_trust_3": {
+          "type": "trust",
+          "settings": {
+            "label": "Studio-curated selection",
+            "link": ""
+          }
+        },
+        "sb_home_trust_4": {
+          "type": "trust",
+          "settings": {
+            "label": "Local PEI studio",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "sb_home_trust_1",
+        "sb_home_trust_2",
+        "sb_home_trust_3",
+        "sb_home_trust_4"
+      ],
       "settings": {
-        "heading": "<p>Beauty rituals rooted in results</p>",
-        "subheading": "Discover curated skincare, elevated treatments, and modern self-care designed to help your glow feel effortless.",
-        "badge_text": "",
-        "primary_label": "SHOP BESTSELLERS",
-        "primary_link": "",
-        "secondary_label": "BOOK A SERVICE",
-        "secondary_link": "",
-        "hero_image": "shopify://shop_images/logo-11-silla-final.png",
-        "hero_image_mobile": "shopify://shop_images/silla_working.jpg",
-        "overlay_gradient": false,
-        "content_alignment": "left",
+        "eyebrow": "",
+        "heading": "Skincare and studio favorites.",
+        "subheading": "Shop the Silla Beauty selection of elevated beauty essentials.",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify://collections/all",
+        "image": "shopify://shop_images/SillaBeauty-1.jpg",
+        "image_mobile": "shopify://shop_images/SillaBeauty-1.jpg",
+        "image_alt_override": "Silla Beauty skincare and studio favorites hero image",
+        "overlay_opacity": 35,
         "color_scheme": "scheme-1",
-        "padding_top": 56,
-        "padding_bottom": 56
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
-    "sb_products": {
-      "type": "sb-products-collection",
+    "sb_home_features": {
+      "type": "sb-home-feature-stack",
+      "blocks": {
+        "sb_home_feature_1": {
+          "type": "feature",
+          "settings": {
+            "eyebrow": "New in",
+            "heading": "New skincare arrivals",
+            "text": "Fresh formulas and daily essentials.",
+            "button_label": "SHOP NEW IN",
+            "button_link": "shopify://collections/all",
+            "product": "",
+            "collection": "",
+            "image": "shopify://shop_images/HibiscusStylecopy_png.webp",
+            "image_alt_override": "New skincare arrivals at Silla Beauty"
+          }
+        },
+        "sb_home_feature_2": {
+          "type": "feature",
+          "settings": {
+            "eyebrow": "Best sellers",
+            "heading": "Best-selling skincare",
+            "text": "The formulas clients return for most.",
+            "button_label": "SHOP BEST SELLERS",
+            "button_link": "shopify://collections/all",
+            "product": "",
+            "collection": "",
+            "image": "shopify://shop_images/serum-71-circadia-2_jpg_webp.jpg",
+            "image_alt_override": "Best-selling skincare products at Silla Beauty"
+          }
+        },
+        "sb_home_feature_3": {
+          "type": "feature",
+          "settings": {
+            "eyebrow": "Studio favorites",
+            "heading": "Studio beauty favorites",
+            "text": "Selected from the treatment-room shelf.",
+            "button_label": "SHOP STUDIO FAVORITES",
+            "button_link": "shopify://collections/all",
+            "product": "",
+            "collection": "",
+            "image": "shopify://shop_images/Vanilla-Mint.jpg",
+            "image_alt_override": "Studio beauty favorites curated by Silla Beauty"
+          }
+        },
+        "sb_home_feature_4": {
+          "type": "feature",
+          "settings": {
+            "eyebrow": "Daily essentials",
+            "heading": "Everyday beauty essentials",
+            "text": "Daily staples for a complete routine.",
+            "button_label": "SHOP ESSENTIALS",
+            "button_link": "shopify://collections/all",
+            "product": "",
+            "collection": "",
+            "image": "shopify://shop_images/SPOTSTOP.jpg",
+            "image_alt_override": "Everyday beauty essentials for daily ritual"
+          }
+        }
+      },
+      "block_order": [
+        "sb_home_feature_1",
+        "sb_home_feature_2",
+        "sb_home_feature_3",
+        "sb_home_feature_4"
+      ],
       "settings": {
-        "heading": "Bestsellers",
-        "subheading": "A curated edit of client-favorite formulas \u2014 chosen to introduce the collection without overwhelming the page.",
+        "color_scheme": "scheme-1",
+        "padding_top": 28,
+        "padding_bottom": 44
+      }
+    },
+    "sb_home_products": {
+      "type": "sb-home-product-grid",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Best-selling skincare and studio favorites",
+        "subheading": "Some of our best-selling products.",
         "collection": "all",
-        "products_to_show": 4,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_view_all": false,
-        "view_all_label": "Shop all products",
+        "products_to_show": 6,
+        "view_all_label": "SHOP ALL PRODUCTS",
         "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "services_ornament": {
-      "type": "sb-services-ornament",
-      "blocks": {
-        "services_ornament_item_1": {
-          "type": "service",
-          "settings": {
-            "icon": "shopify://shop_images/facial.svg",
-            "label": "Facials",
-            "link": ""
-          }
-        },
-        "services_ornament_item_2": {
-          "type": "service",
-          "settings": {
-            "icon": "shopify://shop_images/needle.svg",
-            "label": "Microneedling",
-            "link": ""
-          }
-        },
-        "services_ornament_item_3": {
-          "type": "service",
-          "settings": {
-            "icon": "shopify://shop_images/jewlery.svg",
-            "label": "Permanent Jewelry",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "services_ornament_item_1",
-        "services_ornament_item_2",
-        "services_ornament_item_3"
-      ],
-      "settings": {
-        "heading": "Shop by ritual",
-        "subheading": "Move from discovery to checkout through the categories clients shop most.",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_feature": {
-      "type": "sb-feature-split",
-      "blocks": {
-        "sb_feature_bullet_1": {
-          "type": "bullet",
-          "settings": {
-            "text": "Skin assessment and lifestyle review"
-          }
-        },
-        "sb_feature_bullet_2": {
-          "type": "bullet",
-          "settings": {
-            "text": "Customized treatment recommendations"
-          }
-        },
-        "sb_feature_bullet_3": {
-          "type": "bullet",
-          "settings": {
-            "text": "Home care guidance for daily rituals"
-          }
-        }
-      },
-      "block_order": [
-        "sb_feature_bullet_1",
-        "sb_feature_bullet_2",
-        "sb_feature_bullet_3"
-      ],
-      "settings": {
-        "heading": "Why clients choose Silla Beauty",
-        "text": "<p>We begin with a thoughtful consultation to understand your goals, then map a plan you can feel confident about.</p>",
-        "button_label": "LEARN MORE",
-        "button_link": "",
-        "image": "shopify://shop_images/care.jpg",
-        "image_position": "left",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_permanent": {
-      "type": "sb-permanent-jewelry",
-      "blocks": {
-        "sb_permanent_bullet_1": {
-          "type": "bullet",
-          "settings": {
-            "text": "Solid gold and modern chain styles"
-          }
-        },
-        "sb_permanent_bullet_2": {
-          "type": "bullet",
-          "settings": {
-            "text": "Custom fit in a serene appointment"
-          }
-        },
-        "sb_permanent_bullet_3": {
-          "type": "bullet",
-          "settings": {
-            "text": "A seamless finish for everyday wear"
-          }
-        }
-      },
-      "block_order": [
-        "sb_permanent_bullet_1",
-        "sb_permanent_bullet_2",
-        "sb_permanent_bullet_3"
-      ],
-      "settings": {
-        "heading": "A second spotlight for signature services",
-        "text": "<p>Choose from delicate chains and a custom fit for a seamless finish that feels effortless every day.</p>",
-        "button_label": "BOOK NOW",
-        "button_link": "",
-        "image": "shopify://shop_images/jewlery.jpg",
-        "image_position": "right",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_testimonials": {
-      "type": "sb-testimonials",
-      "blocks": {
-        "sb_testimonial_1": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "The space is serene and the service feels so personalized.",
-            "name": "Client Name",
-            "label": "Signature facial"
-          }
-        },
-        "sb_testimonial_2": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "Everything felt curated and calm from start to finish.",
-            "name": "Client Name",
-            "label": "Body renewal"
-          }
-        },
-        "sb_testimonial_3": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "I left glowing and already booked my next visit.",
-            "name": "Client Name",
-            "label": "Custom consultation"
-          }
-        }
-      },
-      "block_order": [
-        "sb_testimonial_1",
-        "sb_testimonial_2",
-        "sb_testimonial_3"
-      ],
-      "settings": {
-        "heading": "Client love notes",
-        "subheading": "Proof that the experience feels as good as the results.",
-        "enable_slider": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_faq": {
-      "type": "sb-faq",
-      "blocks": {
-        "sb_faq_1": {
-          "type": "item",
-          "settings": {
-            "question": "How should I prepare for my appointment?",
-            "answer": "<p>Arrive makeup-free if possible, and share any sensitivities during your intake.</p>"
-          }
-        },
-        "sb_faq_2": {
-          "type": "item",
-          "settings": {
-            "question": "Do you offer customized treatment plans?",
-            "answer": "<p>Yes. Every visit begins with a consultation so we can tailor a plan to your goals.</p>"
-          }
-        },
-        "sb_faq_3": {
-          "type": "item",
-          "settings": {
-            "question": "Can I shop products used in the studio?",
-            "answer": "<p>We curate essentials in our online shop so you can continue your ritual at home.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "sb_faq_1",
-        "sb_faq_2",
-        "sb_faq_3"
-      ],
-      "settings": {
-        "heading": "Frequently asked questions",
-        "subheading": "Everything you need to plan your visit.",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_location": {
-      "type": "sb-location-hours",
-      "settings": {
-        "heading": "Visit the studio",
-        "address": "<p>Location</p>",
-        "hours": "<p>Hours</p>",
-        "phone": "Phone",
-        "email": "Email",
-        "button_label": "Get directions",
-        "button_link": "",
-        "map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.618300268146!2d-64.0641547!3d46.8118243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca01739b7c7722f%3A0xa004bb7be34ba7f2!2sSilla%20Beauty!5e0!3m2!1sen!2sca!4v1769777691145!5m2!1sen!2sca",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "sb_final": {
-      "type": "sb-final-cta",
-      "settings": {
-        "heading": "Ready for your next ritual?",
-        "text": "Book your visit and experience the Silla Beauty difference.",
-        "button_label": "Book now",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding_top": 40,
+        "padding_bottom": 88
       }
     }
   },
   "order": [
-    "sb_hero",
-    "sb_products",
-    "sb_feature",
-    "sb_permanent",
-    "services_ornament",
-    "sb_testimonials",
-    "sb_faq",
-    "sb_location",
-    "sb_final"
+    "sb_home_hero",
+    "sb_home_features",
+    "sb_home_products"
   ]
 }
