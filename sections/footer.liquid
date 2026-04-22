@@ -1,25 +1,10 @@
-{% comment %}theme-check-disable UndefinedObject{% endcomment %}
-{{ 'section-footer.css' | asset_url | stylesheet_tag }}
-{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
-  .footer {
-    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
-  }
-
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .footer {
-      margin-top: {{ section.settings.margin_top }}px;
-    }
-
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -28,394 +13,298 @@
 {%- endstyle -%}
 
 {%- liquid
+  assign footer_logo = section.settings.logo | default: settings.logo
+  assign footer_logo_alt = footer_logo.alt | default: shop.name | escape
+  capture footer_logo_sizes
+    echo '(min-width: 990px) '
+    echo section.settings.logo_width
+    echo 'px, 72vw'
+  endcapture
   assign has_social_icons = true
   if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
     assign has_social_icons = false
   endif
 -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding sb-footer">
-  <div class="footer__content-top page-width sb-footer__content-top">
-    {%- if section.settings.newsletter_enable -%}
-      <div class="footer-block__newsletter sb-footer__newsletter">
-        {%- if section.settings.newsletter_heading != blank -%}
-          <p class="sb-footer__eyebrow">Stay in touch</p>
-          <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
-        {%- endif -%}
-        <p class="sb-footer__newsletter-copy">Get first access to new treatments, product drops, and beauty rituals from Silla Beauty.</p>
-        {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
-          <input type="hidden" name="contact[tags]" value="newsletter">
-          <div class="newsletter-form__field-wrapper">
-            <div class="field">
-              <input
-                id="NewsletterForm--{{ section.id }}"
-                type="email"
-                name="contact[email]"
-                class="field__input"
-                value="{{ form.email }}"
-                aria-required="true"
-                autocorrect="off"
-                autocapitalize="off"
-                autocomplete="email"
-                {% if form.errors %}
-                  autofocus
-                  aria-invalid="true"
-                  aria-describedby="ContactFooter-error"
-                {% elsif form.posted_successfully? %}
-                  aria-describedby="ContactFooter-success"
-                {% endif %}
-                placeholder="{{ 'newsletter.label' | t }}"
-                required
-              >
-              <label class="field__label" for="NewsletterForm--{{ section.id }}">{{ 'newsletter.label' | t }}</label>
-              <button
-                type="submit"
-                class="newsletter-form__button field__button"
-                name="commit"
-                id="Subscribe"
-                aria-label="{{ 'newsletter.button_label' | t }}"
-              >
-                <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-              </button>
-            </div>
-            {%- if form.errors -%}
-              <small class="newsletter-form__message form__message" id="ContactFooter-error">
-                <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
-                {{- form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email -}}
-              </small>
-            {%- endif -%}
-          </div>
-          {%- if form.posted_successfully? -%}
-            <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus>
-              <span class="svg-wrapper">{{- 'icon-success.svg' | inline_asset_content -}}</span>
-              {{- 'newsletter.success' | t }}
-            </h3>
-          {%- endif -%}
-        {%- endform -%}
-      </div>
-    {%- endif -%}
+<footer class="footer sb-footer section-{{ section.id }}-padding" style="--sb-footer-logo-width: {{ section.settings.logo_width }}px;">
+  <div class="sb-footer__inner">
+    <div class="sb-footer__brand">
+      {% if footer_logo != blank %}
+        <a class="sb-footer__brand-mark" href="{{ routes.root_url }}">
+          {{
+            footer_logo
+            | image_url: width: 720
+            | image_tag:
+              widths: '220, 320, 420, 520, 720',
+              sizes: footer_logo_sizes,
+              loading: 'lazy',
+              alt: footer_logo_alt
+          }}
+        </a>
+      {% else %}
+        <a class="sb-footer__brand-mark sb-footer__brand-mark--text" href="{{ routes.root_url }}">{{ shop.name }}</a>
+      {% endif %}
 
-    <div class="sb-footer__main">
-      <div class="sb-footer__brand">
-        <a href="{{ routes.root_url }}" class="sb-footer__brand-name">{{ shop.name }}</a>
-        <p class="sb-footer__brand-copy">Modern treatments and product rituals designed to help skin feel healthy, calm, and luminous.</p>
-        {%- if section.settings.show_social and has_social_icons -%}
-          {%- render 'social-icons', class: 'footer__list-social' -%}
-        {%- endif -%}
-      </div>
-
-      <div class="sb-footer__links" role="navigation" aria-label="Footer">
-        <div class="sb-footer__column">
-          <h2 class="footer-block__heading">Company</h2>
-          <ul class="footer-block__details-content list-unstyled">
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}pages/about">About</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}pages/services">Services</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.all_products_collection_url }}">Shop</a></li>
-          </ul>
-        </div>
-        <div class="sb-footer__column">
-          <h2 class="footer-block__heading">Support</h2>
-          <ul class="footer-block__details-content list-unstyled">
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}pages/faq">FAQ</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}policies/shipping-policy">Shipping</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}policies/refund-policy">Returns</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}products/gift-card">Gift Cards</a></li>
-          </ul>
-        </div>
-        <div class="sb-footer__column">
-          <h2 class="footer-block__heading">Account</h2>
-          <ul class="footer-block__details-content list-unstyled">
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.account_register_url }}">Register/Login</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.account_url }}">Orders</a></li>
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.search_url }}?type=product&q=wishlist">Wishlist</a></li>
-          </ul>
-        </div>
-        <div class="sb-footer__column">
-          <h2 class="footer-block__heading">Contact</h2>
-          <ul class="footer-block__details-content list-unstyled">
-            <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.root_url }}pages/contact">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
+      {% if section.settings.intro_text != blank %}
+        <div class="sb-footer__brand-copy rte">{{ section.settings.intro_text }}</div>
+      {% endif %}
     </div>
 
-    {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
-      <div class="footer__follow-on-shop">{{ shop | login_button: action: 'follow' }}</div>
-    {%- endif -%}
-  </div>
+    <div class="sb-footer__newsletter" aria-labelledby="FooterNewsletterHeading-{{ section.id }}">
+      {% if section.settings.newsletter_heading != blank %}
+        <h2 class="sb-footer__newsletter-heading" id="FooterNewsletterHeading-{{ section.id }}">{{ section.settings.newsletter_heading }}</h2>
+      {% endif %}
 
-  <div class="footer__content-bottom">
-    <div class="footer__content-bottom-wrapper page-width">
-      <div class="footer__column footer__localization isolate">
-        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-          <localization-form>
-            {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="caption-large text-body" id="FooterCountryLabel">{{ 'localization.country_label' | t }}</h2>
-                {%- render 'country-localization', localPosition: 'FooterCountry' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%}
+      {% if section.settings.newsletter_body != blank %}
+        <div class="sb-footer__newsletter-copy rte">{{ section.settings.newsletter_body }}</div>
+      {% endif %}
 
-        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-          <localization-form>
-            {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="caption-large text-body" id="FooterLanguageLabel">{{ 'localization.language_label' | t }}</h2>
-                {%- render 'language-localization', localPosition: 'FooterLanguage' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%}
-      </div>
-      <div class="footer__column footer__column--info">
-        {%- if section.settings.payment_enable -%}
-          <div class="footer__payment">
-            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        {%- endif -%}
-        <div class="footer__copyright caption">
-          <small class="copyright__content">&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url }}</small>
-          {%- if section.settings.show_policy -%}
-            <ul class="policies list-unstyled">
-              {%- for policy in shop.policies -%}
-                {%- if policy != blank -%}
-                  <li><small class="copyright__content"><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small></li>
-                {%- endif -%}
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
+      {%- form 'customer', class: 'sb-footer__newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="sb-footer__field-shell">
+          <label class="visually-hidden" for="FooterNewsletter-{{ section.id }}">{{ section.settings.email_placeholder }}</label>
+          <input
+            id="FooterNewsletter-{{ section.id }}"
+            class="sb-footer__input"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            {% if form.errors %}
+              autofocus
+              aria-invalid="true"
+              aria-describedby="FooterNewsletter-{{ section.id }}-error"
+            {% elsif form.posted_successfully? %}
+              aria-describedby="FooterNewsletter-{{ section.id }}-success"
+            {% endif %}
+            placeholder="{{ section.settings.email_placeholder }}"
+            required
+          >
+          <button class="sb-footer__submit" type="submit" name="commit">{{ section.settings.newsletter_button_label }}</button>
         </div>
-      </div>
+
+        {% if form.errors %}
+          <small class="newsletter-form__message form__message" id="FooterNewsletter-{{ section.id }}-error">
+            {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+          </small>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <p class="newsletter-form__message newsletter-form__message--success form__message" id="FooterNewsletter-{{ section.id }}-success" tabindex="-1" autofocus>
+            {{ 'newsletter.success' | t }}
+          </p>
+        {% endif %}
+      {%- endform -%}
+    </div>
+
+    <div class="sb-footer__menus" role="navigation" aria-label="Footer menus">
+      <details class="sb-footer__accordion" {% if section.settings.expand_menus_by_default %}open{% endif %}>
+        <summary class="sb-footer__summary">
+          <span>{{ section.settings.shop_heading }}</span>
+          <span class="sb-footer__summary-plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="sb-footer__accordion-body">
+          <ul class="sb-footer__menu" role="list">
+            {% for link in section.settings.shop_menu.links %}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </details>
+
+      <details class="sb-footer__accordion" {% if section.settings.expand_menus_by_default %}open{% endif %}>
+        <summary class="sb-footer__summary">
+          <span>{{ section.settings.help_heading }}</span>
+          <span class="sb-footer__summary-plus" aria-hidden="true">+</span>
+        </summary>
+        <div class="sb-footer__accordion-body">
+          <ul class="sb-footer__menu" role="list">
+            {% for link in section.settings.help_menu.links %}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="sb-footer__contact">
+      {% if section.settings.contact_heading != blank %}
+        <h2 class="sb-footer__contact-heading">{{ section.settings.contact_heading }}</h2>
+      {% endif %}
+
+      <address class="sb-footer__contact-copy">
+        {% if section.settings.business_hours != blank %}
+          <p>{{ section.settings.business_hours | newline_to_br }}</p>
+        {% endif %}
+        {% if section.settings.address != blank %}
+          <p>{{ section.settings.address | newline_to_br }}</p>
+        {% endif %}
+        {% if section.settings.email != blank %}
+          <p>
+            {% if section.settings.email_label != blank %}{{ section.settings.email_label }}:{% endif %}
+            <a href="mailto:{{ section.settings.email | escape }}">{{ section.settings.email }}</a>
+          </p>
+        {% endif %}
+      </address>
+
+      {% if section.settings.show_social and has_social_icons %}
+        <div class="sb-footer__social-wrap">
+          {% if section.settings.social_heading != blank %}
+            <p class="sb-footer__social-heading">{{ section.settings.social_heading }}</p>
+          {% endif %}
+          <div class="sb-footer__social">
+            {% render 'social-icons', class: 'footer__list-social' %}
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </footer>
 
 {% schema %}
 {
-  "name": "t:sections.footer.name",
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "link_list",
-      "name": "t:sections.footer.blocks.link_list.name",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.footer.blocks.link_list.settings.heading.default",
-          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "default": "footer",
-          "label": "t:sections.footer.blocks.link_list.settings.menu.label"
-        }
-      ]
-    },
-    {
-      "type": "brand_information",
-      "name": "t:sections.footer.blocks.brand_information.name",
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_social",
-          "default": true,
-          "label": "t:sections.footer.blocks.brand_information.settings.show_social.label",
-          "info": "t:sections.footer.blocks.brand_information.settings.show_social.info"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "t:sections.footer.blocks.text.name",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.footer.blocks.text.settings.heading.default",
-          "label": "t:sections.footer.blocks.text.settings.heading.label"
-        },
-        {
-          "type": "richtext",
-          "id": "subtext",
-          "default": "t:sections.footer.blocks.text.settings.subtext.default",
-          "label": "t:sections.footer.blocks.text.settings.subtext.label"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 550,
-          "step": 5,
-          "unit": "px",
-          "label": "Width",
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        }
-      ]
-    }
-  ],
+  "name": "Footer",
   "settings": [
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
     },
     {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
+      "type": "range",
+      "id": "logo_width",
+      "min": 160,
+      "max": 360,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 260
     },
     {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "<p>Courtney Gaudette is a Clinical Aesthetician specializing in results-driven skin protocols, trusted by private clientele.</p>"
     },
     {
       "type": "inline_richtext",
       "id": "newsletter_heading",
-      "default": "t:sections.footer.settings.newsletter_heading.default",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
+      "label": "Newsletter heading",
+      "default": "Join the Silla Beauty newsletter"
     },
     {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__9.content"
+      "type": "richtext",
+      "id": "newsletter_body",
+      "label": "Newsletter body",
+      "default": "<p>Never miss a thing. Expert skin guidance, monthly edits and first access to new launches.</p>"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Newsletter button label",
+      "default": "Join the list"
+    },
+    {
+      "type": "text",
+      "id": "shop_heading",
+      "label": "Shop heading",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "shop_menu",
+      "label": "Shop menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "help_heading",
+      "label": "Help heading",
+      "default": "Help"
+    },
+    {
+      "type": "link_list",
+      "id": "help_menu",
+      "label": "Help menu",
+      "default": "footer"
     },
     {
       "type": "checkbox",
-      "id": "enable_follow_on_shop",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_follow_on_shop.label",
-      "info": "t:sections.footer.settings.enable_follow_on_shop.info"
+      "id": "expand_menus_by_default",
+      "label": "Expand menus by default",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact heading",
+      "default": "Contact us"
+    },
+    {
+      "type": "textarea",
+      "id": "business_hours",
+      "label": "Business hours",
+      "default": "Tuesday - Friday 10:00 AM - 5:00 PM"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "460 Main Street, Alberton, PE C0B 1B0"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@sillabeauty.ca"
+    },
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Social heading",
+      "default": "Follow Silla Beauty"
     },
     {
       "type": "checkbox",
       "id": "show_social",
-      "default": true,
-      "label": "t:sections.footer.settings.show_social.label",
-      "info": "t:sections.footer.settings.show_social.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_country_selector.label",
-      "info": "t:sections.footer.settings.enable_country_selector.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_language_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_language_selector.label",
-      "info": "t:sections.footer.settings.enable_language_selector.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "payment_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.payment_enable.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_policy",
-      "default": true,
-      "label": "t:sections.footer.settings.show_policy.label",
-      "info": "t:sections.footer.settings.show_policy.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.footer.settings.margin_top.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "label": "Show social links",
+      "default": true
     },
     {
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
+      "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "label": "Padding top",
+      "default": 56
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
+      "max": 120,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "label": "Padding bottom",
+      "default": 56
     }
-  ],
-  "default": {
-    "blocks": [
-      {
-        "type": "link_list"
-      },
-      {
-        "type": "text"
-      }
-    ]
-  }
+  ]
 }
 {% endschema %}
+

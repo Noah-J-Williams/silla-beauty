@@ -1,0 +1,129 @@
+﻿{%- assign spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: spacing_class %}
+
+{%- assign desktop_image = section.settings.background_image -%}
+{%- assign mobile_image = section.settings.mobile_background_image | default: desktop_image -%}
+
+<section class="sb-home-section sb-consultation-banner {{ spacing_class }}" style="--sb-banner-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};">
+  <div class="sb-consultation-banner__media">
+    {% if desktop_image != blank %}
+      <picture>
+        {% if mobile_image != blank %}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ mobile_image | image_url: width: 720 }} 720w, {{ mobile_image | image_url: width: 960 }} 960w"
+            sizes="100vw"
+          >
+        {% endif %}
+        {{
+          desktop_image
+          | image_url: width: 2200
+          | image_tag:
+            widths: '750, 1100, 1500, 1800, 2200',
+            sizes: '100vw',
+            loading: 'lazy',
+            alt: section.settings.heading | escape
+        }}
+      </picture>
+    {% else %}
+      <div class="sb-consultation-banner__placeholder"></div>
+    {% endif %}
+  </div>
+
+  <div class="sb-consultation-banner__overlay"></div>
+
+  <div class="sb-consultation-banner__content page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="sb-consultation-banner__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.body_copy != blank %}
+      <div class="sb-consultation-banner__copy rte">{{ section.settings.body_copy }}</div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a class="button button--secondary" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Consultation Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New to Silla Beauty?"
+    },
+    {
+      "type": "richtext",
+      "id": "body_copy",
+      "label": "Body copy",
+      "default": "<p>Begin with a 1:1 skin or virtual consultation to define your goals and map out a routine that supports them.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "I'm ready to book my consultation"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Consultation Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,170 @@
+﻿{%- assign spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: spacing_class %}
+
+<section
+  class="sb-home-section sb-brand-row {{ spacing_class }}"
+  style="--sb-brand-duration: {{ section.settings.scroll_duration }}s; --sb-brand-logo-height: {{ section.settings.logo_height }}px;"
+>
+  <div class="page-width">
+    {% render 'sb-section-heading', heading: section.settings.heading %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="sb-brand-row__marquee{% if section.blocks.size < 2 %} sb-brand-row__marquee--static{% endif %}">
+        <div class="sb-brand-row__rail">
+          <div class="sb-brand-row__track" role="list" aria-label="Brand logos">
+            {% for block in section.blocks %}
+              {%- assign brand_label = block.settings.alt_text | default: 'Brand' -%}
+              {% if block.settings.link != blank %}
+                <a class="sb-brand-row__item" href="{{ block.settings.link }}" aria-label="{{ brand_label | escape }}" {{ block.shopify_attributes }}>
+              {% else %}
+                <div class="sb-brand-row__item" aria-label="{{ brand_label | escape }}" {{ block.shopify_attributes }}>
+              {% endif %}
+                  {% if block.settings.logo != blank %}
+                    {{
+                      block.settings.logo
+                      | image_url: width: 420
+                      | image_tag:
+                        widths: '180, 240, 320, 420',
+                        sizes: '(min-width: 990px) 180px, 140px',
+                        loading: 'lazy',
+                        alt: brand_label | escape
+                    }}
+                  {% else %}
+                    <span class="sb-brand-row__fallback">{{ brand_label }}</span>
+                  {% endif %}
+              {% if block.settings.link != blank %}
+                </a>
+              {% else %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="sb-brand-row__track" aria-hidden="true">
+            {% for block in section.blocks %}
+              {%- assign brand_label = block.settings.alt_text | default: 'Brand' -%}
+              <div class="sb-brand-row__item">
+                {% if block.settings.logo != blank %}
+                  {{
+                    block.settings.logo
+                    | image_url: width: 420
+                    | image_tag:
+                      widths: '180, 240, 320, 420',
+                      sizes: '(min-width: 990px) 180px, 140px',
+                      loading: 'lazy',
+                      alt: ''
+                  }}
+                {% else %}
+                  <span class="sb-brand-row__fallback">{{ brand_label }}</span>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Brand Row",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by brand"
+    },
+    {
+      "type": "range",
+      "id": "scroll_duration",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "label": "Scroll duration",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo max height",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt text",
+          "default": "Brand name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Brand Row",
+      "blocks": [
+        {
+          "type": "brand"
+        },
+        {
+          "type": "brand"
+        },
+        {
+          "type": "brand"
+        },
+        {
+          "type": "brand"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

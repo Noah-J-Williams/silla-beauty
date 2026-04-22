@@ -1,0 +1,342 @@
+{%- assign spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: spacing_class %}
+
+<section
+  class="sb-home-section sb-hero-slideshow {{ spacing_class }}"
+  data-sb-slideshow
+  data-autoplay="{{ section.settings.auto_rotate }}"
+  data-speed="{{ section.settings.change_slides_speed }}"
+  style="--sb-hero-desktop-height: {{ section.settings.desktop_height }}px; --sb-hero-mobile-height: {{ section.settings.mobile_height }}px;"
+>
+  <div class="sb-hero-slideshow__viewport">
+    {% for block in section.blocks %}
+      {%- assign desktop_image = block.settings.image -%}
+      {%- assign mobile_image = block.settings.mobile_image | default: desktop_image -%}
+      {%- assign image_loading = 'lazy' -%}
+      {%- assign fetch_priority = 'auto' -%}
+      {% if forloop.first %}
+        {%- assign image_loading = 'eager' -%}
+        {%- assign fetch_priority = 'high' -%}
+      {% endif %}
+
+      <article
+        class="sb-hero-slide{% if forloop.first %} is-active{% endif %}"
+        data-sb-slide
+        aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+        style="
+          --sb-slide-overlay: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+          --sb-slide-image-fit: {{ block.settings.image_fit }};
+          --sb-slide-image-position: {{ block.settings.image_position }};
+          --sb-slide-text-color: {{ block.settings.text_color }};
+          --sb-slide-button-background: {{ block.settings.button_background_color }};
+          --sb-slide-button-text: {{ block.settings.button_text_color }};
+          --sb-slide-button-border: {{ block.settings.button_border_color }};
+        "
+        {{ block.shopify_attributes }}
+      >
+        <div class="sb-hero-slide__media">
+          {% if desktop_image != blank %}
+            <picture>
+              {% if mobile_image != blank %}
+                <source
+                  media="(max-width: 749px)"
+                  srcset="{{ mobile_image | image_url: width: 480 }} 480w, {{ mobile_image | image_url: width: 720 }} 720w, {{ mobile_image | image_url: width: 960 }} 960w"
+                  sizes="100vw"
+                >
+              {% endif %}
+              {{
+                desktop_image
+                | image_url: width: 2400
+                | image_tag:
+                  class: 'sb-hero-slide__image',
+                  widths: '750, 1100, 1500, 1800, 2200, 2400',
+                  sizes: '100vw',
+                  loading: image_loading,
+                  fetchpriority: fetch_priority,
+                  alt: desktop_image.alt | default: block.settings.heading | escape
+              }}
+            </picture>
+          {% else %}
+            <div class="sb-hero-slide__placeholder"></div>
+          {% endif %}
+        </div>
+
+        <div class="sb-hero-slide__overlay"></div>
+
+        <div class="sb-hero-slide__content-wrap page-width">
+          <div class="sb-hero-slide__content is-{{ block.settings.text_alignment }}">
+            {% if block.settings.eyebrow != blank %}
+              <p class="sb-hero-slide__eyebrow">{{ block.settings.eyebrow }}</p>
+            {% endif %}
+
+            {% if block.settings.heading != blank %}
+              <h2 class="sb-hero-slide__heading">{{ block.settings.heading }}</h2>
+            {% endif %}
+
+            {% if block.settings.body_copy != blank %}
+              <div class="sb-hero-slide__body rte">{{ block.settings.body_copy }}</div>
+            {% endif %}
+
+            {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+              <div class="sb-hero-slide__actions">
+                <a class="button" href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size > 1 %}
+    <div class="sb-hero-slideshow__controls">
+      <div class="sb-hero-slideshow__buttons">
+        <button class="sb-hero-slideshow__arrow sb-hero-slideshow__arrow--prev" type="button" data-sb-prev aria-label="Previous slide">
+          <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+        </button>
+        <button class="sb-hero-slideshow__arrow sb-hero-slideshow__arrow--next" type="button" data-sb-next aria-label="Next slide">
+          <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+        </button>
+      </div>
+
+      <div class="sb-hero-slideshow__dots" role="tablist" aria-label="Hero slides">
+        {% for block in section.blocks %}
+          <button
+            class="sb-hero-slideshow__dot{% if forloop.first %} is-active{% endif %}"
+            type="button"
+            data-sb-dot
+            aria-label="Go to slide {{ forloop.index }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+          ></button>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "SB Hero Slideshow",
+  "tag": "section",
+  "class": "sb-homepage-section sb-homepage-section--hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 4,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Slide duration",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 520,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "label": "Desktop height",
+      "default": 720
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 420,
+      "max": 760,
+      "step": 20,
+      "unit": "px",
+      "label": "Mobile height",
+      "default": 560
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image fit",
+          "default": "cover",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Fill area"
+            },
+            {
+              "value": "contain",
+              "label": "Show full image"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "default": "center center",
+          "options": [
+            {
+              "value": "center center",
+              "label": "Center"
+            },
+            {
+              "value": "center top",
+              "label": "Top"
+            },
+            {
+              "value": "center bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left center",
+              "label": "Left"
+            },
+            {
+              "value": "right center",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Intro slide"
+        },
+        {
+          "type": "richtext",
+          "id": "body_copy",
+          "label": "Body copy",
+          "default": "<p>Tell visitors what makes this feature, collection, or offer worth exploring first.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_background_color",
+          "label": "Button background color",
+          "default": "#1f4d46"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color",
+          "label": "Button border color",
+          "default": "#111111"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay opacity",
+          "default": 30
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Hero Slideshow",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

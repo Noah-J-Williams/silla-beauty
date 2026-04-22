@@ -1,0 +1,140 @@
+﻿{%- assign spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: spacing_class %}
+
+{%- assign newsletter_logo = section.settings.logo | default: settings.logo -%}
+
+<section class="sb-home-section sb-newsletter {{ spacing_class }}">
+  <div class="page-width">
+    <div class="sb-newsletter__inner">
+      {% if newsletter_logo != blank %}
+        <div class="sb-newsletter__logo">
+          {{
+            newsletter_logo
+            | image_url: width: 500
+            | image_tag:
+              widths: '180, 240, 320, 420, 500',
+              sizes: '(min-width: 990px) 240px, 46vw',
+              loading: 'lazy',
+              alt: shop.name | escape
+          }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="sb-newsletter__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.body_copy != blank %}
+        <div class="sb-newsletter__copy rte">{{ section.settings.body_copy }}</div>
+      {% endif %}
+
+      {%- form 'customer', class: 'sb-newsletter__form newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="sb-newsletter__field-shell">
+          <div class="field sb-newsletter__field">
+            <input
+              id="Newsletter-{{ section.id }}"
+              class="field__input"
+              type="email"
+              name="contact[email]"
+              value="{{ form.email }}"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="Newsletter-{{ section.id }}-error"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="Newsletter-{{ section.id }}-success"
+              {% endif %}
+              placeholder="{{ section.settings.email_placeholder }}"
+              required
+            >
+            <label class="field__label" for="Newsletter-{{ section.id }}">{{ section.settings.email_placeholder }}</label>
+          </div>
+          <button class="sb-newsletter__submit" type="submit" name="commit">{{ section.settings.button_label }}</button>
+        </div>
+
+        {% if form.errors %}
+          <small class="newsletter-form__message form__message" id="Newsletter-{{ section.id }}-error">
+            {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+          </small>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <p class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-{{ section.id }}-success" tabindex="-1" autofocus>
+            {{ 'newsletter.success' | t }}
+          </p>
+        {% endif %}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Newsletter Callout",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the Silla Beauty newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "body_copy",
+      "label": "Body copy",
+      "default": "<p>Never miss a thing. Get expert skin guidance, monthly edits, and first access to new launches.</p>"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter email"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Join the list"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Newsletter Callout"
+    }
+  ]
+}
+{% endschema %}

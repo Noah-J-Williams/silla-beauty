@@ -1,0 +1,128 @@
+﻿{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- assign spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: spacing_class %}
+
+{%- assign view_all_url = section.settings.view_all_link | default: section.settings.collection.url -%}
+{%- assign favorites_label = section.settings.title | default: 'Courtney favorites' -%}
+
+<section class="sb-home-section sb-favorites {{ spacing_class }}" data-sb-scroll-feature>
+  <div class="page-width">
+    <div class="sb-favorites__intro">
+      {% render 'sb-section-heading',
+        heading: section.settings.title,
+        link_label: section.settings.view_all_label,
+        link_url: view_all_url,
+        modifier: 'split'
+      %}
+
+      <div class="sb-favorites__controls" data-sb-scroll-controls hidden>
+        <button class="sb-favorites__arrow sb-favorites__arrow--prev" type="button" data-sb-scroll-prev aria-label="Scroll {{ favorites_label | escape }} left">
+          <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+        </button>
+        <button class="sb-favorites__arrow sb-favorites__arrow--next" type="button" data-sb-scroll-next aria-label="Scroll {{ favorites_label | escape }} right">
+          <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sb-favorites__viewport" data-sb-scroll-viewport tabindex="0" role="region" aria-label="{{ favorites_label | escape }}">
+      <div class="sb-favorites__track" data-sb-scroll-track>
+        {% if section.settings.collection != blank %}
+          {% for product in section.settings.collection.products limit: section.settings.products_to_show %}
+            {% assign loading = 'lazy' %}
+            {% if forloop.first %}
+              {% assign loading = 'eager' %}
+            {% endif %}
+            {% render 'sb-home-product-card', product: product, button_label: section.settings.cta_label, loading: loading %}
+          {% endfor %}
+        {% endif %}
+
+        {% if section.settings.collection == blank or section.settings.collection.products_count == 0 %}
+          {% for i in (1..section.settings.products_to_show) %}
+            {% assign placeholder_number = forloop.index %}
+            {% if placeholder_number > 6 %}
+              {% assign placeholder_number = 6 %}
+            {% endif %}
+            {% render 'sb-home-product-card', placeholder_index: placeholder_number, button_label: section.settings.cta_label %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Favorites Carousel",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Courtney's Favorites"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link override"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "label": "Products to show",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Add to list"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Favorites Carousel"
+    }
+  ]
+}
+{% endschema %}

@@ -302,10 +302,6 @@ button.shopify-payment-button__button--unbranded:hover::after {
   z-index: 1;
 }
 
-.template-index .section-header {
-  margin-bottom: 0 !important;
-}
-
 .sb-hero-horizon__grid {
   display: grid;
   gap: clamp(2.4rem, 4vw, 5rem);
@@ -1148,22 +1144,6 @@ button.shopify-payment-button__button--unbranded:focus-visible {
   outline-offset: 0.3rem;
 }
 
-.header--silla .header__icon,
-.header--silla .header__icon--summary {
-  width: 4.4rem;
-  height: 4.4rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-}
-
-.header--silla .header__heading-logo-wrapper {
-  max-width: min(20rem, 42vw);
-}
-
-.header--silla .header__search {
-  display: flex;
-}
-
 .collection-hero--silla {
   position: relative;
   overflow: hidden;
@@ -1602,25 +1582,6 @@ button.shopify-payment-button__button--unbranded::after {
 
 .header__icon .svg-wrapper {
   color: var(--sb-text);
-}
-
-.header--silla .header__icon,
-.header--silla .header__icon--summary {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 999px;
-  background: transparent;
-  border: 1px solid transparent;
-}
-
-.header--silla .header__icon:hover,
-.header--silla .header__icon--summary:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: var(--sb-border);
-}
-
-.header__drawer-slot .header__icon {
-  background: transparent;
 }
 
 .card-wrapper .card,

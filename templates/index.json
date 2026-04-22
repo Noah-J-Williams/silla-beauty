@@ -1,157 +1,282 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "sb_home_hero": {
-      "type": "sb-home-hero",
+    "sb_hero": {
+      "type": "sb-hero-slideshow",
       "blocks": {
-        "sb_home_trust_1": {
-          "type": "trust",
+        "hero_slide_1": {
+          "type": "slide",
           "settings": {
-            "label": "Secure checkout",
-            "link": ""
+            "image": "shopify://shop_images/silla_working.jpg",
+            "mobile_image": "shopify://shop_images/silla_working.jpg",
+            "image_fit": "cover",
+            "image_position": "center center",
+            "eyebrow": "Clinical beauty",
+            "heading": "Healthy, luminous skin starts here.",
+            "body_copy": "<p>Curated skincare, results-driven protocols, and elevated studio care designed around your goals.</p>",
+            "button_label": "Shop skincare",
+            "button_link": "shopify://collections/all",
+            "text_color": "#ffffff",
+            "button_background_color": "#1f4d46",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#111111",
+            "text_alignment": "left",
+            "overlay_opacity": 30
           }
         },
-        "sb_home_trust_2": {
-          "type": "trust",
+        "hero_slide_2": {
+          "type": "slide",
           "settings": {
-            "label": "Shipping & returns",
-            "link": "/pages/faq"
-          }
-        },
-        "sb_home_trust_3": {
-          "type": "trust",
-          "settings": {
-            "label": "Studio-curated selection",
-            "link": ""
-          }
-        },
-        "sb_home_trust_4": {
-          "type": "trust",
-          "settings": {
-            "label": "Local PEI studio",
-            "link": "/pages/contact"
+            "image": "shopify://shop_images/SillaBeauty-1.jpg",
+            "mobile_image": "shopify://shop_images/SillaBeauty-1.jpg",
+            "image_fit": "cover",
+            "image_position": "center center",
+            "eyebrow": "Monthly edits",
+            "heading": "Build a routine with studio-approved essentials.",
+            "body_copy": "<p>Discover best sellers, protocol-based product edits, and the formulas clients come back for.</p>",
+            "button_label": "Explore favorites",
+            "button_link": "shopify://collections/all",
+            "text_color": "#ffffff",
+            "button_background_color": "#1f4d46",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#111111",
+            "text_alignment": "left",
+            "overlay_opacity": 35
           }
         }
       },
       "block_order": [
-        "sb_home_trust_1",
-        "sb_home_trust_2",
-        "sb_home_trust_3",
-        "sb_home_trust_4"
+        "hero_slide_1",
+        "hero_slide_2"
       ],
       "settings": {
-        "eyebrow": "",
-        "heading": "Skincare and studio favorites.",
-        "subheading": "Shop the Silla Beauty selection of elevated beauty essentials.",
-        "button_label": "SHOP NOW",
-        "button_link": "shopify://collections/all",
-        "image": "shopify://shop_images/SillaBeauty-1.jpg",
-        "image_mobile": "shopify://shop_images/SillaBeauty-1.jpg",
-        "image_alt_override": "Silla Beauty skincare and studio favorites hero image",
-        "overlay_opacity": 35,
-        "color_scheme": "scheme-1",
+        "auto_rotate": true,
+        "change_slides_speed": 6,
+        "desktop_height": 640,
+        "mobile_height": 520,
         "padding_top": 0,
         "padding_bottom": 0
       }
     },
-    "sb_home_features": {
-      "type": "sb-home-feature-stack",
+    "sb_favorites": {
+      "type": "sb-favorites-carousel",
+      "settings": {
+        "title": "Courtney's Favorites",
+        "view_all_label": "View all",
+        "view_all_link": "",
+        "collection": "all",
+        "products_to_show": 5,
+        "cta_label": "Add to list",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "sb_categories": {
+      "type": "sb-category-grid",
       "blocks": {
-        "sb_home_feature_1": {
-          "type": "feature",
+        "category_1": {
+          "type": "card",
           "settings": {
-            "eyebrow": "New in",
-            "heading": "New skincare arrivals",
-            "text": "Fresh formulas and daily essentials.",
-            "button_label": "SHOP NEW IN",
-            "button_link": "shopify://collections/all",
-            "product": "",
-            "collection": "",
             "image": "shopify://shop_images/HibiscusStylecopy_png.webp",
-            "image_alt_override": "New skincare arrivals at Silla Beauty"
+            "heading": "Cleansers",
+            "link": "shopify://collections/all"
           }
         },
-        "sb_home_feature_2": {
-          "type": "feature",
+        "category_2": {
+          "type": "card",
           "settings": {
-            "eyebrow": "Best sellers",
-            "heading": "Best-selling skincare",
-            "text": "The formulas clients return for most.",
-            "button_label": "SHOP BEST SELLERS",
-            "button_link": "shopify://collections/all",
-            "product": "",
-            "collection": "",
             "image": "shopify://shop_images/serum-71-circadia-2_jpg_webp.jpg",
-            "image_alt_override": "Best-selling skincare products at Silla Beauty"
+            "heading": "Serums",
+            "link": "shopify://collections/all"
           }
         },
-        "sb_home_feature_3": {
-          "type": "feature",
+        "category_3": {
+          "type": "card",
           "settings": {
-            "eyebrow": "Studio favorites",
-            "heading": "Studio beauty favorites",
-            "text": "Selected from the treatment-room shelf.",
-            "button_label": "SHOP STUDIO FAVORITES",
-            "button_link": "shopify://collections/all",
-            "product": "",
-            "collection": "",
             "image": "shopify://shop_images/Vanilla-Mint.jpg",
-            "image_alt_override": "Studio beauty favorites curated by Silla Beauty"
+            "heading": "Studio favorites",
+            "link": "shopify://collections/all"
           }
         },
-        "sb_home_feature_4": {
-          "type": "feature",
+        "category_4": {
+          "type": "card",
           "settings": {
-            "eyebrow": "Daily essentials",
-            "heading": "Everyday beauty essentials",
-            "text": "Daily staples for a complete routine.",
-            "button_label": "SHOP ESSENTIALS",
-            "button_link": "shopify://collections/all",
-            "product": "",
-            "collection": "",
             "image": "shopify://shop_images/SPOTSTOP.jpg",
-            "image_alt_override": "Everyday beauty essentials for daily ritual"
+            "heading": "Treatments",
+            "link": "/pages/services"
           }
         }
       },
       "block_order": [
-        "sb_home_feature_1",
-        "sb_home_feature_2",
-        "sb_home_feature_3",
-        "sb_home_feature_4"
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 28,
-        "padding_bottom": 44
+        "heading": "Shop online or in spa",
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
-    "sb_home_products": {
-      "type": "sb-home-product-grid",
+    "sb_brands": {
+      "type": "sb-brand-row",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "logo": "",
+            "alt_text": "Circadia",
+            "link": "shopify://collections/all"
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "logo": "",
+            "alt_text": "ColoreScience",
+            "link": "shopify://collections/all"
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "logo": "",
+            "alt_text": "Hydrinity",
+            "link": "shopify://collections/all"
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "logo": "",
+            "alt_text": "Omnilux",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4"
+      ],
       "settings": {
-        "eyebrow": "",
-        "heading": "Best-selling skincare and studio favorites",
-        "subheading": "Some of our best-selling products.",
-        "collection": "all",
-        "products_to_show": 6,
-        "view_all_label": "SHOP ALL PRODUCTS",
-        "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 88
+        "heading": "Shop by brand",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    },
+    "sb_booking": {
+      "type": "sb-booking-split",
+      "settings": {
+        "eyebrow": "Book consultations",
+        "heading": "Visit our Alberton studio or book virtually",
+        "body_copy": "<p>Schedule an in-studio facial with an expert aesthetician or book a virtual consultation to refine your routine from home.</p>",
+        "primary_button_label": "Book appointment",
+        "primary_button_link": "/pages/contact",
+        "secondary_button_label": "Book virtual consult",
+        "secondary_button_link": "/pages/contact",
+        "image": "shopify://shop_images/silla_working.jpg",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    },
+    "sb_banner": {
+      "type": "sb-promo-banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Vanilla-Mint.jpg",
+        "mobile_background_image": "shopify://shop_images/Vanilla-Mint.jpg",
+        "heading": "Best sellers",
+        "button_label": "Best sellers",
+        "button_link": "shopify://collections/all",
+        "overlay_opacity": 20,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "sb_protocols": {
+      "type": "sb-protocols-grid",
+      "blocks": {
+        "protocol_1": {
+          "type": "concern",
+          "settings": {
+            "concern_title": "Hyperpigmentation",
+            "description": "Improve uneven tone and support a brighter-looking complexion with a focused edit.",
+            "image_1": "shopify://shop_images/HibiscusStylecopy_png.webp",
+            "image_2": "shopify://shop_images/serum-71-circadia-2_jpg_webp.jpg",
+            "button_label": "Shop pigment",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "protocol_2": {
+          "type": "concern",
+          "settings": {
+            "concern_title": "Aging",
+            "description": "Build a refined routine that supports glow, smoothness, and long-term hydration.",
+            "image_1": "shopify://shop_images/Vanilla-Mint.jpg",
+            "image_2": "shopify://shop_images/SPOTSTOP.jpg",
+            "button_label": "Shop aging",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "protocol_3": {
+          "type": "concern",
+          "settings": {
+            "concern_title": "Barrier support",
+            "description": "Choose calming, replenishing formulas that help skin feel comfortable and resilient.",
+            "image_1": "shopify://shop_images/SPOTSTOP.jpg",
+            "image_2": "",
+            "button_label": "Shop barrier",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "protocol_4": {
+          "type": "concern",
+          "settings": {
+            "concern_title": "Acne",
+            "description": "Target congestion with balanced cleansers, smart treatment steps, and daily support.",
+            "image_1": "shopify://shop_images/serum-71-circadia-2_jpg_webp.jpg",
+            "image_2": "shopify://shop_images/HibiscusStylecopy_png.webp",
+            "button_label": "Shop acne",
+            "button_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "protocol_1",
+        "protocol_2",
+        "protocol_3",
+        "protocol_4"
+      ],
+      "settings": {
+        "heading": "Protocols for skin concerns",
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
+    },
+    "sb_consultation": {
+      "type": "sb-consultation-banner",
+      "settings": {
+        "heading": "New to Silla Beauty?",
+        "body_copy": "<p>Begin with a 1:1 consultation to define your goals, assess your skin, and map out a plan that feels tailored to you.</p>",
+        "button_label": "I'm ready to book my consultation",
+        "button_link": "/pages/contact",
+        "background_image": "shopify://shop_images/SillaBeauty-1.jpg",
+        "mobile_background_image": "shopify://shop_images/SillaBeauty-1.jpg",
+        "overlay_opacity": 35,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
-    "sb_home_hero",
-    "sb_home_features",
-    "sb_home_products"
+    "sb_hero",
+    "sb_favorites",
+    "sb_categories",
+    "sb_brands",
+    "sb_booking",
+    "sb_banner",
+    "sb_protocols",
+    "sb_consultation"
   ]
 }

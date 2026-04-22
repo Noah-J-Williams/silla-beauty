@@ -1,37 +1,103 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
     "header": {
       "type": "header",
+      "blocks": {
+        "shop_column_1": {
+          "type": "shop_column",
+          "settings": {
+            "heading": "Courtney's Favorites",
+            "heading_link": "shopify://collections/all",
+            "menu": "",
+            "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists"
+          }
+        },
+        "shop_column_2": {
+          "type": "shop_column",
+          "settings": {
+            "heading": "BRAND",
+            "heading_link": "",
+            "menu": "",
+            "fallback_items": "Hydrinity\nColoreScience\nCircadia\nEltaMD\nGlymed+",
+            "link_fallback_items": true
+          }
+        },
+        "shop_column_3": {
+          "type": "shop_column",
+          "settings": {
+            "heading": "Category",
+            "heading_link": "",
+            "menu": "",
+            "fallback_items": "Cleansers\nToners + Mist\nExfoliants + Scrubs\nRetinols\nSerums + Concentrates\nMoisturizers\nSpot Treatment\nSun Protection\nMasks\nEye Care\nLip Care\nPre + Post Procedure\nGift Sets\nTools",
+            "link_fallback_items": true
+          }
+        },
+        "shop_column_4": {
+          "type": "shop_column",
+          "settings": {
+            "heading": "CONCERN",
+            "heading_link": "",
+            "menu": "",
+            "fallback_items": "Anti-Aging\nDryness\nPregnancy safe\nMen's Skin\nTeen Skin\nOiliness\nScar\nStretch Mark\nFine Lines + Wrinkles\nPigmentation\nDullness\nRedness\nTexture\nPore Size\nMelasma\nSensitive Skin\nHair Rejuvenation\nAcne\nRepair",
+            "link_fallback_items": true
+          }
+        },
+        "shop_column_5": {
+          "type": "shop_column",
+          "settings": {
+            "heading": "New Arrivals",
+            "heading_link": "shopify://collections/all",
+            "menu": "",
+            "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists"
+          }
+        },
+        "booking_link_1": {
+          "type": "booking_link",
+          "settings": {
+            "label": "Book Online",
+            "link": "/pages/contact"
+          }
+        },
+        "booking_link_2": {
+          "type": "booking_link",
+          "settings": {
+            "label": "Alberton Studio",
+            "link": "/pages/contact"
+          }
+        },
+        "booking_link_3": {
+          "type": "booking_link",
+          "settings": {
+            "label": "Virtual Consultation",
+            "link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "shop_column_1",
+        "shop_column_2",
+        "shop_column_3",
+        "shop_column_4",
+        "shop_column_5",
+        "booking_link_1",
+        "booking_link_2",
+        "booking_link_3"
+      ],
       "settings": {
-        "logo_position": "middle-left",
-        "mobile_logo_position": "center",
-        "menu": "main-menu",
-        "use_custom_nav": false,
-        "show_book_button": true,
-        "book_label": "Book",
-        "book_link": "/pages/booking",
-        "menu_type_desktop": "drawer",
-        "sticky_header_type": "on-scroll-up",
-        "show_line_separator": true,
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "enable_customer_avatar": true,
-        "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "sticky_header": true,
+        "show_search": true,
+        "show_account_icon": true,
+        "shop_label": "Shop",
+        "best_sellers_label": "Best Sellers",
+        "best_sellers_link": "shopify://collections/all",
+        "booking_label": "Booking",
+        "about_label": "About",
+        "about_link": "/pages/about",
+        "logo_width": 260,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },

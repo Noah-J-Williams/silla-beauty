@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
@@ -40,6 +40,7 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'silla-redesign.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
@@ -266,6 +267,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'sb-theme.css' | asset_url | stylesheet_tag }}
+    {{ 'silla-redesign.css' | asset_url | stylesheet_tag }}
     {%- if request.page_type == 'index' -%}
       {{ 'section-sb-homepage.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
@@ -387,3 +389,4 @@
     {%- endif -%}
   </body>
 </html>
+

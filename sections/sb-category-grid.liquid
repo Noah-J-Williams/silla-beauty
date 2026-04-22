@@ -1,0 +1,126 @@
+﻿{%- assign spacing_class = 'section-' | append: section.id | append: '-padding' -%}
+{% render 'sb-section-spacing', section: section, class_name: spacing_class %}
+
+<section class="sb-home-section sb-category-grid {{ spacing_class }}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="sb-category-grid__intro">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="sb-category-grid__items">
+      {% for block in section.blocks %}
+        {% if block.settings.link != blank %}
+          <a class="sb-category-card" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+        {% else %}
+          <div class="sb-category-card" {{ block.shopify_attributes }}>
+        {% endif %}
+            <div class="sb-category-card__media">
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: '360, 520, 720, 960, 1200',
+                    sizes: '(min-width: 990px) calc((100vw - 10rem) / 2), calc((100vw - 4.8rem) / 2)',
+                    loading: 'lazy',
+                    alt: block.settings.heading | escape
+                }}
+              {% else %}
+                <div class="sb-category-card__placeholder"></div>
+              {% endif %}
+            </div>
+            {% if block.settings.heading != blank %}
+              <h3 class="sb-category-card__title">{{ block.settings.heading }}</h3>
+            {% endif %}
+        {% if block.settings.link != blank %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SB Category Grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop online or in spa"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Category card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SB Category Grid",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
