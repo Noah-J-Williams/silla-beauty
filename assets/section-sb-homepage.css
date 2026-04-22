@@ -287,9 +287,9 @@
 }
 
 .sb-favorites .page-width {
-  width: 100%;
+  box-sizing: border-box;
   min-width: 0;
-  max-width: min(140rem, calc(100% - 3.2rem));
+  max-width: 140rem;
   overflow: hidden;
 }
 
