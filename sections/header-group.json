@@ -18,8 +18,8 @@
           "type": "shop_column",
           "settings": {
             "heading": "Courtney's Favorites",
-            "heading_link": "shopify://collections/all",
-            "menu": "",
+            "heading_link": "",
+            "menu": "courtneys-favorites",
             "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists",
             "link_fallback_items": false
           }

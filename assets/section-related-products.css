@@ -6,6 +6,23 @@
   margin: 0 0 3rem;
 }
 
+.related-products .card-wrapper,
+.related-products .card-wrapper .card {
+  height: auto;
+}
+
+.related-products .card--standard.card--media .card__inner {
+  flex-grow: 0;
+}
+
+.related-products .card--standard.card--media .card__inner.ratio {
+  --ratio-percent: 100% !important;
+}
+
+.related-products .card__media .media img {
+  object-fit: contain;
+}
+
 .related-products .card--standard > .card__content {
   padding: 1.6rem 1.6rem 1.8rem;
   display: grid;

@@ -72,3 +72,63 @@ input::-webkit-search-decoration {
 .template-search__results {
   position: relative;
 }
+
+.template-search__results .product-grid {
+  row-gap: 2rem;
+  column-gap: var(--grid-mobile-horizontal-spacing);
+}
+
+.template-search__results .product-card-wrapper {
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.template-search__results .product-card-wrapper .card {
+  width: 100%;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content {
+  padding: 1.8rem 1.8rem 2rem;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content .card__information {
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content .card__heading,
+.template-search__results .product-card-wrapper .card > .card__content .card-information,
+.template-search__results .product-card-wrapper .card > .card__content .card-information > * {
+  margin: 0;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content .card__heading {
+  line-height: 1.45;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content .card-information {
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content .card-information > * + * {
+  margin-top: 0;
+}
+
+.template-search__results .product-card-wrapper .card > .card__content .card__cta {
+  margin-top: 0.4rem;
+  width: fit-content;
+}
+
+@media screen and (min-width: 750px) {
+  .template-search__results .product-grid {
+    column-gap: var(--grid-desktop-horizontal-spacing);
+  }
+}
