@@ -5,3 +5,37 @@
 .related-products__heading {
   margin: 0 0 3rem;
 }
+
+.related-products .card--standard > .card__content {
+  padding: 1.6rem 1.6rem 1.8rem;
+  display: grid;
+  grid-template-rows: auto;
+  align-content: start;
+}
+
+.related-products .card--standard > .card__content .card__information {
+  grid-row-start: auto;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.related-products .card--standard > .card__content .card__heading,
+.related-products .card--standard > .card__content .card-information,
+.related-products .card--standard > .card__content .card-information > * {
+  margin: 0;
+}
+
+.related-products .card--standard > .card__content .card__heading {
+  line-height: 1.35;
+}
+
+.related-products .card--standard > .card__content .card-information {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.related-products .card--standard > .card__content .card__cta {
+  margin-top: 0.2rem;
+  width: fit-content;
+}

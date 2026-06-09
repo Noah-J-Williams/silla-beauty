@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -11,7 +20,8 @@
             "heading": "Courtney's Favorites",
             "heading_link": "shopify://collections/all",
             "menu": "",
-            "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists"
+            "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists",
+            "link_fallback_items": false
           }
         },
         "shop_column_2": {
@@ -50,14 +60,15 @@
             "heading": "New Arrivals",
             "heading_link": "shopify://collections/all",
             "menu": "",
-            "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists"
+            "fallback_items": "Cleansers\nSerums\nMoisturisers\nActives\nToners\nEye Care\nLip Care\nBody Care\nSunscreens\nMasques\nExfoliants\nMists",
+            "link_fallback_items": false
           }
         },
         "booking_link_1": {
           "type": "booking_link",
           "settings": {
             "label": "Book Online",
-            "link": "/pages/contact"
+            "link": "https://www.vagaro.com/sillabeauty"
           }
         },
         "booking_link_2": {

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "sb_hero": {
@@ -6,8 +15,8 @@
         "hero_slide_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/silla_working.jpg",
-            "mobile_image": "shopify://shop_images/silla_working.jpg",
+            "image": "shopify://shop_images/Microneedling_cf5ff753-3717-4e5a-b7bc-dd2cde87cb0e.heic",
+            "mobile_image": "shopify://shop_images/Microneedling_cf5ff753-3717-4e5a-b7bc-dd2cde87cb0e.heic",
             "image_fit": "cover",
             "image_position": "center center",
             "eyebrow": "Clinical beauty",
@@ -65,7 +74,7 @@
         "view_all_link": "",
         "collection": "all",
         "products_to_show": 5,
-        "cta_label": "Add to list",
+        "cta_label": "Add to cart",
         "padding_top": 40,
         "padding_bottom": 40
       }
@@ -121,10 +130,26 @@
     "sb_brands": {
       "type": "sb-brand-row",
       "blocks": {
+        "brand_WtCmwJ": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/glymed_logo.png",
+            "alt_text": "glymed+",
+            "link": ""
+          }
+        },
+        "brand_andtDL": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/EltaMD_Skincare_Logo_1200x1200_jpg.webp",
+            "alt_text": "EltaMD",
+            "link": ""
+          }
+        },
         "brand_1": {
           "type": "brand",
           "settings": {
-            "logo": "",
+            "logo": "shopify://shop_images/Circadia-Full-Logo-NEW.png",
             "alt_text": "Circadia",
             "link": "shopify://collections/all"
           }
@@ -132,7 +157,7 @@
         "brand_2": {
           "type": "brand",
           "settings": {
-            "logo": "",
+            "logo": "shopify://shop_images/Colorescience-U_Logo_Platinum.png",
             "alt_text": "ColoreScience",
             "link": "shopify://collections/all"
           }
@@ -140,28 +165,23 @@
         "brand_3": {
           "type": "brand",
           "settings": {
-            "logo": "",
+            "logo": "shopify://shop_images/hydrinity_dark_logo.webp",
             "alt_text": "Hydrinity",
-            "link": "shopify://collections/all"
-          }
-        },
-        "brand_4": {
-          "type": "brand",
-          "settings": {
-            "logo": "",
-            "alt_text": "Omnilux",
             "link": "shopify://collections/all"
           }
         }
       },
       "block_order": [
+        "brand_WtCmwJ",
+        "brand_andtDL",
         "brand_1",
         "brand_2",
-        "brand_3",
-        "brand_4"
+        "brand_3"
       ],
       "settings": {
         "heading": "Shop by brand",
+        "scroll_duration": 28,
+        "logo_height": 42,
         "padding_top": 8,
         "padding_bottom": 40
       }
@@ -183,13 +203,14 @@
     },
     "sb_banner": {
       "type": "sb-promo-banner",
+      "custom_css": [],
       "settings": {
-        "background_image": "shopify://shop_images/Vanilla-Mint.jpg",
-        "mobile_background_image": "shopify://shop_images/Vanilla-Mint.jpg",
+        "background_image": "shopify://shop_images/Microsite2_Pop-of-Color_Gif-2.png",
+        "mobile_background_image": "shopify://shop_images/Microsite2_Pop-of-Color_Gif-2.png",
         "heading": "Best sellers",
         "button_label": "Best sellers",
         "button_link": "shopify://collections/all",
-        "overlay_opacity": 20,
+        "overlay_opacity": 30,
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -225,7 +246,7 @@
             "concern_title": "Barrier support",
             "description": "Choose calming, replenishing formulas that help skin feel comfortable and resilient.",
             "image_1": "shopify://shop_images/SPOTSTOP.jpg",
-            "image_2": "",
+            "image_2": "shopify://shop_images/GM57R_MegaCreamCleanser.jpg",
             "button_label": "Shop barrier",
             "button_link": "shopify://collections/all"
           }
@@ -235,8 +256,8 @@
           "settings": {
             "concern_title": "Acne",
             "description": "Target congestion with balanced cleansers, smart treatment steps, and daily support.",
-            "image_1": "shopify://shop_images/serum-71-circadia-2_jpg_webp.jpg",
-            "image_2": "shopify://shop_images/HibiscusStylecopy_png.webp",
+            "image_1": "shopify://shop_images/CRSL01_Serum71_1791f2f8-84f6-41c4-9b86-cd22427ce9aa.png",
+            "image_2": "shopify://shop_images/GM74ER_IdyllicCleanser3_MandelicAcid_Transparent.png",
             "button_label": "Shop acne",
             "button_link": "shopify://collections/all"
           }
@@ -261,8 +282,8 @@
         "body_copy": "<p>Begin with a 1:1 consultation to define your goals, assess your skin, and map out a plan that feels tailored to you.</p>",
         "button_label": "I'm ready to book my consultation",
         "button_link": "/pages/contact",
-        "background_image": "shopify://shop_images/SillaBeauty-1.jpg",
-        "mobile_background_image": "shopify://shop_images/SillaBeauty-1.jpg",
+        "background_image": "shopify://shop_images/Silla_Background_3_kraft_beige.jpg",
+        "mobile_background_image": "shopify://shop_images/Silla_Background_3_kraft_beige.jpg",
         "overlay_opacity": 35,
         "padding_top": 0,
         "padding_bottom": 0
